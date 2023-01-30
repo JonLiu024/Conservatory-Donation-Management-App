@@ -11,7 +11,7 @@ The app is designed to be used by two types of users:
 - wildlife preservation supporters who make donations through symbolic adoption of the individual animals
 
 
-A *bullete* list:
+
 
 Wildlife conservationist will be able to add/do the following
 - Add orphaned animals
