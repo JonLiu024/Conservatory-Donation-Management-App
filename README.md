@@ -44,7 +44,7 @@ Phase 2
 Phase 3
 
 - As a user I want to know the total funding required for animals of each conservation status
-- As a feature the system will automatically remove the animal whose raised funds has exceeds the target funding. The extra funds collected in the last donation will be transferred as funding for an animal that receive the least funding and have the most concerned conservation status
+- As a feature the system will automatically remove the animals whose raised funds has exceeded the target funding. The extra funds collected in the last donation will be transferred to an animal that has the least funding and have the most concerned conservation status
 
 
 
