@@ -2,7 +2,7 @@
 ## Fund Tracking App for Wildlife Preservation Facilities
 ## Project Proposal:
 
-In this personal project, I want to design an application that can be used to track funding for a newly established wildlife preservation facility. This app will allow the conservationists to raise and track funds from the public to for the expenses of animal sheltering at the facility. The app will allow donors to make and record their amount of donations for sheltered wildlife
+In this personal project, I want to design an application that can be used to track funding for a newly established wildlife preservation facility. This app will allow the conservationists to raise and track funding from the public for the expenses of animal sheltering at the facility. The app will allow donors to make and record their amount of donations for their chosen wildlife *(animal)*
 
 
 The app is designed to be used by two types of users:
@@ -44,7 +44,7 @@ Phase 2
 Phase 3
 
 - As a user I want to know the total funding required for animals of each conservation status
-- 
+- As a feature the system will automatically remove the animal whose raised funds has exceeds the target funding. The extra funds collected in the last donation will be transferred as funding for an animal that receive the least funding and have the most concerned conservation status
 
 
 
