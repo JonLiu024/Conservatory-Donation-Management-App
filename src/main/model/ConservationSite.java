@@ -6,16 +6,15 @@ public class ConservationSite {
     private ArrayList<Animal> animalsInSite;
     private double totalTargetFunding;
     private double totalFundingRaised;
-    private String typeOfSite;
+    private TypeConservationSite typeOfSite;
 
-    public ConservationSite(String typeOfSite){
+    public ConservationSite(TypeConservationSite typeOfSite){
         this.totalTargetFunding = 0;
         this.totalFundingRaised = 0;
         ArrayList<Animal> ListOfAnimals= new ArrayList<>();
         this.typeOfSite = typeOfSite;
 
     }
-
 
 
     public void AddAnimal(Animal animal) {
@@ -48,10 +47,4 @@ public class ConservationSite {
         return totalTargetAmount;
     }
 
-
-
-
-    public void releaseAnimalsToWild(Animal animal){
-
-}
 }

@@ -6,4 +6,8 @@ public class Story {
     public Story() {
 
     }
+
+    public void setContents(String content) {
+        this.content = content;
+    }
 }

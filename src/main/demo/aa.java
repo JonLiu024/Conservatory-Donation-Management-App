@@ -1,6 +1,6 @@
 package demo;
 
-public abstract class aa {
+public abstract class aa implements interface1{
     protected int a;
     protected int b;
 
@@ -15,11 +15,14 @@ public abstract class aa {
 
     }
 
-    public abstract void aha();
+
 
     public void method(){
 
     }
+
+
+    public void method2(){}
 
     public void a(){
         System.out.println("d");

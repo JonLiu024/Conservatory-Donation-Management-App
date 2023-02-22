@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Animal A = new Animal("D");
+
 
 
 //            System.out.println('*'*2);

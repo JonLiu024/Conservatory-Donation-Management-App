@@ -8,11 +8,11 @@ public class bb extends demo.aa {
         this.c = c;
 
     }
+    public void method1(){}
 
-    @Override
-    public void aha() {
+    public void aha(){}
 
-    }
+
 
     @Override
     public void b(){
