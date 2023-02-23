@@ -142,7 +142,7 @@ public class Wildlife {
 
             double excessFundAmount = amountFunded - targetFunding;
             isFullyFunded = true;
-            ReleasedWildlife.addTolist(this);
+//            .addTolist(this);
             releasedDate = LocalDateTime.now();
 
         }
