@@ -5,21 +5,30 @@ package model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-public class Animal {
+public class Wildlife {
 
-//    public static final String EW = "Extinct in the Wild";
-//    public static final String CR = "Critically Endangered";
-//    public static final String EN = "Endangered";
-//    public static final String VU = "Vulnerable";
-//    public static final String NT = "Near Threatened";
-//    public static final String CD = "Conservation Dependent";
-//    public static final String LC = "Least Concerned";
+    private static final String EW = "Extinct in the Wild";
+    private static final String CR = "Critically Endangered";
+    private static final String EN = "Endangered";
+    private static final String VU = "Vulnerable";
+    private static final String NT = "Near Threatened";
+    private static final String CD = "Conservation Dependent";
+    private static final String LC = "Least Concerned";
 
-    private String nickname;
+
+    private static final String GL = "Grasslands";
+    private static final String FS = "Forests";
+    private static final String DS = "Desserts";
+    private static final String MT = "Mountains";
+    private static final String PR = "Polar Regions";
+    private static final String AQ = "Aquatic Habitats";
+
+    private String wildlifeID;
     private String speciesName;
-    private ConservationStatus conservationStatus;
-    private TypeConservationSite conservationType;
+    private String conservationStatus;
+    private String conservationType;
     private LocalDateTime addedDate;
     private List<Donor> listOfDonors;
     private List<Donation> donationRecords;
@@ -29,22 +38,19 @@ public class Animal {
 
 
     private double targetFunding;
-    private double FundingMetDate;
     private double amountFunded;
     private double expectedShelteredTimeInMonths;
     private Story story;
 
-    public Animal(String nickname, String speciesName, double targetFunding
-            , double expectedShelteredTimeInMonths) {
-        this.nickname = nickname;
+    public Wildlife(String speciesName, double targetFunding
+            , double expectedShelteredTimeInMonths, String conservationStatus, String conservationType) {
         this.speciesName = speciesName;
         this.targetFunding = targetFunding;
         this.expectedShelteredTimeInMonths = expectedShelteredTimeInMonths;
         listOfDonors = new ArrayList<>();
         this.isFullyFunded = false;
         addedDate = LocalDateTime.now();
-
-
+        this.wildlifeID = wildlifeIDgenerator();
 
     }
 
@@ -54,8 +60,8 @@ public class Animal {
 
 
     //getters
-    public String getNickname(){
-        return this.nickname;
+    public String getWildlifeID(){
+        return this.wildlifeID;
     }
     public double getExpectedShelteredTimeInMonths() {return this.expectedShelteredTimeInMonths;}
     public double getTargetFunding() {return this.targetFunding;}
@@ -63,8 +69,8 @@ public class Animal {
     public String getSpeciesName(){
         return this.speciesName;
     }
-    public ConservationStatus getConservationStatus(){return this.conservationStatus;}
-    public TypeConservationSite getConservationType() {return this.conservationType;}
+    public String getConservationStatus(){return this.conservationStatus;}
+    public String getConservationType() {return this.conservationType;}
 
     public LocalDateTime getAddedDate() {
         return addedDate;
@@ -75,19 +81,20 @@ public class Animal {
     public boolean isFullyFunded() {
         return isFullyFunded;
     }
+    public List<Donor> getListOfDonors() {return listOfDonors;}
+    public List<Donation> getDonationRecords() {return donationRecords;}
 
 
     public String toString() {
-        return nickname + " " + speciesName + " " + conservationStatus + " " + "\n"
+        return wildlifeID + " " + speciesName + " " + conservationStatus + " " + "\n"
         + targetFunding + " " + amountFunded + " " + expectedShelteredTimeInMonths;
     }
 
     //setters
-
-    public void setNickname(String nickname) {this.nickname = nickname;}
-    public void setConservationStatus(ConservationStatus cs) {this.conservationStatus = cs;}
+    public void setWildlifeID(String wildlifeID) {this.wildlifeID = wildlifeID;}
+    public void setConservationStatus(String cs) {this.conservationStatus = cs;}
     public void setSpeciesName(String speciesName) {this.speciesName = speciesName;}
-    public void setConservationType(TypeConservationSite conservationType) {
+    public void setConservationType(String conservationType) {
         this.conservationType = conservationType;
     }
     public void setExpectedShelteredTimeInMonths(double expectedShelteredTimeInMonths) {
@@ -99,11 +106,24 @@ public class Animal {
 
 
     public void displayDonors() {
-        System.out.println(getNickname() + "has following donors:");
+        System.out.println(getWildlifeID() + "has following donors:");
         for (Donor donor: listOfDonors) {
-            System.out.println(donor.getName());
+            System.out.println(donor.getDonorID());
         }
     }
+
+    public String wildlifeIDgenerator() {
+        Random r = new Random();
+        String threeDigitCode = "";
+        for (int i = 0; i < 3; i++) {
+            threeDigitCode = threeDigitCode + r.nextInt(10);
+        }
+        return conservationType + conservationStatus + threeDigitCode;
+        }
+        ;
+
+
+
 
 
 
@@ -122,7 +142,7 @@ public class Animal {
 
             double excessFundAmount = amountFunded - targetFunding;
             isFullyFunded = true;
-            ReleasedAnimals.addTolist(this);
+            ReleasedWildlife.addTolist(this);
             releasedDate = LocalDateTime.now();
 
         }

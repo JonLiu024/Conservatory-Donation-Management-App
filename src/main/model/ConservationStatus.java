@@ -1,12 +1,12 @@
 package model;
 
 public enum ConservationStatus {
-    ExtinctInTheWild,
-    CriticallyEndangered,
-    Endangered,
-    Vulnerable,
-    NearThreatened,
-    ConservationDependent,
-    LeastConcerned
+    EW,
+    CR,
+    EN,
+    VU,
+    NT,
+    CD,
+    LT
 
 }

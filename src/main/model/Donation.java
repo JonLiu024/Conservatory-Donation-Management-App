@@ -3,14 +3,14 @@ package model;
 import java.time.LocalDateTime;
 
 public class Donation {
-    private Animal animal;
+    private Wildlife wildlife;
     private Donor donor;
     private double amount;
     private LocalDateTime dateTimeDonationCreated;
 
 
-    public Donation(Animal animal, Donor donor, double amount, LocalDateTime dateTimeDonationCreated) {
-        this.animal = animal;
+    public Donation(Wildlife wildlife, Donor donor, double amount, LocalDateTime dateTimeDonationCreated) {
+        this.wildlife = wildlife;
         this.donor = donor;
         this.amount = amount;
         this.dateTimeDonationCreated = dateTimeDonationCreated;
@@ -26,8 +26,8 @@ public class Donation {
         return amount;
     }
 
-    public Animal getAnimal(){
-        return animal;
+    public Wildlife getAnimal(){
+        return wildlife;
     }
 
     public LocalDateTime getDateTimeDonationCreated() {

@@ -1,44 +1,42 @@
 package model;
 
-import org.w3c.dom.CDATASection;
 import Exception.*;
-import javax.swing.text.DateFormatter;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.List.*;
 import java.time.*;
-import formatters.DateTimeFormatter.*;
 
 public class Donor {
-    private String name;
-    private LocalDateTime accountCreationDate;
+    private String donorID;
+    private LocalDateTime profileCreationDate;
     private double totalFundingDonated;
-    private List<Animal> listOfAnimals;
+    private List<Wildlife> listOfWildlife;
     private double donationImpact;
     private List<Donation> recordsOfDonations;
+    private String emailAddress;
 
 
 
 
 
-    public Donor(String name) {
-        this.name = name;
+    public Donor(String donorID) {
+        this.donorID = donorID;
         this.totalFundingDonated = totalFundingDonated;
-        listOfAnimals = new ArrayList<>();
+        listOfWildlife = new ArrayList<>();
         recordsOfDonations = new ArrayList<>();
-        accountCreationDate = LocalDateTime.now();
+        profileCreationDate = LocalDateTime.now();
         totalFundingDonated = 0;
+
 
     }
 
 
     //getters
-    public String getName() {
-        return this.name;
+    public String getDonorID() {
+        return this.donorID;
     }
     public LocalDateTime getAccountCreationDate(){
-        return this.accountCreationDate;
+        return this.profileCreationDate;
     }
     public double getTotalFundingDonated() {
         return this.totalFundingDonated;
@@ -47,41 +45,49 @@ public class Donor {
     public List<Donation> getRecordsOfDonations() {
         return this.recordsOfDonations;
     }
+    public List<Wildlife> getListOfWildlife() {
+        return this.listOfWildlife;
+    }
 
     public double getDonationImpact(){
         return donationImpact;
     }
+    public String getEmailAddress() {return emailAddress;}
+
 
 
     //Setters
-    public void setName(String name) {
-        this.name = name;
+    public void setDonorID(String donorID) {
+        this.donorID = donorID;
     }
+    public void setEmailAddress(String emailAddress) {this.emailAddress = emailAddress;}
 
 
-    public void makeDonation(Animal animal, double amount) throws InvalidAmountDonationException {
+
+
+    public void makeDonation(Wildlife wildlife, double amount) throws InvalidAmountDonationException {
         if (amount <= 0) {
             throw new InvalidAmountDonationException("Please enter a valid selection");
         }
-        addAnimalToList(animal);
-        animal.raiseFund(amount);
+        addAnimalToList(wildlife);
+        wildlife.raiseFund(amount);
         totalFundingDonated += amount;
-        recordsOfDonations.add(new Donation(animal, this, amount, LocalDateTime.now()));
-        animal.addDonorToTheList(this);
+        recordsOfDonations.add(new Donation(wildlife, this, amount, LocalDateTime.now()));
+        wildlife.addDonorToTheList(this);
 
     }
 
-    public void addAnimalToList(Animal animal){
-        if (!listOfAnimals.contains(animal)) {
-            listOfAnimals.add(animal);
+    public void addAnimalToList(Wildlife wildlife){
+        if (!listOfWildlife.contains(wildlife)) {
+            listOfWildlife.add(wildlife);
         }
     }
 
     public void printAllDonationsRecords() {
         for (Donation donation: recordsOfDonations) {
             String dateCreated = formatters.DateTimeFormatter.toStringLocalDateTime(donation.getDateTimeDonationCreated());
-            System.out.println(donation.getDonor().getName() +" donated " + donation.getAmount() + " to " +
-                    donation.getAnimal().getNickname() + " on " + dateCreated);
+            System.out.println(donation.getDonor().getDonorID() +" donated " + donation.getAmount() + " to " +
+                    donation.getAnimal().getWildlifeID() + " on " + dateCreated);
 
         }
     }

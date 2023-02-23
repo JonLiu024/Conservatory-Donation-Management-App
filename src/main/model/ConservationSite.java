@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class ConservationSite {
-    private ArrayList<Animal> animalsInSite;
+    private ArrayList<Wildlife> animalsInSite;
     private double totalTargetFunding;
     private double totalFundingRaised;
     private TypeConservationSite typeOfSite;
@@ -11,21 +11,21 @@ public class ConservationSite {
     public ConservationSite(TypeConservationSite typeOfSite){
         this.totalTargetFunding = 0;
         this.totalFundingRaised = 0;
-        ArrayList<Animal> ListOfAnimals= new ArrayList<>();
+        ArrayList<Wildlife> listOfWildlives = new ArrayList<>();
         this.typeOfSite = typeOfSite;
 
     }
 
 
-    public void AddAnimal(Animal animal) {
-        if (!animalsInSite.contains(animal)) {
-            animalsInSite.add(animal);
+    public void AddAnimal(Wildlife wildlife) {
+        if (!animalsInSite.contains(wildlife)) {
+            animalsInSite.add(wildlife);
         };
     }
 
-    public void removeAnimal(Animal animal) {
-        if (animalsInSite.contains(animal)) {
-            removeAnimal(animal);
+    public void removeAnimal(Wildlife wildlife) {
+        if (animalsInSite.contains(wildlife)) {
+            removeAnimal(wildlife);
         }
     }
 
@@ -33,16 +33,16 @@ public class ConservationSite {
 
     public double FundsRaisedCalculator(){
         int totalRaisedAmount = 0;
-        for (Animal animal: animalsInSite){
-            totalRaisedAmount += animal.getAmountFunded();
+        for (Wildlife wildlife : animalsInSite){
+            totalRaisedAmount += wildlife.getAmountFunded();
         }
         return totalRaisedAmount;
     }
 
     public double TargetFundingCalculator(){
         int totalTargetAmount = 0;
-        for (Animal animal: animalsInSite){
-            totalTargetFunding += animal.getTargetFunding();
+        for (Wildlife wildlife : animalsInSite){
+            totalTargetFunding += wildlife.getTargetFunding();
         }
         return totalTargetAmount;
     }
