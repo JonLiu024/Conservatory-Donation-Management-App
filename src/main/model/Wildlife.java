@@ -27,8 +27,8 @@ public class Wildlife {
 
     private String wildlifeID;
     private String speciesName;
-    private String conservationStatus;
-    private String conservationType;
+    private ConservationStatus conservationStatus;
+    private TypeConservationSite conservationType;
     private LocalDateTime addedDate;
     private List<Donor> listOfDonors;
     private List<Donation> donationRecords;
@@ -43,7 +43,7 @@ public class Wildlife {
     private Story story;
 
     public Wildlife(String speciesName, double targetFunding
-            , double expectedShelteredTimeInMonths, String conservationStatus, String conservationType) {
+            , double expectedShelteredTimeInMonths, ConservationStatus conservationStatus, TypeConservationSite conservationType) {
         this.speciesName = speciesName;
         this.targetFunding = targetFunding;
         this.expectedShelteredTimeInMonths = expectedShelteredTimeInMonths;
@@ -69,8 +69,8 @@ public class Wildlife {
     public String getSpeciesName(){
         return this.speciesName;
     }
-    public String getConservationStatus(){return this.conservationStatus;}
-    public String getConservationType() {return this.conservationType;}
+    public ConservationStatus getConservationStatus(){return this.conservationStatus;}
+    public TypeConservationSite getConservationType() {return this.conservationType;}
 
     public LocalDateTime getAddedDate() {
         return addedDate;
@@ -92,9 +92,9 @@ public class Wildlife {
 
     //setters
     public void setWildlifeID(String wildlifeID) {this.wildlifeID = wildlifeID;}
-    public void setConservationStatus(String cs) {this.conservationStatus = cs;}
+    public void setConservationStatus(ConservationStatus cs) {this.conservationStatus = cs;}
     public void setSpeciesName(String speciesName) {this.speciesName = speciesName;}
-    public void setConservationType(String conservationType) {
+    public void setConservationType(TypeConservationSite conservationType) {
         this.conservationType = conservationType;
     }
     public void setExpectedShelteredTimeInMonths(double expectedShelteredTimeInMonths) {
@@ -118,7 +118,7 @@ public class Wildlife {
         for (int i = 0; i < 3; i++) {
             threeDigitCode = threeDigitCode + r.nextInt(10);
         }
-        return conservationType + conservationStatus + threeDigitCode;
+        return conservationType.toString() + conservationStatus.toString() + threeDigitCode;
         }
         ;
 

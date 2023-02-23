@@ -13,7 +13,7 @@ public class Main {
         for (int i = 0; i < 3; i++) {
             threeDigitCode = threeDigitCode + r.nextInt(10);
         }
-        System.out.println(ConservationStatus.CD + Wildlife.EW.get threeDigitCode);
+        System.out.println(ConservationStatus.CD.toString() + threeDigitCode);
 
 
     }
