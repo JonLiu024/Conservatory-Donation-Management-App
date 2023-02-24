@@ -2,6 +2,7 @@ package model;
 
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,28 +29,27 @@ public class Wildlife {
     private String wildlifeID;
     private String speciesName;
     private ConservationStatus conservationStatus;
-    private TypeConservationSite conservationType;
-    private LocalDateTime addedDate;
+    private LocalDate admissionDate;
     private List<Donor> listOfDonors;
     private List<Donation> donationRecords;
-    private LocalDateTime releasedDate;
+    private LocalDate fundingMetDate;
     private boolean isFullyFunded;
 
 
 
     private double targetFunding;
     private double amountFunded;
-    private double expectedShelteredTimeInMonths;
-    private Story story;
+    private Description description;
 
     public Wildlife(String speciesName, double targetFunding
-            , double expectedShelteredTimeInMonths, ConservationStatus conservationStatus, TypeConservationSite conservationType) {
+            , ConservationStatus conservationStatus, LocalDate admissionDate) {
         this.speciesName = speciesName;
         this.targetFunding = targetFunding;
-        this.expectedShelteredTimeInMonths = expectedShelteredTimeInMonths;
+        this.conservationStatus = conservationStatus;
+        donationRecords = new ArrayList<>();
         listOfDonors = new ArrayList<>();
         this.isFullyFunded = false;
-        addedDate = LocalDateTime.now();
+        this.admissionDate = admissionDate;
         this.wildlifeID = wildlifeIDgenerator();
 
     }
@@ -63,64 +63,54 @@ public class Wildlife {
     public String getWildlifeID(){
         return this.wildlifeID;
     }
-    public double getExpectedShelteredTimeInMonths() {return this.expectedShelteredTimeInMonths;}
     public double getTargetFunding() {return this.targetFunding;}
     public double getAmountFunded() {return this.amountFunded;}
     public String getSpeciesName(){
         return this.speciesName;
     }
     public ConservationStatus getConservationStatus(){return this.conservationStatus;}
-    public TypeConservationSite getConservationType() {return this.conservationType;}
 
-    public LocalDateTime getAddedDate() {
-        return addedDate;
+    public LocalDate getAdmissionDate() {
+        return admissionDate;
     }
-    public LocalDateTime getReleasedDate() {
-        return releasedDate;
+    public LocalDate getFundingMetDate() {
+        return fundingMetDate;
     }
     public boolean isFullyFunded() {
         return isFullyFunded;
     }
     public List<Donor> getListOfDonors() {return listOfDonors;}
     public List<Donation> getDonationRecords() {return donationRecords;}
-
-
-    public String toString() {
-        return wildlifeID + " " + speciesName + " " + conservationStatus + " " + "\n"
-        + targetFunding + " " + amountFunded + " " + expectedShelteredTimeInMonths;
+    public Description getDescription() {
+        return description;
     }
+
+
+//    public String toString() {
+//        return wildlifeID + " " + speciesName + " " + conservationStatus.toString() + " " + "\n"
+//        + conservationType.toString() + targetFunding + " " + amountFunded + " " +;
+//    }
 
     //setters
     public void setWildlifeID(String wildlifeID) {this.wildlifeID = wildlifeID;}
     public void setConservationStatus(ConservationStatus cs) {this.conservationStatus = cs;}
     public void setSpeciesName(String speciesName) {this.speciesName = speciesName;}
-    public void setConservationType(TypeConservationSite conservationType) {
-        this.conservationType = conservationType;
-    }
-    public void setExpectedShelteredTimeInMonths(double expectedShelteredTimeInMonths) {
-        this.expectedShelteredTimeInMonths = expectedShelteredTimeInMonths;
-    }
     public void setTargetFunding(double targetFunding) {this.targetFunding = targetFunding;}
-    public void setStory(Story story) {this.story = story;}
+    public void setDescription(Description description) {this.description = description;}
+    public void setAdmissionDate(LocalDate admissionDate) {this.admissionDate = admissionDate;}
+    public void setFundingMetDate(LocalDate fundingMetDate) {this.fundingMetDate = fundingMetDate;}
 
 
-
-    public void displayDonors() {
-        System.out.println(getWildlifeID() + "has following donors:");
-        for (Donor donor: listOfDonors) {
-            System.out.println(donor.getDonorID());
-        }
-    }
 
     public String wildlifeIDgenerator() {
         Random r = new Random();
-        String threeDigitCode = "";
-        for (int i = 0; i < 3; i++) {
-            threeDigitCode = threeDigitCode + r.nextInt(10);
+        String fourDigitsCode = "";
+        for (int i = 0; i < 4; i++) {
+            fourDigitsCode = fourDigitsCode + r.nextInt(10);
         }
-        return conservationType.toString() + conservationStatus.toString() + threeDigitCode;
+        return conservationStatus.toString() + fourDigitsCode;
         }
-        ;
+
 
 
 
@@ -129,6 +119,10 @@ public class Wildlife {
 
     public void raiseFund(double amount){
         amountFunded += amount;
+//        if (amountFunded >= targetFunding) {
+//            isFullyFunded = true;
+//            double excessFundAmount = amountFunded - targetFunding;
+//        }
     }
 
     public void addDonorToTheList(Donor donor) {
@@ -137,20 +131,20 @@ public class Wildlife {
         }
     }
 
-    public void fullyFunded(){
-        if (targetFunding >= amountFunded){
-
-            double excessFundAmount = amountFunded - targetFunding;
-            isFullyFunded = true;
-//            .addTolist(this);
-            releasedDate = LocalDateTime.now();
-
-        }
+//    public void fullyFunded(){
+//        if (targetFunding >= amountFunded){
+//
+//
+//            isFullyFunded = true;
+////            .addTolist(this);
+//            releasedDate = LocalDateTime.now();
+//
+//        }
 
     }
 
 
-}
+
 
 
 

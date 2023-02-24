@@ -1,6 +1,7 @@
 package model;
 
 import Exception.*;
+import formatters.DateFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.time.*;
 
 public class Donor {
     private String donorID;
-    private LocalDateTime profileCreationDate;
+    private LocalDate profileCreationDate;
     private double totalFundingDonated;
     private List<Wildlife> listOfWildlife;
     private double donationImpact;
@@ -24,7 +25,7 @@ public class Donor {
         this.totalFundingDonated = totalFundingDonated;
         listOfWildlife = new ArrayList<>();
         recordsOfDonations = new ArrayList<>();
-        profileCreationDate = LocalDateTime.now();
+        profileCreationDate = LocalDate.now();
         totalFundingDonated = 0;
 
 
@@ -35,7 +36,7 @@ public class Donor {
     public String getDonorID() {
         return this.donorID;
     }
-    public LocalDateTime getAccountCreationDate(){
+    public LocalDate getAccountCreationDate(){
         return this.profileCreationDate;
     }
     public double getTotalFundingDonated() {
@@ -72,7 +73,7 @@ public class Donor {
         addAnimalToList(wildlife);
         wildlife.raiseFund(amount);
         totalFundingDonated += amount;
-        recordsOfDonations.add(new Donation(wildlife, this, amount, LocalDateTime.now()));
+        recordsOfDonations.add(new Donation(wildlife, this, amount));
         wildlife.addDonorToTheList(this);
 
     }
@@ -83,14 +84,7 @@ public class Donor {
         }
     }
 
-    public void printAllDonationsRecords() {
-        for (Donation donation: recordsOfDonations) {
-            String dateCreated = formatters.DateTimeFormatter.toStringLocalDateTime(donation.getDateTimeDonationCreated());
-            System.out.println(donation.getDonor().getDonorID() +" donated " + donation.getAmount() + " to " +
-                    donation.getAnimal().getWildlifeID() + " on " + dateCreated);
 
-        }
-    }
 
 
 

@@ -9,11 +9,11 @@ public class Donation {
     private LocalDateTime dateTimeDonationCreated;
 
 
-    public Donation(Wildlife wildlife, Donor donor, double amount, LocalDateTime dateTimeDonationCreated) {
+    public Donation(Wildlife wildlife, Donor donor, double amount) {
         this.wildlife = wildlife;
         this.donor = donor;
         this.amount = amount;
-        this.dateTimeDonationCreated = dateTimeDonationCreated;
+        this.dateTimeDonationCreated = LocalDateTime.now();
 
     }
 

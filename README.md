@@ -17,7 +17,7 @@ Staff at the conservation site will be able to add/do the following
 - Animal nickname
 - Animal species name
 - Endangered level of the species
-- A short description or story behind the sheltered animals
+- A short description or description behind the sheltered animals
 - Target funding
 - Expected Shelter period
 - Remove animals
@@ -33,7 +33,7 @@ Phase 1
 
 
 - As a user I want to be able to add new wildlife to the list of sheltered animals
-- As a user I want to be able to add story/description and important information of the added animals
+- As a user I want to be able to add description/description and important information of the added animals
 - As a user I want to be able to remove an wildlife from the list of sheltered animals
 
 Phase 2
