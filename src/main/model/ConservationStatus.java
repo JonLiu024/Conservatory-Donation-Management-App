@@ -8,6 +8,6 @@ public enum ConservationStatus {
     VU,
     NT,
     CD,
-    LT
+    LC
 
 }
