@@ -3,7 +3,6 @@ package model;
 
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -18,13 +17,6 @@ public class Wildlife {
     private static final String CD = "Conservation Dependent";
     private static final String LC = "Least Concerned";
 
-
-    private static final String GL = "Grasslands";
-    private static final String FS = "Forests";
-    private static final String DS = "Desserts";
-    private static final String MT = "Mountains";
-    private static final String PR = "Polar Regions";
-    private static final String AQ = "Aquatic Habitats";
 
     private String wildlifeID;
     private String speciesName;
@@ -50,7 +42,7 @@ public class Wildlife {
         listOfDonors = new ArrayList<>();
         this.isFullyFunded = false;
         this.admissionDate = admissionDate;
-        this.wildlifeID = wildlifeIDgenerator();
+        this.wildlifeID = wildlifeIDGenerator();
 
     }
 
@@ -145,7 +137,7 @@ public class Wildlife {
 
 
 
-    public String wildlifeIDgenerator() {
+    public String wildlifeIDGenerator() {
         Random r = new Random();
         String fourDigitsCode = "";
         for (int i = 0; i < 4; i++) {
@@ -153,6 +145,18 @@ public class Wildlife {
         }
         return conservationStatus.toString() + fourDigitsCode;
     }
+
+    public void addDonorToList(Donor donor) {
+        if (!listOfDonors.contains(donor)) {
+            listOfDonors.add(donor);
+        }
+    }
+
+    public void addDonationToRecords(Donation d) {
+        donationRecords.add(d);
+    }
+
+
 
 
 

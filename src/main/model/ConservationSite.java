@@ -26,8 +26,8 @@ public class ConservationSite {
     }
 
 
-    public void updatelistOfDonors() {
-        for (Wildlife wildlife: wildlifeListNotFullyFunded) {
+    public void updateListOfDonors() {
+        for (Wildlife wildlife: getListOfAllWL()) {
             for (Donor donor: wildlife.getListOfDonors()) {
                 if (!listOfDonors.contains(donor)) {
                     listOfDonors.add(donor);
@@ -52,6 +52,7 @@ public class ConservationSite {
     }
 
     public List<Donor> getListOfDonors() {
+        updateListOfDonors();
         return listOfDonors;
     }
 
@@ -67,6 +68,29 @@ public class ConservationSite {
 
     //setters
 
+
+    public void addDonor(Donor d) {
+        if (!listOfDonors.contains(d)) {
+            listOfDonors.add(d);
+        }
+    }
+
+    public List<String> getWildlifeIDList() {
+        List<String> wildlifeIDList = new ArrayList<>();
+        for (Wildlife wl: wildlifeListNotFullyFunded) {
+            wildlifeIDList.add(wl.getWildlifeID());
+        }
+        return wildlifeIDList;
+    }
+
+
+    public List<String> getDonorIDList() {
+        List<String> donorIDList = new ArrayList<>();
+        for (Donor d: listOfDonors) {
+            donorIDList.add(d.getDonorID());
+        }
+        return donorIDList;
+    }
 
 
 

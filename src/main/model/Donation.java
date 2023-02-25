@@ -1,19 +1,20 @@
 package model;
 
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 
 public class Donation {
     private Wildlife wildlife;
     private Donor donor;
     private double amount;
-    private LocalDateTime dateTimeDonationMade;
+    private LocalDate dateDonationMade;
 
 
     public Donation(Wildlife wildlife, Donor donor, double amount) {
         this.wildlife = wildlife;
         this.donor = donor;
         this.amount = amount;
-        this.dateTimeDonationMade = LocalDateTime.now();
+        this.dateDonationMade = LocalDate.now();
 
     }
 
@@ -30,16 +31,18 @@ public class Donation {
         return wildlife;
     }
 
-    public LocalDateTime getDateTimeDonationMade() {
-        return dateTimeDonationMade;
+    public LocalDate getDateTimeDonationMade() {
+        return dateDonationMade;
     }
 
     //setters
     public void setDonor(Donor donor) {
+
         this.donor = donor;
     }
 
     public void setAmount(double amount) {
+
         this.amount = amount;
     }
 
@@ -47,7 +50,7 @@ public class Donation {
         this.wildlife = wildlife;
     }
 
-    public void setDateTimeDonationMade(LocalDateTime dateTime) {
-        this.dateTimeDonationMade = dateTimeDonationMade;
+    public void setDateTimeDonationMade(LocalDate dateTime) {
+        this.dateDonationMade = dateTime;
     }
 }

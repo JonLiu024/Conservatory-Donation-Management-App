@@ -1,7 +1,6 @@
 package model;
 
 import Exception.*;
-import formatters.DateFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,6 @@ public class Donor {
     private LocalDate profileCreationDate;
     private double totalFundingDonated;
     private List<Wildlife> listOfWildlife;
-    private double donationImpact;
     private List<Donation> recordsOfDonations;
     private String emailAddress;
 
@@ -56,10 +54,6 @@ public class Donor {
         return this.listOfWildlife;
     }
 
-    public double getDonationImpact() {
-
-        return donationImpact;
-    }
 
     public String getEmailAddress() {
         return emailAddress;
@@ -74,39 +68,39 @@ public class Donor {
     }
 
     public void setEmailAddress(String emailAddress) {
+
         this.emailAddress = emailAddress;
     }
 
 
 
 
-    public void makeDonation(Wildlife wildlife, double amount) throws InvalidAmountDonationException {
-        if (amount <= 0) {
-            throw new InvalidAmountDonationException("Please enter a valid selection");
-        }
-        addAnimalToList(wildlife);
-        wildlife.raiseFund(amount);
-        totalFundingDonated += amount;
-        recordsOfDonations.add(new Donation(wildlife, this, amount));
-        wildlife.addDonorToTheList(this);
+    public void makeDonation(Wildlife wildlife, double amount) {
 
+        Donation donation = new Donation(wildlife, this, amount);
+        recordsOfDonations.add(donation);
+        addWLToList(wildlife);
+        totalFundingDonated += amount;
+
+        wildlife.raiseFund(amount);
+        wildlife.addDonorToTheList(this);
+        wildlife.addDonationToRecords(donation);
     }
 
-    public void addAnimalToList(Wildlife wildlife) {
+    public void addWLToList(Wildlife wildlife) {
         if (!listOfWildlife.contains(wildlife)) {
             listOfWildlife.add(wildlife);
         }
     }
 
-
-
-
-
-
-    //EFFECT: calculate the donation impact factor of the donor based on the conservation status of the animals
-    //in his/her list of animals
-    public void donationImpactCalculator() {
-
+    public void addDonationToList(Donation d) {
+        if (!recordsOfDonations.contains(d)) {
+            recordsOfDonations.add(d);
+        }
     }
+
+
+
+
 
 }
