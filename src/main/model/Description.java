@@ -3,6 +3,7 @@ package model;
 public class Description {
     //story description, other information
     private String content;
+
     public Description(String content) {
         this.content = content;
 

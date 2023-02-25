@@ -19,5 +19,12 @@ public class Main {
         boolean matchFound = matcher.find();
         System.out.println(matchFound);
 
+        System.out.println("ID: DDFD\t" + "Name: d");
+        String d = "";
+        d = "2";
+
+        System.out.println(d);
+
+
     }
 }

@@ -20,48 +20,62 @@ public class Donor {
 
 
 
-    public Donor(String donorID) {
+    public Donor(String donorID, String emailAddress) {
         this.donorID = donorID;
-        this.totalFundingDonated = totalFundingDonated;
+        this.emailAddress = emailAddress;
         listOfWildlife = new ArrayList<>();
         recordsOfDonations = new ArrayList<>();
         profileCreationDate = LocalDate.now();
         totalFundingDonated = 0;
-
-
     }
 
 
     //getters
     public String getDonorID() {
+
         return this.donorID;
     }
-    public LocalDate getAccountCreationDate(){
+
+    public LocalDate getProfileCreationDate() {
+
         return this.profileCreationDate;
     }
+
     public double getTotalFundingDonated() {
+
         return this.totalFundingDonated;
     }
 
     public List<Donation> getRecordsOfDonations() {
+
         return this.recordsOfDonations;
     }
+
     public List<Wildlife> getListOfWildlife() {
+
         return this.listOfWildlife;
     }
 
-    public double getDonationImpact(){
+    public double getDonationImpact() {
+
         return donationImpact;
     }
-    public String getEmailAddress() {return emailAddress;}
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
 
 
 
     //Setters
     public void setDonorID(String donorID) {
+
         this.donorID = donorID;
     }
-    public void setEmailAddress(String emailAddress) {this.emailAddress = emailAddress;}
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
 
 
 
@@ -78,7 +92,7 @@ public class Donor {
 
     }
 
-    public void addAnimalToList(Wildlife wildlife){
+    public void addAnimalToList(Wildlife wildlife) {
         if (!listOfWildlife.contains(wildlife)) {
             listOfWildlife.add(wildlife);
         }

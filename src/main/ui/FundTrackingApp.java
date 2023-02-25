@@ -5,6 +5,8 @@ import model.*;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,6 +19,7 @@ public class FundTrackingApp {
 
 
     public FundTrackingApp() {
+
 
     }
 
@@ -58,7 +61,7 @@ public class FundTrackingApp {
             } else if (command.equals("q")) {
                 System.out.println("Going back to the previous menu");
             } else {
-                System.out.println("Please enter a valid response!");
+                System.out.println("Please enter a valid response: ");
             }
         }
     }
@@ -69,11 +72,11 @@ public class FundTrackingApp {
         while (!command.equals("q")) {
             command = scanner.next().toString().toLowerCase();
             if (command.equals("1")) {
-                AddNewWildlife();
+                addNewWildlife();
             } else if (command.equals("2")) {
                 removeAWildlife();
             } else if (command.equals("3")) {
-                trackDonorInfo();
+                viewDonorInfo();
             } else if (command.equals("4")) {
                 viewWildlifeInfo();
             } else if (command.equals("q")) {
@@ -84,7 +87,7 @@ public class FundTrackingApp {
         }
     }
 
-    private void AddNewWildlife() {
+    private void addNewWildlife() {
         String speciesName = createSpeciesName();
         ConservationStatus conservationStatus = selectConservationStatus();
         double targetFunding = createTargetFunding();
@@ -101,7 +104,7 @@ public class FundTrackingApp {
         System.out.println("WildlifeID: " + wildlife.getWildlifeID());
         System.out.println("Species: " + wildlife.getSpeciesName());
         System.out.println("Target funding: " + wildlife.getTargetFunding());
-        System.out.println("Conservation status: "+ wildlife.getConservationStatus());
+        System.out.println("Conservation status: " + wildlife.getConservationStatus());
         System.out.println("Admission date: " + wildlife.getAdmissionDate());
 
     }
@@ -109,7 +112,7 @@ public class FundTrackingApp {
 
 
 
-    private String createSpeciesName(){
+    private String createSpeciesName() {
         System.out.println("Please enter the species name of this wildlife:");
         String speciesName = scanner.next();
         speciesName = speciesName.toString();
@@ -140,7 +143,7 @@ public class FundTrackingApp {
     private Description createDescription() {
         String command = "";
         System.out.println("Would you like to add a description for this wildlife?");
-        while (!command.equals("y")&&!command.equals("n")) {
+        while (!command.equals("y") && !command.equals("n")) {
             System.out.println("Please enter y for Yes, n for No:");
             command = scanner.next().toString().toLowerCase();
         }
@@ -160,8 +163,8 @@ public class FundTrackingApp {
     private ConservationStatus selectConservationStatus() {
         displayConservationStatusMenu();
         String command = "";
-        while (!command.equals("1")&!command.equals("2")&!command.equals("3")&!command.equals("4")
-                &!command.equals("5")&!command.equals("6")&!command.equals("7")) {
+        while (!command.equals("1") && !command.equals("2") && !command.equals("3") && !command.equals("4")
+                && !command.equals("5") && !command.equals("6") && !command.equals("7")) {
             System.out.println("Please enter a valid selection:");
             command = scanner.next().toString().toLowerCase();
         }
@@ -184,23 +187,141 @@ public class FundTrackingApp {
 
 
 
-
-
     private void removeAWildlife() {
+//        for (Wildlife wildlife: conservationSite.getListOfAllWL()) {
+//            System.out.println(wildlife.getWildlifeID() + ":" + wildlife.getSpeciesName());
+//        }
+//        System.out.println("Please enter the ID of the wildlife you would like to remove:");
+//        String command = scanner.next();
+
+
     }
-    private void trackDonorInfo() {
-        conservationSite.appendlistOfDonors();
-        for (Donor donor: conservationSite.getListOfDonors()){
-            dis
+
+    private void viewDonorInfo() {
+        conservationSite.updatelistOfDonors();
+        System.out.println(conservationSite.getListOfDonors().size() + "people have made donations to "
+                + "our conservation facility.");
+        System.out.println("They are listed as follow: ");
+        for (Donor donor: conservationSite.getListOfDonors()) {
+            System.out.println("Donor ID: " + donor.getDonorID() + "\t" + "Email address: " + donor.getEmailAddress()
+                    + "\t" + "profile creation date: "
+                    + DateFormatter.toStringLocalDate(donor.getProfileCreationDate())
+                    + "\t" + "Total amount donated : $" + donor.getTotalFundingDonated());
         }
     }
 
     private void viewWildlifeInfo() {
+        int numOfWLNotFullyFunded = conservationSite.getListOfWildlifeNotFullyFunded().size();
+        int numOfWLFulLyFunded = conservationSite.getWildlifeListFullyFunded().size();
+        int totalNumOfWL = numOfWLFulLyFunded + numOfWLNotFullyFunded;
+        System.out.println("Our conservation site currently has " + totalNumOfWL + " wildlife");
+        System.out.println(numOfWLNotFullyFunded + " wildlife are accepting donation."
+                + numOfWLFulLyFunded + " wildlife have been fully funded");
+        viewSpecificWildlifeInfo();
+    }
+
+    private void viewSpecificWildlifeInfo() {
+        displayAllWL();
+        String entry = "";
+        System.out.println("Please enter the ID for your selected wildlife: ");
+        boolean selectionFound = false;
+        while (!selectionFound) {
+            entry = scanner.next().toString();
+            for (Wildlife wildlife: conservationSite.getListOfAllWL()) {
+                if (wildlife.getWildlifeID().equals(entry)) {
+                    System.out.println("WildlifeID: " + wildlife.getWildlifeID());
+                    System.out.println("Species: " + wildlife.getSpeciesName());
+                    System.out.println("Funding raised: " + wildlife.getAmountFunded());
+                    System.out.println("Target funding: " + wildlife.getTargetFunding());
+                    System.out.println("Conservation status: " + wildlife.getConservationStatus());
+                    System.out.println("Admission date: " + wildlife.getAdmissionDate());
+                    break;
+                }
+            }
+            System.out.println("Please enter an existing wildlife ID, in correct format (XX####):");
+        }
+    }
+
+    private void displayAllWL() {
+        System.out.println("All wildlife are listed here: ");
+        for (Wildlife wildlife: conservationSite.getListOfAllWL()) {
+            System.out.println(wildlife.getWildlifeID() + " : " + wildlife.getSpeciesName());
+        }
+    }
+
+    private void displayAllWLNotFullyFunded() {
+        System.out.println("These wildlife are currently accepting donations: ");
+        for (Wildlife wildlife: conservationSite.getListOfWildlifeNotFullyFunded()) {
+            System.out.println(wildlife.getWildlifeID() + " : " + wildlife.getSpeciesName());
+        }
+    }
+
+
+    private void makeDonation() {
+        displayAllWLNotFullyFunded();
+        System.out.println("Please enter the ID for your selected wildlife: ");
+        boolean selectionFound = false;
+        while (!selectionFound) {
+            String command = scanner.next().toString();
+            for (Wildlife wildlife: conservationSite.getListOfWildlifeNotFullyFunded()) {
+                if (wildlife.getWildlifeID().equals(command)) {
+                    System.out.println("Please enter the amount of donations: ");
+                    double amount = scanner.nextDouble();
+                    wildlife.raiseFund(amount);
+                    Donation newDonation = new Donation(wildlife, null, amount);
+
+
+                    //
+                    break;
+                }
+            }
+            System.out.println("Please enter an existing wildlife ID, in correct format (XX####):");
+        }
+
 
     }
 
 
-    private void makeDonation() {}
+    private Donor createDonorProfile() {
+        String donorID = createDonorID();
+        String emailAddress = createEmailAddress();
+        Donor newDonor = new Donor(donorID, emailAddress);
+        return newDonor;
+    }
+
+
+    private String createEmailAddress() {
+        String emailAddress = "";
+        Pattern p = Pattern.compile("[0-9a-z]+(\\.[0-9a-z]+)*@[a-z0-9]+\\.(com|ca)");
+        boolean matchFound = false;
+        while (!matchFound) {
+            System.out.println("Please enter a valid email address: ");
+            emailAddress = scanner.next().toString().toLowerCase();
+            Matcher matcher = p.matcher(emailAddress);
+            matchFound = matcher.find();
+        }
+        return emailAddress;
+    }
+
+
+    private String recordDonorID() {
+        List<String> donorIDList = new ArrayList<>();
+        for (Donor d: conservationSite.getListOfDonors()) {
+            donorIDList.add(d.getDonorID());
+        }
+        System.out.println("Please create your donor user ID if you have previously used our apps " +
+                "to make any donation, else please create a user ID and enter it here:  ");
+        String entryID = scanner.next().toString();
+        if (donorIDList.contains(entryID))
+        while (donorIDList.contains(entryID)) {
+            System.out.println("The ID you entered already existed, Please create an unique ID: ");
+            System.out.println("Please enter your ID: ");
+            entryID = scanner.next().toString();
+        }
+        return entryID;
+    }
+
+
     private void trackAllYourDonation(){}
 
 
@@ -215,7 +336,6 @@ public class FundTrackingApp {
     private void init() {
         conservationSite = new ConservationSite();
         scanner = new Scanner(System.in);
-
     }
 
 
@@ -230,8 +350,8 @@ public class FundTrackingApp {
         System.out.println("\nAdmin menu");
         System.out.println("1. add a new wildlife");
         System.out.println("2. remove a wildlife");
-        System.out.println("3. track donor information");
-        System.out.println("4. view all wildlife information");
+        System.out.println("3. view donor information");
+        System.out.println("4. view wildlife information");
         System.out.println("q. Back to the Main menu");
         System.out.println("Please enter your choice:");
     }
@@ -247,17 +367,7 @@ public class FundTrackingApp {
         System.out.println("7. Least concerned (LC)");
 
     }
-    public void displayConservationTypeMenu() {
-        System.out.println("\nPlease select the conservation type for this wildlife:");
-        System.out.println("1. Grasslands (GT)");
-        System.out.println("2. Forests (FT)");
-        System.out.println("3. Desserts (DT)");
-        System.out.println("4. Mountains (MT)");
-        System.out.println("5. Polar regions (PR)");
-        System.out.println("6. Aquatic habitats (AQ)");
-        System.out.println("Please enter your choice:");
 
-    }
 
     public void displayDonorMenu() {
         System.out.println("\nDonor menu:");
@@ -270,9 +380,9 @@ public class FundTrackingApp {
 
 
     public void displayWelcomeStatement() {
-        System.out.println("Welcome to our wildlife conservation facilities! Here we provide rescue and " +
-                "rehabilitation services to injured wildlife. " +
-                "\nPlease use the menu to navigate your usage");
+        System.out.println("Welcome to our wildlife conservation facilities! Here we provide rescue and "
+                + "rehabilitation services to injured wildlife. "
+                + "\nPlease use the menu to navigate your usage");
     }
 
 

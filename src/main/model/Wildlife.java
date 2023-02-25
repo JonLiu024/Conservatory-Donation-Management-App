@@ -41,8 +41,8 @@ public class Wildlife {
     private double amountFunded;
     private Description description;
 
-    public Wildlife(String speciesName, double targetFunding
-            , ConservationStatus conservationStatus, LocalDate admissionDate) {
+    public Wildlife(String speciesName, double targetFunding,
+                    ConservationStatus conservationStatus, LocalDate admissionDate) {
         this.speciesName = speciesName;
         this.targetFunding = targetFunding;
         this.conservationStatus = conservationStatus;
@@ -60,28 +60,51 @@ public class Wildlife {
 
 
     //getters
-    public String getWildlifeID(){
+    public String getWildlifeID() {
         return this.wildlifeID;
     }
-    public double getTargetFunding() {return this.targetFunding;}
-    public double getAmountFunded() {return this.amountFunded;}
-    public String getSpeciesName(){
+
+    public double getTargetFunding() {
+        return this.targetFunding;
+    }
+
+    public double getAmountFunded() {
+        return this.amountFunded;
+    }
+
+    public String getSpeciesName() {
+
         return this.speciesName;
     }
-    public ConservationStatus getConservationStatus(){return this.conservationStatus;}
+
+    public ConservationStatus getConservationStatus() {
+        return this.conservationStatus;
+    }
 
     public LocalDate getAdmissionDate() {
+
         return admissionDate;
     }
+
     public LocalDate getFundingMetDate() {
         return fundingMetDate;
     }
+
     public boolean isFullyFunded() {
+
         return isFullyFunded;
     }
-    public List<Donor> getListOfDonors() {return listOfDonors;}
-    public List<Donation> getDonationRecords() {return donationRecords;}
+
+    public List<Donor> getListOfDonors() {
+        return listOfDonors;
+    }
+
+    public List<Donation> getDonationRecords() {
+        return donationRecords;
+    }
+
     public Description getDescription() {
+
         return description;
     }
 
@@ -92,13 +115,33 @@ public class Wildlife {
 //    }
 
     //setters
-    public void setWildlifeID(String wildlifeID) {this.wildlifeID = wildlifeID;}
-    public void setConservationStatus(ConservationStatus cs) {this.conservationStatus = cs;}
-    public void setSpeciesName(String speciesName) {this.speciesName = speciesName;}
-    public void setTargetFunding(double targetFunding) {this.targetFunding = targetFunding;}
-    public void setDescription(Description description) {this.description = description;}
-    public void setAdmissionDate(LocalDate admissionDate) {this.admissionDate = admissionDate;}
-    public void setFundingMetDate(LocalDate fundingMetDate) {this.fundingMetDate = fundingMetDate;}
+    public void setWildlifeID(String wildlifeID) {
+        this.wildlifeID = wildlifeID;
+    }
+
+    public void setConservationStatus(ConservationStatus cs) {
+        this.conservationStatus = cs;
+    }
+
+    public void setSpeciesName(String speciesName) {
+        this.speciesName = speciesName;
+    }
+
+    public void setTargetFunding(double targetFunding) {
+        this.targetFunding = targetFunding;
+    }
+
+    public void setDescription(Description description) {
+        this.description = description;
+    }
+
+    public void setAdmissionDate(LocalDate admissionDate) {
+        this.admissionDate = admissionDate;
+    }
+
+    public void setFundingMetDate(LocalDate fundingMetDate) {
+        this.fundingMetDate = fundingMetDate;
+    }
 
 
 
@@ -109,7 +152,7 @@ public class Wildlife {
             fourDigitsCode = fourDigitsCode + r.nextInt(10);
         }
         return conservationStatus.toString() + fourDigitsCode;
-        }
+    }
 
 
 
@@ -117,7 +160,7 @@ public class Wildlife {
 
 
 
-    public void raiseFund(double amount){
+    public void raiseFund(double amount) {
         amountFunded += amount;
 //        if (amountFunded >= targetFunding) {
 //            isFullyFunded = true;
@@ -141,7 +184,7 @@ public class Wildlife {
 //
 //        }
 
-    }
+}
 
 
 
