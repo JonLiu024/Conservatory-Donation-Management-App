@@ -1,14 +1,14 @@
 package model;
-//Conservation Status of the wildlife (EW - extinct in the wild, CR - critically endangered, EN - endangered,
-//VU = vulnerable, NT - near threatened, CD - conservation dependent, LT - least concerned)
 
+//Representing the possible conservation Status of the wildlife in the order from the most concerned level
+// to the least concerned
 public enum ConservationStatus {
-    EW,
-    CR,
-    EN,
-    VU,
-    NT,
-    CD,
-    LC
+    EW, //extinct in the wild
+    CR, //critically endangered
+    EN, //endangered
+    VU, //vulnerable
+    NT, //near threatened
+    CD, //conservation dependent
+    LC  //least concerned
 
 }

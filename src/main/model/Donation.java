@@ -2,14 +2,17 @@ package model;
 
 
 import java.time.LocalDate;
-
+//Representing the donation a donor makes to a wildlife. a donation is associated with a recipient wildlife, a donor, an amount,
+// and the date the donation is made
 public class Donation {
-    private Wildlife wildlife;
-    private Donor donor;
-    private double amount;
-    private LocalDate dateDonationMade;
+    private Wildlife wildlife; //the wildlife receiving the donation
+    private Donor donor;       //the donor profile
+    private double amount;     //the amount of funds being donated
+    private LocalDate dateDonationMade;  //the local date the donation is made
 
-
+    //REQUIRES: non-null wildlife and donor objects, amount > 0
+    //EFFECT: create a donation object and set wildlife and donor and amount,
+    // set dateDonationMade to be the current local date
     public Donation(Wildlife wildlife, Donor donor, double amount) {
         this.wildlife = wildlife;
         this.donor = donor;
