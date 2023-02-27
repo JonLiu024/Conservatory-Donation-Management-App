@@ -25,8 +25,8 @@ public class Donor {
     //emailAddress; listOfWildlife is set as empty arraylist of wildlife, recordsOfDonations is set as empty arraylist
     //of donation, profileCreationDate is set as current localDate; totalFundingDonated is set 0
     public Donor(String donorID, String emailAddress) {
-        this.donorID = donorID;
-        this.emailAddress = emailAddress;
+        setDonorID(donorID);
+        setEmailAddress(emailAddress);
         listOfWildlife = new ArrayList<>();
         recordsOfDonations = new ArrayList<>();
         profileCreationDate = LocalDate.now();

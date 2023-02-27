@@ -8,7 +8,7 @@ public class Description {
     //REQUIRES: content is not null
     //EFFECT: creates a description object and set its content to be a story
     public Description(String content) {
-        this.content = content;
+        setContents(content);
 
     }
     //setters

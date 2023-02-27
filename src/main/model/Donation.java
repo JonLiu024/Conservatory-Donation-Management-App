@@ -37,23 +37,6 @@ public class Donation {
     public LocalDate getDateTimeDonationMade() {
         return dateDonationMade;
     }
+}
 
     //setters
-    public void setDonor(Donor donor) {
-
-        this.donor = donor;
-    }
-
-    public void setAmount(double amount) {
-
-        this.amount = amount;
-    }
-
-    public void setWildlife(Wildlife wildlife) {
-        this.wildlife = wildlife;
-    }
-
-    public void setDateTimeDonationMade(LocalDate dateTime) {
-        this.dateDonationMade = dateTime;
-    }
-}

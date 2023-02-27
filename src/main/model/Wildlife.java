@@ -35,13 +35,13 @@ public class Wildlife {
     //wildlifeIDGenerator()
     public Wildlife(String speciesName, double targetFunding,
                     ConservationStatus conservationStatus, LocalDate admissionDate) {
-        this.speciesName = speciesName;
-        this.targetFunding = targetFunding;
-        this.conservationStatus = conservationStatus;
+        setSpeciesName(speciesName);
+        setTargetFunding(targetFunding);
+        setConservationStatus(conservationStatus);
         donationRecords = new ArrayList<>();
         listOfDonors = new ArrayList<>();
         this.isFullyFunded = false;
-        this.admissionDate = admissionDate;
+        setAdmissionDate(admissionDate);
         this.wildlifeID = wildlifeIDGenerator();
 
     }
@@ -107,9 +107,6 @@ public class Wildlife {
 //    }
 
     //setters
-    public void setWildlifeID(String wildlifeID) {
-        this.wildlifeID = wildlifeID;
-    }
 
     public void setConservationStatus(ConservationStatus cs) {
         this.conservationStatus = cs;
