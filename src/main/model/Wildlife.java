@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Random;
 
 
-//Representing a wildlife in the conservation facility; it is associated with a wildlifeID,
-// a species name, a conservation status, an admission date, target funding, and currently raised funding,
-//and an optional description
+//Representing a rescued wildlife in the conservation facility; it has an assigned wildlifeID,
+//a species name, conservation status, an admission date, target funding, and currently raised funding,
+//and a short description
 public class Wildlife {
 
 
@@ -28,10 +28,10 @@ public class Wildlife {
 
 
     //REQUIRES: speciesName is not null, targetFunding > 0, ConservationStatus is not null, admissionDate is not null
-    //EFFECT: create a wildlife object; the speciesName is set as passed speciesName parameter, targetFunding is
-    //set as targetFunding parameter, conservationStatus is set as passed conservationStatus enum,  admissionDate is
-    //set as passed localDate object admissionDate, donationRecords is set as an empty arraylist of donation,
-    //listOfDonors is set as an empty arraylist of donor, isFullyFunded is set false, create and set wildlifeID using
+    //EFFECT: create a wildlife object; the speciesName is set as speciesName, targetFunding is
+    //set as targetFunding, conservationStatus is set as conservationStatus,  admissionDate is
+    //set as localDate object admissionDate, donationRecords is set as an empty array list of donations,
+    //listOfDonors is set as an empty array list of donors, isFullyFunded is set false, create and set wildlifeID using
     //wildlifeIDGenerator()
     public Wildlife(String speciesName, double targetFunding,
                     ConservationStatus conservationStatus, LocalDate admissionDate) {
@@ -101,11 +101,6 @@ public class Wildlife {
     }
 
 
-//    public String toString() {
-//        return wildlifeID + " " + speciesName + " " + conservationStatus.toString() + " " + "\n"
-//        + conservationType.toString() + targetFunding + " " + amountFunded + " " +;
-//    }
-
     //setters
 
     public void setConservationStatus(ConservationStatus cs) {
@@ -133,7 +128,7 @@ public class Wildlife {
     }
 
 
-    //EFFECT: create and returns a string consisting of the wildlife's conservationStatus (Acronym in two capital letters),
+    //EFFECT: create and returns an ID string consisting of the wildlife's conservationStatus (Acronym in two capital letters),
     // followed by four random digits (0-9)
     public String wildlifeIDGenerator() {
         Random r = new Random();
@@ -157,9 +152,14 @@ public class Wildlife {
 
     //REQUIRES: d is not null
     //MODIFIES: this
-    //EFFECT: donation d is added into the donationRecords if it has not been previously added
+    //EFFECT: donation d is added into the donationRecords if it has not been previously added and if the
+    //donation d is associated with this wildlife
     public void addDonationToRecords(Donation d) {
-        donationRecords.add(d);
+        if (!donationRecords.contains(d)) {
+            if (d.getWildlife().equals(this)) {
+                donationRecords.add(d);
+            }
+        }
     }
 
 
@@ -180,15 +180,6 @@ public class Wildlife {
         }
     }
 
-
-    //REQUIRES: donor is not null
-    //MODIFIES: this
-    //EFFECT: donor is added to listOfDonor if it has not been previously added
-    public void addDonorToTheList(Donor donor) {
-        if (!listOfDonors.contains(donor)) {
-            listOfDonors.add(donor);
-        }
-    }
 
 
 

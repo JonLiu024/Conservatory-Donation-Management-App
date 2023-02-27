@@ -468,7 +468,7 @@ public class FundTrackingApp {
         System.out.println(donor.getDonorID() + " has made the following donations: ");
         for (Donation d: donor.getRecordsOfDonations()){
             System.out.println("$" + d.getAmount() + " was donated to wildlife "
-                    + "(ID: " + d.getWildlife().getWildlifeID() + ") on " + d.getDateTimeDonationMade());
+                    + "(ID: " + d.getWildlife().getWildlifeID() + ") on " + d.getDateDonationMade());
         }
     }
 

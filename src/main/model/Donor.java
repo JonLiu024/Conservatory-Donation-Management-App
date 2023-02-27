@@ -1,6 +1,5 @@
 package model;
 
-import Exception.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +15,6 @@ public class Donor {
     private List<Wildlife> listOfWildlife;       //list of wildlife recipients
     private List<Donation> recordsOfDonations;    // donor's donation records
     private String emailAddress;        //donor's email
-
-
 
 
     //REQUIRES: donorID is not null, emailAddress is not null
@@ -66,7 +63,6 @@ public class Donor {
     }
 
 
-
     //Setters
     public void setDonorID(String donorID) {
 
@@ -77,7 +73,6 @@ public class Donor {
 
         this.emailAddress = emailAddress;
     }
-
 
 
     //REQUIRES: amount > 0,
@@ -93,14 +88,14 @@ public class Donor {
         addWLToList(wildlife);
         totalFundingDonated += actualFundingAmt;
         wildlife.addDonationToRecords(donation);
-        wildlife.addDonorToTheList(this);
+        wildlife.addDonorToList(this);
         return actualFundingAmt;
     }
 
 
     //REQUIRES: wildlife is not null
     //MODIFIES: this
-    //EFFECT: the passed wildlife object is added to the listOfWildlife if it has not been previously added
+    //EFFECT: wildlife is added to the listOfWildlife if it has not been previously added
     public void addWLToList(Wildlife wildlife) {
         if (!listOfWildlife.contains(wildlife)) {
             listOfWildlife.add(wildlife);
@@ -110,15 +105,14 @@ public class Donor {
 
     //REQUIRES: d is not null
     //MODIFIES: this
-    //EFFECT: donation d is added to recordsOfDonations if it has not been previously added
+    //EFFECT: donation d is added to recordsOfDonations if it has not been previously added and if the donation is associated
+    //with this donor
     public void addDonationToList(Donation d) {
         if (!recordsOfDonations.contains(d)) {
-            recordsOfDonations.add(d);
+            if (d.getDonor().equals(this)) {
+                recordsOfDonations.add(d);
+            }
         }
     }
-
-
-
-
 
 }

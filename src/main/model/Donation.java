@@ -6,7 +6,7 @@ import java.time.LocalDate;
 // and the date the donation is made
 public class Donation {
     private Wildlife wildlife; //the wildlife receiving the donation
-    private Donor donor;       //the donor profile
+    private Donor donor;       //the donor of the donation
     private double amount;     //the amount of funds being donated
     private LocalDate dateDonationMade;  //the local date the donation is made
 
@@ -34,9 +34,9 @@ public class Donation {
         return wildlife;
     }
 
-    public LocalDate getDateTimeDonationMade() {
+    public LocalDate getDateDonationMade() {
         return dateDonationMade;
     }
 }
 
-    //setters
+
