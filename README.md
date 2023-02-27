@@ -1,34 +1,31 @@
 # CPSC 210 Personal Project by Tong Liu
-## Fund Tracking and Donation making App for Wildlife Conservation facility
+## Fund Tracking and Donation making App for a Wildlife Conservation facility
 ## Project Proposal:
 
 
-A wildlife conservation facility provides rescue and rehabilitation services to injured wildlife. The facility accepts and shelters injured wildlife and release them to the wild once
-they recovered from the injury. A large portion of the funds that supports the facility are raised from the public through donations from animal lovers
-To encourage the donations from the public, many non-profit organizations created websites that contains the profiles of 
-the wildlife they attempt to rescue and encourages the public to make donations to their favorite animals through symbolic adoptions. one of the examples
-are can be accessed here (https://support.worldwildlife.org/site/Donation2?df_id=17797&17797.donation=form1&s_src=AWE2308OQ18297A06836RX&s_subsrc=homepage)
+A wildlife conservation facility provides rescue and rehabilitation services to injured wildlife. The facility accepts and shelters injured wildlife and releases them to the wild once
+they recover from the injury. A large portion of the funds that supports the facility is raised from the public through donations from animal lovers
+To encourage donations from the public, many non-profit organizations created websites that contains the profiles of 
+individual wildlife they attempt to rescue and encourage the public to make donations to their favorite animals through symbolic adoptions. one of the examples
+can be accessed here (https://support.worldwildlife.org/site/Donation2?df_id=17797&17797.donation=form1&s_src=AWE2308OQ18297A06836RX&s_subsrc=homepage)
 
 
 In my personal project, I want to design a fund tracking app for a newly established wildlife conservation facility. 
-This app can be used to add and create a profile for every wildlife sheltered at the facility and updates its donation records, list of donors
-and the total amount of donations (funds). This app will allow the donor to make donation to a certain wildlife sheltered at the site. The same donor
-will be able to track his/her donation records by using his donor profile. This project is particularly interesting to me as it 
-can help the conservation facility to systematically tracks and manage their funding collected from the public and help them create
+The app can be used to add and create profiles for wildlife that are rescued and sheltered at the facility and updates their donation records, list of donors
+and the total amount of donations (funds) being collected through symbolic adoption (a form of donation). This app will allow the donor to make donation to a certain wildlife sheltered at the site. The same donor
+will be able to track his/her donation records by using his donor profile ID. This project is particularly interesting to me as it 
+can help the conservation facility to systematically track and manage the funding they collected from the public and helps them create
 new strategy to attract public donations.
 
 The app is designed to be used by two types of users:
 - Administration team at the conservation site:
-- They will use the app to add new wildlife profile, track the donation records and funding progression of each wildlife at the facility) 
-
-- people who make donations to the wildlife in the facility:
-- They will use the app to make symbolic adoptions to their chosen wildlife, create donor profiles, and track their donation records
+They will use the app to add new wildlife profile, track the donation records and funding progression of each wildlife at the facility. 
 
 
+- People who wish to make donations to the wildlife in the facility:
+They will use the app to navigate the list of wildlife in the site and make symbolic adoptions to their chosen ones, 
+then they will be able to create donor profiles of their own, and track their donation records through the app
 
-
-Staff at the conservation site will be able to add/do the following
-- Add a new wildlife profile (the wildlife species name, important information such as conservation status, target funding, and a short description  
 
 
 User stories:
@@ -46,7 +43,8 @@ Phase 1
 
 Phase 2
 - As a user I want to know the total funding required for animals of each conservation status
-- As a feature the system will automatically remove the animals whose raised funds has exceeded the target funding. The extra funds collected in the last donation will be transferred to an wildlife that has the least funding and have the most concerned conservation status
+- As a feature the system will automatically remove the animals whose raised funds has exceeded the target funding. The extra funds collected in the last donation will be transferred to a wildlife that has the least funding and have the most concerned conservation status 
+(I have not accomplished this feature, but intended to develop it in the next phase )
 
 
 

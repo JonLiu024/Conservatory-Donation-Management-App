@@ -24,18 +24,22 @@ public class Donation {
 
     //getters
     public Donor getDonor() {
+
         return donor;
     }
 
     public double getAmount() {
+
         return amount;
     }
 
     public Wildlife getWildlife() {
+
         return wildlife;
     }
 
     public LocalDate getDateDonationMade() {
+
         return dateDonationMade;
     }
 }

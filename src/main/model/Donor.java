@@ -60,6 +60,7 @@ public class Donor {
 
 
     public String getEmailAddress() {
+
         return emailAddress;
     }
 
@@ -86,7 +87,7 @@ public class Donor {
         double actualFundingAmt = wildlife.raiseFund(amount);
         Donation donation = new Donation(wildlife, this, actualFundingAmt);
         recordsOfDonations.add(donation);
-        addWLToList(wildlife);
+        addWLtoList(wildlife);
         totalFundingDonated += actualFundingAmt;
         wildlife.addDonationToRecords(donation);
         wildlife.addDonorToList(this);
@@ -97,7 +98,7 @@ public class Donor {
     //REQUIRES: wildlife is not null
     //MODIFIES: this
     //EFFECT: wildlife is added to the listOfWildlife if it has not been previously added
-    public void addWLToList(Wildlife wildlife) {
+    public void addWLtoList(Wildlife wildlife) {
         if (!listOfWildlife.contains(wildlife)) {
             listOfWildlife.add(wildlife);
         }

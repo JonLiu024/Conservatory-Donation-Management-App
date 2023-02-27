@@ -257,14 +257,12 @@ public class FundTrackingApp {
         displayAllWL();
         String entry = "";
         System.out.println("Please enter the ID for your selected wildlife: ");
-        boolean selectionFound = false;
         first:
-        while (!selectionFound) {
+        while (true) {
             entry = scanner.next();
             for (Wildlife wildlife : conservationSite.getListOfAllWL()) {
                 if (wildlife.getWildlifeID().equals(entry)) {
                     printWildlifeInfo(wildlife);
-                    selectionFound = true;
                     break first;
                 }
             }

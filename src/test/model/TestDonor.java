@@ -42,8 +42,8 @@ public class TestDonor {
 
     @Test
     public void testAddWLToNoDuplicateList(){
-        donor1.addWLToList(wildlife1);
-        donor1.addWLToList(wildlife2);
+        donor1.addWLtoList(wildlife1);
+        donor1.addWLtoList(wildlife2);
         assertEquals(2, donor1.getListOfWildlife().size());
         assertTrue(donor1.getListOfWildlife().contains(wildlife1));
         assertTrue(donor1.getListOfWildlife().contains(wildlife2));
@@ -52,8 +52,8 @@ public class TestDonor {
 
     @Test
     public void testAddWLToDuplicateList(){
-        donor1.addWLToList(wildlife1);
-        donor1.addWLToList(wildlife1);
+        donor1.addWLtoList(wildlife1);
+        donor1.addWLtoList(wildlife1);
         assertEquals(1, donor1.getListOfWildlife().size());
         assertTrue(donor1.getListOfWildlife().contains(wildlife1));
 

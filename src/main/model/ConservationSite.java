@@ -14,9 +14,6 @@ public class ConservationSite {
     private double totalFundingRaised;  //the total amount of funding that has been raised
 
 
-
-
-
     //EFFECT: create a conservation site object; the totalTargetFunding and totalFundingRaised are set zero,
     // listOfDonors is set as an empty donor arraylists;
     // wildlifeListNotFullyFunded is set as an empty wildlife arraylist
@@ -33,10 +30,12 @@ public class ConservationSite {
 
     //getters
     public List<Wildlife> getListOfWildlifeNotFullyFunded() {
+
         return wildlifeListNotFullyFunded;
     }
 
     public List<Wildlife> getWildlifeListFullyFunded() {
+
         return wildlifeListFullyFunded;
     }
 
@@ -55,9 +54,6 @@ public class ConservationSite {
         return totalFundingRaised;
     }
 
-    //setters
-
-
 
 
     //REQUIRES: d is not null
@@ -74,12 +70,12 @@ public class ConservationSite {
     //EFFECT: returns an array list containing all fully funded wildlife and all non-fully funded wildlife
     public List<Wildlife> getListOfAllWL() {
         List<Wildlife> listOfAllWL = new ArrayList<>();
-        for (Wildlife wildlife: wildlifeListNotFullyFunded) {
+        for (Wildlife wildlife : wildlifeListNotFullyFunded) {
             if (!listOfAllWL.contains(wildlife)) {
                 listOfAllWL.add(wildlife);
             }
         }
-        for (Wildlife wildlife: wildlifeListFullyFunded) {
+        for (Wildlife wildlife : wildlifeListFullyFunded) {
             if (!listOfAllWL.contains(wildlife)) {
                 listOfAllWL.add(wildlife);
             }
@@ -92,8 +88,8 @@ public class ConservationSite {
     //EFFECT: update the list of donors based on the most recent donation records; add donors to the list of donors
     //if they have not been previously added
     public void updateListOfDonors() {
-        for (Wildlife wildlife: getListOfAllWL()) {
-            for (Donor donor: wildlife.getListOfDonors()) {
+        for (Wildlife wildlife : getListOfAllWL()) {
+            for (Donor donor : wildlife.getListOfDonors()) {
                 if (!listOfDonors.contains(donor)) {
                     listOfDonors.add(donor);
                 }
@@ -106,7 +102,7 @@ public class ConservationSite {
     //EFFECT: returns an arraylist of strings that contains IDs of all donors (non-duplicate) of the conservation site
     public List<String> getDonorIDList() {
         List<String> donorIDList = new ArrayList<>();
-        for (Donor d: listOfDonors) {
+        for (Donor d : listOfDonors) {
             donorIDList.add(d.getDonorID());
         }
         return donorIDList;
@@ -155,5 +151,4 @@ public class ConservationSite {
         }
         return totalTargetFunding;
     }
-
 }

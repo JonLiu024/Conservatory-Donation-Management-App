@@ -14,11 +14,13 @@ public class Description {
 
     //setters
     public void setContents(String content) {
+
         this.content = content;
     }
 
     //getters
     public String getContents() {
+
         return content;
     }
 }
