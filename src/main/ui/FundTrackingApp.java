@@ -84,19 +84,23 @@ public class FundTrackingApp {
             } else if (command.equals("q")) {
                 System.out.println("Going back to the previous menu");
             } else {
-                    System.out.println("Please enter a valid response!");
+                System.out.println("Please enter a valid response!");
             }
 
         }
     }
 
-    //EFFECT: prints out the total number of the wildlife in the facility, the total target funding, and total raised funding
+    //EFFECT: prints out the total number of the wildlife in the facility,
+    // the total target funding, and total raised funding
     private void viewFacilityInfo() {
         System.out.println("Our conservation site currently holds " + conservationSite.getListOfAllWL().size()
-        + " wildlife");
-        System.out.println(conservationSite.getListOfWildlifeNotFullyFunded().size() + " wildlife are still accepting donations");
-        System.out.println(conservationSite.getWildlifeListFullyFunded().size() + " wildlife are fully funded");
-        System.out.println("The total target funding of all wildlife is $" + conservationSite.targetFundingCalculator());
+                + " wildlife");
+        System.out.println(conservationSite.getListOfWildlifeNotFullyFunded().size()
+                + " wildlife are still accepting donations");
+        System.out.println(conservationSite.getWildlifeListFullyFunded().size()
+                + " wildlife are fully funded");
+        System.out.println("The total target funding of all wildlife is $"
+                + conservationSite.targetFundingCalculator());
         System.out.println("$" + conservationSite.fundsRaisedCalculator() + " has been raised from all donations");
     }
 
@@ -107,10 +111,11 @@ public class FundTrackingApp {
     private void addNewWildlife() {
         String speciesName = createSpeciesName();
         ConservationStatus conservationStatus = selectConservationStatus();
+        boolean keepAsking = false;
         double targetFunding = createTargetFunding();
         Description description = createDescription();
         LocalDate admissionDate = createAdmissionDate();
-        Wildlife newWildlife = new Wildlife(speciesName,targetFunding,conservationStatus, admissionDate);
+        Wildlife newWildlife = new Wildlife(speciesName, targetFunding, conservationStatus, admissionDate);
         newWildlife.setDescription(description);
         conservationSite.addWildlife(newWildlife);
         addNewWildlifeMsg(newWildlife);
@@ -123,7 +128,6 @@ public class FundTrackingApp {
         System.out.println("You have successfully added the following wildlife to our conservation site!");
         printWildlifeInfo(wildlife);
     }
-
 
 
     //EFFECT: prompts the admin user to enter the species name of the newly added wildlife and returns it
@@ -152,8 +156,21 @@ public class FundTrackingApp {
     //EFFECTS: prompts the admin user to enter the amount of target funding for the newly added wildlife and returns it
     private double createTargetFunding() throws InputMismatchException {
         System.out.println("Please enter the target funding to rescue and shelter this wildlife:");
-        return scanner.nextDouble();
+        double amount = 0;
+        boolean repeat = true;
+        while (repeat) {
+            try {
+                amount = scanner.nextDouble();
+                repeat = false;
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter a number: ");
+                scanner.next();
+                repeat = true;
+            }
+        }
+        return amount;
     }
+
 
     //EFFECT: prompts the admin user to create a short description of the newly added wildlife and returns it
     private Description createDescription() {
@@ -211,7 +228,8 @@ public class FundTrackingApp {
         if (conservationSite.getListOfDonors().size() != 0) {
             System.out.println("They are listed as follow: ");
             for (Donor donor : conservationSite.getListOfDonors()) {
-                System.out.println("Donor ID: " + donor.getDonorID() + "\t" + "Email address: " + donor.getEmailAddress()
+                System.out.println("Donor ID: " + donor.getDonorID() + "\t" + "Email address: "
+                        + donor.getEmailAddress()
                         + "\t" + "profile creation date: "
                         + DateFormatter.toStringLocalDate(donor.getProfileCreationDate())
                         + "\t" + "Total amount donated : $" + donor.getTotalFundingDonated());
@@ -229,31 +247,30 @@ public class FundTrackingApp {
         System.out.println(conservationSite.getListOfWildlifeNotFullyFunded().size()
                 + " wildlife are accepting donation\n"
                 + conservationSite.getWildlifeListFullyFunded().size() + " wildlife have been fully funded");
-        if (conservationSite.getListOfAllWL().size() != 0){
-        viewSpecificWildlifeInfo();
+        if (conservationSite.getListOfAllWL().size() != 0) {
+            viewSpecificWildlifeInfo();
         }
     }
 
     //EFFECT: prompts the user to select a wildlife from the list to view its information
     private void viewSpecificWildlifeInfo() {
-            displayAllWL();
-            String entry = "";
-            System.out.println("Please enter the ID for your selected wildlife: ");
-            boolean selectionFound = false;
-            first:
-            while (!selectionFound) {
-                entry = scanner.next();
-                for (Wildlife wildlife: conservationSite.getListOfAllWL()) {
-                    if (wildlife.getWildlifeID().equals(entry)) {
-                        printWildlifeInfo(wildlife);
-                        selectionFound = true;
-                        break first;
-                    }
+        displayAllWL();
+        String entry = "";
+        System.out.println("Please enter the ID for your selected wildlife: ");
+        boolean selectionFound = false;
+        first:
+        while (!selectionFound) {
+            entry = scanner.next();
+            for (Wildlife wildlife : conservationSite.getListOfAllWL()) {
+                if (wildlife.getWildlifeID().equals(entry)) {
+                    printWildlifeInfo(wildlife);
+                    selectionFound = true;
+                    break first;
                 }
-            System.out.println("Please enter an existing wildlife ID, in correct format (XX####):");
             }
+            System.out.println("Please enter an existing wildlife ID, in correct format (XX####):");
+        }
     }
-
 
 
     //REQUIRES: wildlife is not null
@@ -280,12 +297,12 @@ public class FundTrackingApp {
     //has at least one wildlife
     private void displayAllWL() {
         System.out.println("***********************************************************");
-        if (conservationSite.getListOfAllWL().size()==0) {
+        if (conservationSite.getListOfAllWL().size() == 0) {
             System.out.println("The conservation site currently has no wildlife!");
         } else {
             System.out.println("The wildlife in the conservation sites are listed as following: ");
             System.out.println("(Wildlife ID : Wildlife Species)");
-            for (Wildlife wildlife: conservationSite.getListOfAllWL()) {
+            for (Wildlife wildlife : conservationSite.getListOfAllWL()) {
                 System.out.println(wildlife.getWildlifeID() + " : " + wildlife.getSpeciesName());
             }
         }
@@ -296,7 +313,7 @@ public class FundTrackingApp {
     //EFFECT: prints out all the wildlife that are not fully funded in the form of (wildlife ID: wildlife species)
     //prints out message to alert user if there is no wildlife accepting donations
     private void displayAllWLNotFullyFunded() {
-        if (conservationSite.getWildlifeListFullyFunded().size() == 0) {
+        if (conservationSite.getListOfWildlifeNotFullyFunded().size() == 0) {
             System.out.println("There is no wildlife currently accepting donations");
             System.out.println("Please wait for the admin team to create new wildlife profile");
         } else {
@@ -326,14 +343,14 @@ public class FundTrackingApp {
         first:
         while (!selectionFound) {
             String command = scanner.next();
-            for (Wildlife wildlife: conservationSite.getListOfWildlifeNotFullyFunded()) {
+            for (Wildlife wildlife : conservationSite.getListOfWildlifeNotFullyFunded()) {
                 if (wildlife.getWildlifeID().equals(command)) {
                     double userIntendedAmount = selectDonationAmt();
                     Donor donor = getDonor();
                     double actualFundingAmt = donor.makeDonation(wildlife, userIntendedAmount);
                     conservationSite.addDonor(donor);
                     makeDonationMsg(userIntendedAmount, actualFundingAmt, wildlife);
-                    if (actualFundingAmt <= userIntendedAmount) {
+                    if (actualFundingAmt < userIntendedAmount) {
                         conservationSite.moveWildlifeToFullyFundedList(wildlife);
                     }
                     selectionFound = true;
@@ -351,16 +368,18 @@ public class FundTrackingApp {
     private void makeDonationMsg(double userIntendedAmount, double actualFundingAmt, Wildlife wildlife) {
         if (userIntendedAmount > actualFundingAmt) {
             System.out.println(wildlife.getWildlifeID() + "only needs $" + actualFundingAmt
-                    + " to be fully funded!" + "$" + userIntendedAmount + " cannot be fully accepted!");
+                    + " to be fully funded!" + "$" + userIntendedAmount
+                    + " cannot be fully accepted!");
             System.out.println("$" + actualFundingAmt + " has been accepted, the remaining funds will be returned ");
-            System.out.println("You have successfully donated $" + actualFundingAmt + " to " + wildlife.getWildlifeID());
+            System.out.println("You have successfully donated $" + actualFundingAmt + " to "
+                    + wildlife.getWildlifeID());
         } else {
-            System.out.println("You have successfully donated $" + actualFundingAmt + " to " + wildlife.getWildlifeID());
+            System.out.println("You have successfully donated $" + actualFundingAmt + " to "
+                    + wildlife.getWildlifeID());
             System.out.println("Our conservation facility thanks for your donation!");
         }
         System.out.println("Our wildlife conservation facility thanks for your donation!");
     }
-
 
 
     //EFFECT: prompts the donor user to set up a new donor profile if he/she does not have one already,
@@ -387,11 +406,11 @@ public class FundTrackingApp {
         System.out.println("Please enter your donor ID: ");
         String entry = scanner.next();
         Donor donor = null;
-        while(!donorIDList.contains(entry)) {
+        while (!donorIDList.contains(entry)) {
             System.out.println("Please enter an existing donor ID: ");
             entry = scanner.next();
         }
-        for (Donor d: conservationSite.getListOfDonors()){
+        for (Donor d : conservationSite.getListOfDonors()) {
             if (d.getDonorID().equals(entry)) {
                 donor = d;
             }
@@ -409,9 +428,9 @@ public class FundTrackingApp {
     }
 
     //EFFECT: prompts the donor user to select a donation amount and returns it
-    private double selectDonationAmt () {
-        System.out.println("Please choose the amount of donation: enter 1 for $50, enter 2 for $100, enter " +
-                "3 for $350, enter 4 for $1000:");
+    private double selectDonationAmt() {
+        System.out.println("Please choose the amount of donation: enter 1 for $50, enter 2 for $100, enter "
+                + "3 for $350, enter 4 for $1000:");
         String command = scanner.next();
         while (!command.equals("1") && !command.equals("2") && !command.equals("3")
                 && !command.equals("4")) {
@@ -428,7 +447,6 @@ public class FundTrackingApp {
             return 1000;
         }
     }
-
 
 
     //EFFECT: prompts the user to enter a valid email address and returns it
@@ -459,19 +477,16 @@ public class FundTrackingApp {
     }
 
 
-
-
     //EFFECT: prompts the user to find his/her donor profile and prints out the donation records of
     //the user including the amount, wildlife and date and time of the donation
-    private void seeAllYourDonations(){
+    private void seeAllYourDonations() {
         Donor donor = findDonorFromList();
         System.out.println(donor.getDonorID() + " has made the following donations: ");
-        for (Donation d: donor.getRecordsOfDonations()){
+        for (Donation d : donor.getRecordsOfDonations()) {
             System.out.println("$" + d.getAmount() + " was donated to wildlife "
                     + "(ID: " + d.getWildlife().getWildlifeID() + ") on " + d.getDateDonationMade());
         }
     }
-
 
 
     //MODIFIES: this
@@ -522,7 +537,6 @@ public class FundTrackingApp {
         System.out.println("3. View wildlife information");
         System.out.println("q. Back to te Main menu");
     }
-
 
 
     //EFFECT: prints out the welcome message

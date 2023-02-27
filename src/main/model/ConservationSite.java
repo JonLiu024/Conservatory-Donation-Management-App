@@ -18,7 +18,8 @@ public class ConservationSite {
 
 
     //EFFECT: create a conservation site object; the totalTargetFunding and totalFundingRaised are set zero,
-    // listOfDonors is set as an empty donor arraylists; wildlifeListNotFullyFunded is set as an empty wildlife arraylist
+    // listOfDonors is set as an empty donor arraylists;
+    // wildlifeListNotFullyFunded is set as an empty wildlife arraylist
     // wildlifeListFullyFunded is set as an empty wildlife arraylist
     public ConservationSite() {
         this.totalTargetFunding = 0;

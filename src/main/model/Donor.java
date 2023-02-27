@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.*;
 
-//Representing a donor profile that is associated with one donor, it has a donor ID, an email address, a profile creation date, the
+//Representing a donor profile that is associated with one donor,
+// it has a donor ID, an email address, a profile creation date, the
 //total funding amount, list of wildlife and donation records
 public class Donor {
 
@@ -105,8 +106,8 @@ public class Donor {
 
     //REQUIRES: d is not null
     //MODIFIES: this
-    //EFFECT: donation d is added to recordsOfDonations if it has not been previously added and if the donation is associated
-    //with this donor
+    //EFFECT: donation d is added to recordsOfDonations if it has not been previously added,
+    // and if the donation is associated with this donor
     public void addDonationToList(Donation d) {
         if (!recordsOfDonations.contains(d)) {
             if (d.getDonor().equals(this)) {

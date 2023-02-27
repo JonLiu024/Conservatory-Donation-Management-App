@@ -2,8 +2,9 @@ package model;
 
 
 import java.time.LocalDate;
-//Representing the donation a donor makes to a wildlife. a donation is associated with a recipient wildlife, a donor, an amount,
-// and the date the donation is made
+
+//Representing the donation a donor makes to a wildlife. a donation is associated with
+// a recipient wildlife, a donor, an amount, and the date the donation is made
 public class Donation {
     private Wildlife wildlife; //the wildlife receiving the donation
     private Donor donor;       //the donor of the donation

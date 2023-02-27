@@ -11,6 +11,7 @@ public class Description {
         setContents(content);
 
     }
+
     //setters
     public void setContents(String content) {
         this.content = content;

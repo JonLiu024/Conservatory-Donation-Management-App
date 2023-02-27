@@ -128,8 +128,8 @@ public class Wildlife {
     }
 
 
-    //EFFECT: create and returns an ID string consisting of the wildlife's conservationStatus (Acronym in two capital letters),
-    // followed by four random digits (0-9)
+    //EFFECT: create and returns an ID string consisting of the wildlife's
+    // conservationStatus (Acronym in two capital letters), followed by four random digits (0-9)
     public String wildlifeIDGenerator() {
         Random r = new Random();
         String fourDigitsCode = "";
@@ -170,7 +170,7 @@ public class Wildlife {
     //isFullyFunded is set true, and the actual increment is returned
     public double raiseFund(double amount) {
         double amtToGetFullyFunded = this.targetFunding - this.amountFunded;
-        if (amount >= amtToGetFullyFunded) {
+        if (amount + amountFunded >= targetFunding) {
             amountFunded += amtToGetFullyFunded;
             isFullyFunded = true;
             return amtToGetFullyFunded;
