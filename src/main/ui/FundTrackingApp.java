@@ -111,7 +111,6 @@ public class FundTrackingApp {
     private void addNewWildlife() {
         String speciesName = createSpeciesName();
         ConservationStatus conservationStatus = selectConservationStatus();
-        boolean keepAsking = false;
         double targetFunding = createTargetFunding();
         Description description = createDescription();
         LocalDate admissionDate = createAdmissionDate();
