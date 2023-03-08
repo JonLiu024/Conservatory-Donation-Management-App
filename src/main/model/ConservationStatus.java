@@ -1,6 +1,6 @@
 package model;
 
-//Representing the possible conservation Status of the wildlife in the order from the most concerned level
+//Representing the conservation Status of the wildlife in the order from the most concerned level
 // to the least concerned
 public enum ConservationStatus {
     EW, //extinct in the wild

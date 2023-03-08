@@ -2,6 +2,10 @@ package model;
 
 
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +15,7 @@ import java.util.Random;
 //Representing a rescued wildlife in the conservation facility; it has an assigned wildlifeID,
 //a species name, conservation status, an admission date, target funding, and currently raised funding,
 //and a short description
-public class Wildlife {
+public class Wildlife implements Writable {
 
 
     private String wildlifeID;      //wildlife's ID in the conservation site
@@ -191,6 +195,45 @@ public class Wildlife {
             amountFunded += amount;
             return amount;
         }
+    }
+
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonobject = new JSONObject();
+        jsonobject.put("wildlifeID", wildlifeID);
+        jsonobject.put("speciesName", speciesName);
+        jsonobject.put("conservationStatus", conservationStatus.toString());
+        jsonobject.put("admissionDate", admissionDate.toString());
+        jsonobject.put("listOfDonors", listOfDonorsToJson());
+        jsonobject.put("donationRecords", donationRecordsToJson());
+        jsonobject.put("dateFullyFunded", dateFullyFunded);
+        jsonobject.put("isFullyFunded", isFullyFunded);
+        jsonobject.put("targetFunding", targetFunding);
+        jsonobject.put("amountFunded", amountFunded);
+        jsonobject.put("description", description);
+        return jsonobject;
+    }
+
+
+    //EFFECT: returns donors of ths wildlife as a JSON array
+    private JSONArray listOfDonorsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Donor d: listOfDonors) {
+            jsonArray.put(d.toJson());
+        }
+        return jsonArray;
+    }
+
+    //EFFECT: returns donations made to this wildlife as a JSON array
+    private JSONArray donationRecordsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Donation d: donationRecords) {
+            jsonArray.put(d.toJson());
+        }
+        return jsonArray;
     }
 
 

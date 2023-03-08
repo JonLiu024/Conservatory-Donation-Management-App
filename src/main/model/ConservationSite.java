@@ -1,12 +1,17 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.JsonWriter;
+import persistence.Writable;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
 
 //Represents a conservation site that holds numbers of injured wildlife that are recovering
 //fully funded and a list of donors
-public class ConservationSite {
+public class ConservationSite implements Writable {
     private List<Wildlife> wildlifeListNotFullyFunded; //list of admitted wildlife that have not been fully funded yet
     private List<Wildlife> wildlifeListFullyFunded;   // list of admitted wildlife that have been fully funded
     private List<Donor> listOfDonors;   //list of donors profiles that have made donations to the wildlife
@@ -150,5 +155,54 @@ public class ConservationSite {
             totalTargetFunding += wildlife.getTargetFunding();
         }
         return totalTargetFunding;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("wildlifeListNotFullyFunded", wildlifeListNotFullyFundedtoJson());
+        jsonObject.put("ildlifeListFullyFunded", wildlifeListFullyFundedToJson());
+        jsonObject.put("listOfDonor", listOfDonorToJson());
+        jsonObject.put("totalTargetFunding", totalTargetFunding);
+        jsonObject.put("totalFundingRaised", totalFundingRaised);
+
+        return jsonObject;
+    }
+
+
+
+    //EFFECT: returns wildlife that are not fully funded as a JSON array
+    private JSONArray wildlifeListNotFullyFundedtoJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Wildlife wl: wildlifeListNotFullyFunded) {
+            jsonArray.put(wl.toJson());
+        }
+
+        return jsonArray;
+    }
+
+
+
+    //EFFECT: returns wildlife that are fully funded as a JSON array
+    private JSONArray wildlifeListFullyFundedToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Wildlife wl: wildlifeListFullyFunded) {
+            jsonArray.put(wl.toJson());
+        }
+
+        return jsonArray;
+    }
+
+
+    //EFFECT: returns all donors that have made donations as a JSON array
+    private JSONArray listOfDonorToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Donor d: listOfDonors) {
+            jsonArray.put(d.toJson());
+        }
+        return jsonArray;
     }
 }

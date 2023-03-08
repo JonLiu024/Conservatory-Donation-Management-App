@@ -1,6 +1,10 @@
 package model;
 
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.time.*;
@@ -8,7 +12,7 @@ import java.time.*;
 //Representing a donor profile that is associated with one donor,
 // it has a donor ID, an email address, a profile creation date, the
 //total funding amount, list of wildlife and donation records
-public class Donor {
+public class Donor implements Writable {
 
     private String donorID;                    //donor's ID in the system
     private LocalDate profileCreationDate;      //the date the donor profile is created
@@ -117,4 +121,40 @@ public class Donor {
         }
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("donorID", donorID);
+        jsonObject.put("profileCreationDate", profileCreationDate.toString());
+        jsonObject.put("totalFundingDonated", totalFundingDonated);
+        jsonObject.put("listOfWildlife", listOfWildlifeToJson());
+        jsonObject.put("recordsOfDonations", recordsOfDonationsToJson());
+        jsonObject.put("emailAddress", emailAddress);
+
+        return jsonObject;
+    }
+
+
+    //EFFECT: returns donations made by this donor as a JSON array
+    private JSONArray recordsOfDonationsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Donation d: recordsOfDonations) {
+            jsonArray.put(d.toJson());
+        }
+
+        return jsonArray;
+    }
+
+
+
+    //EFFECT: returns wildlife that this donor has made donations to as a JSON array
+    private JSONArray listOfWildlifeToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Wildlife wl: listOfWildlife) {
+            jsonArray.put(wl.toJson());
+        }
+        return jsonArray;
+    }
 }

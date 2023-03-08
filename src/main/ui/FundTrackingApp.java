@@ -400,17 +400,21 @@ public class FundTrackingApp {
     //EFFECT: prompts the donor users to enter his/her donor ID to find his donor profile (object) and returns
     //it
     private Donor findDonorFromList() {
-        List<String> donorIDList = conservationSite.getDonorIDList();
-        System.out.println("Please enter your donor ID: ");
-        String entry = scanner.next();
         Donor donor = null;
-        while (!donorIDList.contains(entry)) {
-            System.out.println("Please enter an existing donor ID: ");
-            entry = scanner.next();
-        }
-        for (Donor d : conservationSite.getListOfDonors()) {
-            if (d.getDonorID().equals(entry)) {
-                donor = d;
+        List<String> donorIDList = conservationSite.getDonorIDList();
+        if (donorIDList.size() == 0) {
+            System.out.println("No one has made donations to our conservation facility yet");
+        } else {
+            System.out.println("Please enter your donor ID: ");
+            String entry = scanner.next();
+            while (!donorIDList.contains(entry)) {
+                System.out.println("Please enter an existing donor ID: ");
+                entry = scanner.next();
+            }
+            for (Donor d : conservationSite.getListOfDonors()) {
+                if (d.getDonorID().equals(entry)) {
+                    donor = d;
+                }
             }
         }
         return donor;
@@ -425,7 +429,8 @@ public class FundTrackingApp {
         return new Donor(donorID, emailAddress);
     }
 
-    //EFFECT: prompts the donor user to select a donation amount and returns it
+    //EFFECT: prompts the donor user to select a donation amount and returns it, re-prompts the user to
+    //enter a valid entry (1, 2, 3, or 4) if he entered an invalid response
     private double selectDonationAmt() {
         System.out.println("Please choose the amount of donation: enter 1 for $50, enter 2 for $100, enter "
                 + "3 for $350, enter 4 for $1000:");
@@ -447,7 +452,8 @@ public class FundTrackingApp {
     }
 
 
-    //EFFECT: prompts the user to enter a valid email address and returns it
+    //EFFECT: prompts the user to enter an email address and returns it, re-prompts the
+    //user to enter a valid email address
     private String createEmailAddress() {
         String emailAddress = "";
         Pattern p = Pattern.compile("[0-9a-z]+(\\.[0-9a-z]+)*@[a-z0-9]+\\.(com|ca)");
@@ -462,7 +468,8 @@ public class FundTrackingApp {
     }
 
 
-    //EFFECT: prompts the user to create a non-existing donor ID and returns this ID
+    //EFFECT: prompts the user to create a donor ID and returns this ID, re-prompts the user
+    //to enter a non-existing ID if the id he entered already existed
     private String createDonorID() {
         List<String> donorIDList = conservationSite.getDonorIDList();
         System.out.println("Please create your donor user ID and enter it here:  ");
@@ -479,10 +486,12 @@ public class FundTrackingApp {
     //the user including the amount, wildlife and date and time of the donation
     private void seeAllYourDonations() {
         Donor donor = findDonorFromList();
-        System.out.println(donor.getDonorID() + " has made the following donations: ");
-        for (Donation d : donor.getRecordsOfDonations()) {
-            System.out.println("$" + d.getAmount() + " was donated to wildlife "
-                    + "(ID: " + d.getWildlife().getWildlifeID() + ") on " + d.getDateDonationMade());
+        if (donor != null) {
+            System.out.println(donor.getDonorID() + " has made the following donations: ");
+            for (Donation d : donor.getRecordsOfDonations()) {
+                System.out.println("$" + d.getAmount() + " was donated to wildlife "
+                        + "(ID: " + d.getWildlife().getWildlifeID() + ") on " + d.getDateDonationMade());
+            }
         }
     }
 

@@ -13,7 +13,7 @@ public class testDateFormatter {
     @BeforeEach
     public void setup() {
         localDate = LocalDate.now();
-        localDateString = "2023-02-26";
+        localDateString = LocalDate.now().toString();
     }
 
     @Test

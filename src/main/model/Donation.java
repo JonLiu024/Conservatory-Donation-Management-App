@@ -1,11 +1,14 @@
 package model;
 
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.time.LocalDate;
 
 //Representing the donation a donor makes to a wildlife. a donation is associated with
 // a recipient wildlife, a donor, an amount, and the date the donation is made
-public class Donation {
+public class Donation implements Writable {
     private Wildlife wildlife; //the wildlife receiving the donation
     private Donor donor;       //the donor of the donation
     private double amount;     //the amount of funds being donated
@@ -42,6 +45,17 @@ public class Donation {
 
         return dateDonationMade;
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("wildlife", wildlife.toJson());
+        jsonObject.put("donor", donor.toJson());
+        jsonObject.put("amount", amount);
+        jsonObject.put("dateDonationMade", dateDonationMade.toString());
+        return jsonObject;
+    }
+
 }
 
 

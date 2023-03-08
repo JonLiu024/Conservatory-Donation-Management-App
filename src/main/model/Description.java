@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 //Representing the description associated with an injured wildlife
-public class Description {
+public class Description implements Writable {
 
     private String content; //the story and description (in words) of the animal
 
@@ -22,5 +25,17 @@ public class Description {
     public String getContents() {
 
         return content;
+    }
+
+    //EFFECT: returns string representation of this description
+    public String toString() {
+        return "content" + " " + content;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("content", content);
+        return jsonObject;
     }
 }
