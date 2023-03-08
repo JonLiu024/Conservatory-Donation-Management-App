@@ -27,10 +27,6 @@ public class Description implements Writable {
         return content;
     }
 
-    //EFFECT: returns string representation of this description
-    public String toString() {
-        return "content" + " " + content;
-    }
 
     @Override
     public JSONObject toJson() {

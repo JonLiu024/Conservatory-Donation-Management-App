@@ -15,27 +15,43 @@ public class JsonWriter {
 
     //REQUIRES: destination is not null
     //EFFECTS: constructs a JsonWriter object to write the data to the destination file
+    //REFERENCE: JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     public JsonWriter(String destination) {
         this.destination = destination;
     }
 
-    //EFFECT: convert the destination pathname string to an abstract pathname,
-    // and opens writer, throws FileNotFoundException if destination file cannot be
+    //MODIFIES: this
+    //EFFECT: converts the destination pathname string to an abstract pathname,
+    // and opens writer for writing, throws FileNotFoundException if destination file cannot be
     //opened for writing
+    //REFERENCE: JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     public void open() throws FileNotFoundException {
         File file = new File(destination);
         writer = new PrintWriter(file);
     }
 
+
+    //REQUIRES: cs is not null
+    //MODIFIES: this
+    //EFFECTS: converts the data in conservation site cs into a JSON object and writes
+    //the JSON to file.
+    //REFERENCE: JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     public void write(ConservationSite cs) {
         JSONObject json = cs.toJson();
         saveToFile(json.toString(INDENTFACTOR));
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: closes writer
+    //REFERENCE: JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     public void close() {
         writer.close();
     }
 
+    //MODIFIES: this
+    //EFFECTS: print the json to the file
+    //REFERENCE: JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     private void saveToFile(String json) {
         writer.print(json);
     }
