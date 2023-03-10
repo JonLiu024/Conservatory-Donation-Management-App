@@ -2,8 +2,12 @@ package ui;
 
 import formatters.DateFormatter;
 import model.*;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -14,8 +18,12 @@ import java.util.regex.Pattern;
 //Representing the facility administration and fund tracking app
 public class FundTrackingApp {
 
+    private static final String JSON_STORE = "./data/conservatory.json"; //sources file's pathname
     private Scanner scanner;   //scanner to capture user input
     private ConservationSite conservationSite; //our conservation site
+    private JsonWriter jsonWriter; //JSonWriter to write to file
+    private JsonReader jsonReader; //JSonReader to read from file
+
 
     //EFFECT: run the fund tracking app
     public FundTrackingApp() {
@@ -39,9 +47,39 @@ public class FundTrackingApp {
                 processCommandAdmin();
             } else if (command.equals("2")) {
                 processCommandToDonate();
+            } else if (command.equals("s")) {
+                saveToFile();
+            } else if (command.equals("l")) {
+                loadFromFile();
             } else {
                 System.out.println("Please enter a valid response: ");
             }
+        }
+    }
+
+    // EFFECTS: saves the conservation site states to file
+    //REFERENCE: JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
+    private void saveToFile() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(conservationSite);
+            jsonWriter.close();
+            System.out.println("You have successfully saved " + conservationSite.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads the conservation site from file
+    //REFERENCE: JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
+    private void loadFromFile() {
+        try {
+            conservationSite = jsonReader.read();
+            System.out.println("You have successfully loaded " + conservationSite.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 
@@ -490,7 +528,7 @@ public class FundTrackingApp {
             System.out.println(donor.getDonorID() + " has made the following donations: ");
             for (Donation d : donor.getRecordsOfDonations()) {
                 System.out.println("$" + d.getAmount() + " was donated to wildlife "
-                        + "(ID: " + d.getWildlife().getWildlifeID() + ") on " + d.getDateDonationMade());
+                        + "(ID: " + d.getWildlifeID() + ") on " + d.getDateDonationMade());
             }
         }
     }
@@ -501,6 +539,8 @@ public class FundTrackingApp {
     private void init() {
         conservationSite = new ConservationSite();
         scanner = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     //EFFECT: prints out the menu for user to choose the intended usage
@@ -508,6 +548,8 @@ public class FundTrackingApp {
         System.out.println("\nPlease enter your intended usage:");
         System.out.println("Enter 1 for Admin");
         System.out.println("Enter 2 to donate");
+        System.out.println("Enter s to save your conservation site data to file");
+        System.out.println("Enter l to load your conservation site data from file");
         System.out.println("Enter q to quit the app");
     }
 
@@ -539,7 +581,7 @@ public class FundTrackingApp {
     //prints out the menu for donor user
     public void displayDonorMenu() {
         System.out.println("\nDonor menu:");
-        System.out.println("1. Make donations");
+        System.out.println("1. make donations");
         System.out.println("2. Track all your donations");
         System.out.println("3. View wildlife information");
         System.out.println("q. Back to te Main menu");

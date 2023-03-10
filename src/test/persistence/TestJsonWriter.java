@@ -9,9 +9,5 @@ public class TestJsonWriter extends JsonTest{
     private ConservationSite cs;
 
 
-    @BeforeEach
-    void setup() {
-        jsonWriter = new JsonWriter()
 
-    }
 }

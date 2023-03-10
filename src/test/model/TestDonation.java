@@ -25,10 +25,9 @@ public class TestDonation {
 
     @Test
     public void testConstructor(){
-        Donation donation = new Donation(wildlife1, donor1, 2);
+        Donation donation = new Donation(wildlife1.getWildlifeID(), 2);
         assertEquals(2, donation.getAmount());
-        assertEquals(wildlife1, donation.getWildlife());
-        assertEquals(donor1, donation.getDonor());
+        assertEquals(wildlife1.getWildlifeID(), donation.getWildlifeID());
         assertEquals(LocalDate.now(), donation.getDateDonationMade());
 
     }

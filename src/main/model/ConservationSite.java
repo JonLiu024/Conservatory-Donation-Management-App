@@ -17,6 +17,7 @@ public class ConservationSite implements Writable {
     private List<Donor> listOfDonors;   //list of donors profiles that have made donations to the wildlife
     private double totalTargetFunding;  //the total amount of funding to be raised
     private double totalFundingRaised;  //the total amount of funding that has been raised
+    private String name;
 
 
     //EFFECT: create a conservation site object; the totalTargetFunding and totalFundingRaised are set zero,
@@ -29,6 +30,7 @@ public class ConservationSite implements Writable {
         wildlifeListNotFullyFunded = new ArrayList<>();
         wildlifeListFullyFunded = new ArrayList<>();
         listOfDonors = new ArrayList<>();
+        name = "Wildlife Conservation Facility";
 
     }
 
@@ -59,6 +61,39 @@ public class ConservationSite implements Writable {
         return totalFundingRaised;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+
+    //setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTotalFundingRaised(double totalFundingRaised) {
+        this.totalFundingRaised = totalFundingRaised;
+    }
+
+    public void setListOfDonors(List<Donor> listOfDonors) {
+        this.listOfDonors = listOfDonors;
+    }
+
+    public List<Wildlife> getWildlifeListNotFullyFunded() {
+        return wildlifeListNotFullyFunded;
+    }
+
+    public void setTotalTargetFunding(double totalTargetFunding) {
+        this.totalTargetFunding = totalTargetFunding;
+    }
+
+    public void setWildlifeListFullyFunded(List<Wildlife> wildlifeListFullyFunded) {
+        this.wildlifeListFullyFunded = wildlifeListFullyFunded;
+    }
+
+    public void setWildlifeListNotFullyFunded(List<Wildlife> wildlifeListNotFullyFunded) {
+        this.wildlifeListNotFullyFunded = wildlifeListNotFullyFunded;
+    }
 
 
     //REQUIRES: d is not null
@@ -160,11 +195,12 @@ public class ConservationSite implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("wildlifeListNotFullyFunded", wildlifeListNotFullyFundedtoJson());
-        jsonObject.put("ildlifeListFullyFunded", wildlifeListFullyFundedToJson());
+        jsonObject.put("wildlifeListNotFullyFunded", wildlifeListNotFullyFundedToJson());
+        jsonObject.put("wildlifeListFullyFunded", wildlifeListFullyFundedToJson());
         jsonObject.put("listOfDonor", listOfDonorToJson());
         jsonObject.put("totalTargetFunding", totalTargetFunding);
         jsonObject.put("totalFundingRaised", totalFundingRaised);
+        jsonObject.put("name", name);
 
         return jsonObject;
     }
@@ -172,7 +208,7 @@ public class ConservationSite implements Writable {
 
 
     //EFFECT: returns wildlife that are not fully funded as a JSON array
-    private JSONArray wildlifeListNotFullyFundedtoJson() {
+    private JSONArray wildlifeListNotFullyFundedToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (Wildlife wl: wildlifeListNotFullyFunded) {

@@ -3,42 +3,37 @@ package model;
 
 import org.json.JSONObject;
 import persistence.Writable;
+import formatters.DateFormatter;
 
 import java.time.LocalDate;
 
 //Representing the donation a donor makes to a wildlife. a donation is associated with
 // a recipient wildlife, a donor, an amount, and the date the donation is made
 public class Donation implements Writable {
-    private Wildlife wildlife; //the wildlife receiving the donation
-    private Donor donor;       //the donor of the donation
+    private String wildlifeID; //the wildlife receiving the donation
     private double amount;     //the amount of funds being donated
     private LocalDate dateDonationMade;  //the local date the donation is made
 
     //REQUIRES: non-null wildlife and donor objects, amount > 0
     //EFFECT: create a donation object and set wildlife and donor and amount,
     // set dateDonationMade to be the current local date
-    public Donation(Wildlife wildlife, Donor donor, double amount) {
-        this.wildlife = wildlife;
-        this.donor = donor;
+    public Donation(String wildlifeID, double amount) {
+        this.wildlifeID = wildlifeID;
         this.amount = amount;
         this.dateDonationMade = LocalDate.now();
 
     }
 
     //getters
-    public Donor getDonor() {
-
-        return donor;
-    }
 
     public double getAmount() {
 
         return amount;
     }
 
-    public Wildlife getWildlife() {
+    public String getWildlifeID() {
 
-        return wildlife;
+        return wildlifeID;
     }
 
     public LocalDate getDateDonationMade() {
@@ -46,13 +41,19 @@ public class Donation implements Writable {
         return dateDonationMade;
     }
 
+
+    //Setters
+
+    public void setDateDonationMade(LocalDate dateDonationMade) {
+        this.dateDonationMade = dateDonationMade;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("wildlife", wildlife.toJson());
-        jsonObject.put("donor", donor.toJson());
+        jsonObject.put("wildlifeID", wildlifeID);
         jsonObject.put("amount", amount);
-        jsonObject.put("dateDonationMade", dateDonationMade.toString());
+        jsonObject.put("dateDonationMade", DateFormatter.toStringLocalDate(dateDonationMade));
         return jsonObject;
     }
 

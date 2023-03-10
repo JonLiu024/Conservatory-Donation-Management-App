@@ -24,9 +24,9 @@ public class TestWildlife {
         wildlife2 = new Wildlife("dog", 1000, ConservationStatus.EN, LocalDate.now());
         donor1 = new Donor("jon26", "jona@ubc.ca");
         donor2 = new Donor("234", "great@ubc.ca");
-        donation1 = new Donation(wildlife1, donor1, 100);
-        donation2 = new Donation(wildlife2, donor2, 20);
-        donation3 = new Donation(wildlife1, donor1, 20);
+        donation1 = new Donation(wildlife1.getWildlifeID(), 100);
+        donation2 = new Donation(wildlife2.getWildlifeID(), 20);
+        donation3 = new Donation(wildlife1.getWildlifeID(), 20);
         description = new Description("This snow leopard is injured!");
 
     }

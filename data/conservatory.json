@@ -1,0 +1,98 @@
+{
+    "totalFundingRaised": 0,
+    "wildlifeListNotFullyFunded": [
+        {
+            "conservationStatus": "CR",
+            "admissionDate": "2022-09-20",
+            "listOfDonors": [{
+                "profileCreationDate": "2023-03-10",
+                "emailAddress": "e@d.ca",
+                "donorID": "e",
+                "recordsOfDonations": [{
+                    "amount": 50,
+                    "wildlifeID": "CR2786",
+                    "dateDonationMade": "2023-03-10"
+                }],
+                "totalFundingDonated": 50
+            }],
+            "speciesName": "ewr",
+            "dateFullyFunded": "null",
+            "amountFunded": 50,
+            "wildlifeID": "CR2786",
+            "description": "jo",
+            "donationRecords": [{
+                "amount": 50,
+                "wildlifeID": "CR2786",
+                "dateDonationMade": "2023-03-10"
+            }],
+            "isFullyFunded": false,
+            "targetFunding": 435
+        },
+        {
+            "conservationStatus": "VU",
+            "admissionDate": "2032-10-20",
+            "listOfDonors": [],
+            "speciesName": "we",
+            "dateFullyFunded": "null",
+            "amountFunded": 0,
+            "wildlifeID": "VU8324",
+            "description": "none",
+            "donationRecords": [],
+            "isFullyFunded": false,
+            "targetFunding": 942
+        }
+    ],
+    "totalTargetFunding": 1627,
+    "name": "Wildlife Conservation Facility",
+    "wildlifeListFullyFunded": [{
+        "conservationStatus": "VU",
+        "admissionDate": "2022-03-22",
+        "listOfDonors": [{
+            "profileCreationDate": "2023-03-10",
+            "emailAddress": "ow@us.ca",
+            "donorID": "ow",
+            "recordsOfDonations": [{
+                "amount": 250,
+                "wildlifeID": "VU2711",
+                "dateDonationMade": "2023-03-10"
+            }],
+            "totalFundingDonated": 250
+        }],
+        "speciesName": "IOWUE",
+        "dateFullyFunded": "2023-03-10",
+        "amountFunded": 250,
+        "wildlifeID": "VU2711",
+        "description": "none",
+        "donationRecords": [{
+            "amount": 250,
+            "wildlifeID": "VU2711",
+            "dateDonationMade": "2023-03-10"
+        }],
+        "isFullyFunded": true,
+        "targetFunding": 250
+    }],
+    "listOfDonor": [
+        {
+            "profileCreationDate": "2023-03-10",
+            "emailAddress": "ow@us.ca",
+            "donorID": "ow",
+            "recordsOfDonations": [{
+                "amount": 250,
+                "wildlifeID": "VU2711",
+                "dateDonationMade": "2023-03-10"
+            }],
+            "totalFundingDonated": 250
+        },
+        {
+            "profileCreationDate": "2023-03-10",
+            "emailAddress": "e@d.ca",
+            "donorID": "e",
+            "recordsOfDonations": [{
+                "amount": 50,
+                "wildlifeID": "CR2786",
+                "dateDonationMade": "2023-03-10"
+            }],
+            "totalFundingDonated": 50
+        }
+    ]
+}

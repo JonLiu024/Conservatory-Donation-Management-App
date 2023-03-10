@@ -37,6 +37,7 @@ public class ConservationSiteTest {
         assertEquals(0, conservationSite1.getWildlifeListFullyFunded().size());
         assertEquals(0, conservationSite1.getListOfWildlifeNotFullyFunded().size());
         assertEquals(0, conservationSite1.getListOfDonors().size());
+        assertEquals("Wildlife Conservation Facility", conservationSite1.getName());
 
     }
 
@@ -65,7 +66,7 @@ public class ConservationSiteTest {
     @Test
     public void testMoveWLToFullyFundedList() {
         conservationSite1.addWildlife(wildlife1);
-        assertEquals(null, wildlife1.getDateFullyFunded());
+        assertNull(wildlife1.getDateFullyFunded());
         assertFalse(conservationSite1.getWildlifeListFullyFunded().contains(wildlife1));
 
         conservationSite1.moveWildlifeToFullyFundedList(wildlife1);

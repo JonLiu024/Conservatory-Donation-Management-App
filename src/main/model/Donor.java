@@ -1,6 +1,7 @@
 package model;
 
 
+import formatters.DateFormatter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -17,7 +18,6 @@ public class Donor implements Writable {
     private String donorID;                    //donor's ID in the system
     private LocalDate profileCreationDate;      //the date the donor profile is created
     private double totalFundingDonated;         //the total amount that has been donated by the donor
-    private List<Wildlife> listOfWildlife;       //list of wildlife recipients
     private List<Donation> recordsOfDonations;    // donor's donation records
     private String emailAddress;        //donor's email
 
@@ -29,7 +29,6 @@ public class Donor implements Writable {
     public Donor(String donorID, String emailAddress) {
         setDonorID(donorID);
         setEmailAddress(emailAddress);
-        listOfWildlife = new ArrayList<>();
         recordsOfDonations = new ArrayList<>();
         profileCreationDate = LocalDate.now();
         totalFundingDonated = 0;
@@ -57,11 +56,6 @@ public class Donor implements Writable {
         return this.recordsOfDonations;
     }
 
-    public List<Wildlife> getListOfWildlife() {
-
-        return this.listOfWildlife;
-    }
-
 
     public String getEmailAddress() {
 
@@ -80,6 +74,18 @@ public class Donor implements Writable {
         this.emailAddress = emailAddress;
     }
 
+    public void setProfileCreationDate(LocalDate localDate) {
+        this.profileCreationDate = localDate;
+    }
+
+    public void setTotalFundingDonated(double totalFundingDonated) {
+        this.totalFundingDonated = totalFundingDonated;
+    }
+
+
+    public void setRecordsOfDonations(List<Donation> recordsOfDonations) {
+        this.recordsOfDonations = recordsOfDonations;
+    }
 
     //REQUIRES: amount > 0,
     //MODIFIES: this, wildlife
@@ -89,24 +95,14 @@ public class Donor implements Writable {
     public double makeDonation(Wildlife wildlife, double amount) {
 
         double actualFundingAmt = wildlife.raiseFund(amount);
-        Donation donation = new Donation(wildlife, this, actualFundingAmt);
+        Donation donation = new Donation(wildlife.getWildlifeID(), actualFundingAmt);
         recordsOfDonations.add(donation);
-        addWLtoList(wildlife);
         totalFundingDonated += actualFundingAmt;
         wildlife.addDonationToRecords(donation);
         wildlife.addDonorToList(this);
         return actualFundingAmt;
     }
 
-
-    //REQUIRES: wildlife is not null
-    //MODIFIES: this
-    //EFFECT: wildlife is added to the listOfWildlife if it has not been previously added
-    public void addWLtoList(Wildlife wildlife) {
-        if (!listOfWildlife.contains(wildlife)) {
-            listOfWildlife.add(wildlife);
-        }
-    }
 
 
     //REQUIRES: d is not null
@@ -115,9 +111,7 @@ public class Donor implements Writable {
     // and if the donation is associated with this donor
     public void addDonationToList(Donation d) {
         if (!recordsOfDonations.contains(d)) {
-            if (d.getDonor().equals(this)) {
-                recordsOfDonations.add(d);
-            }
+            recordsOfDonations.add(d);
         }
     }
 
@@ -125,9 +119,8 @@ public class Donor implements Writable {
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("donorID", donorID);
-        jsonObject.put("profileCreationDate", profileCreationDate.toString());
+        jsonObject.put("profileCreationDate", DateFormatter.toStringLocalDate(profileCreationDate));
         jsonObject.put("totalFundingDonated", totalFundingDonated);
-        jsonObject.put("listOfWildlife", listOfWildlifeToJson());
         jsonObject.put("recordsOfDonations", recordsOfDonationsToJson());
         jsonObject.put("emailAddress", emailAddress);
 
@@ -147,14 +140,4 @@ public class Donor implements Writable {
     }
 
 
-
-    //EFFECT: returns wildlife that this donor has made donations to as a JSON array
-    private JSONArray listOfWildlifeToJson() {
-        JSONArray jsonArray = new JSONArray();
-
-        for (Wildlife wl: listOfWildlife) {
-            jsonArray.put(wl.toJson());
-        }
-        return jsonArray;
-    }
 }

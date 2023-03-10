@@ -1,7 +1,7 @@
 package model;
 
 
-
+import formatters.DateFormatter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -144,6 +144,27 @@ public class Wildlife implements Writable {
         this.dateFullyFunded = dateFullyFunded;
     }
 
+    public void setWildlifeID(String wildlifeID) {
+        this.wildlifeID = wildlifeID;
+    }
+
+    public void setIsFullyFunded(boolean fullyFunded) {
+        isFullyFunded = fullyFunded;
+    }
+
+    public void setListOfDonors(List<Donor> listOfDonors) {
+        this.listOfDonors = listOfDonors;
+    }
+
+    public void setAmountFunded(double amountFunded) {
+        this.amountFunded = amountFunded;
+    }
+
+    public void setDonationRecords(List<Donation> donationRecords) {
+        this.donationRecords = donationRecords;
+    }
+
+
 
     //EFFECT: create and returns an ID string consisting of the wildlife's
     // conservationStatus (Acronym in two capital letters), followed by four random digits (0-9)
@@ -173,7 +194,7 @@ public class Wildlife implements Writable {
     //donation d is associated with this wildlife
     public void addDonationToRecords(Donation d) {
         if (!donationRecords.contains(d)) {
-            if (d.getWildlife().equals(this)) {
+            if (d.getWildlifeID().equals(wildlifeID)) {
                 donationRecords.add(d);
             }
         }
@@ -203,15 +224,19 @@ public class Wildlife implements Writable {
         JSONObject jsonobject = new JSONObject();
         jsonobject.put("wildlifeID", wildlifeID);
         jsonobject.put("speciesName", speciesName);
-        jsonobject.put("conservationStatus", conservationStatus.toString());
-        jsonobject.put("admissionDate", admissionDate.toString());
-        jsonobject.put("listOfDonors", listOfDonorsToJson());
-        jsonobject.put("donationRecords", donationRecordsToJson());
-        jsonobject.put("dateFullyFunded", dateFullyFunded);
+        jsonobject.put("conservationStatus", conservationStatus);
+        jsonobject.put("admissionDate", DateFormatter.toStringLocalDate(admissionDate));
+        jsonobject.put("dateFullyFunded", DateFormatter.toStringLocalDate(dateFullyFunded));
         jsonobject.put("isFullyFunded", isFullyFunded);
         jsonobject.put("targetFunding", targetFunding);
         jsonobject.put("amountFunded", amountFunded);
-        jsonobject.put("description", description);
+        if (description == null) {
+            jsonobject.put("description", "none");
+        } else {
+            jsonobject.put("description", description.getContents());
+        }
+        jsonobject.put("listOfDonors", listOfDonorsToJson());
+        jsonobject.put("donationRecords", donationRecordsToJson());
         return jsonobject;
     }
 
