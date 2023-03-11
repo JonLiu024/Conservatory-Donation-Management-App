@@ -1,4 +1,4 @@
-package formatters;
+package model.formatters;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -6,6 +6,12 @@ import java.time.format.DateTimeFormatter;
 
 //Representing a date formatter to convert LocalDate to string or vice versa
 public class DateFormatter {
+
+
+    //EFFECT: construct a dateformatter oject
+    public DateFormatter() {
+
+    }
 
 
 
@@ -30,8 +36,7 @@ public class DateFormatter {
             return null;
         } else {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate date = LocalDate.parse(strDate, formatter);
-            return date;
+            return LocalDate.parse(strDate, formatter);
         }
     }
 }

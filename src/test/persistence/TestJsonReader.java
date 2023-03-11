@@ -1,14 +1,13 @@
 package persistence;
 
-import model.ConservationSite;
-import model.ConservationStatus;
-import model.Donor;
-import model.Wildlife;
+import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -42,6 +41,7 @@ public class TestJsonReader extends JsonTest{
     }
 
 
+
     @Test
     void testReaderEmptyFile() {
         JsonReader jsonReader = new JsonReader("./data/testReaderEmptyCsJsonFile.json");
@@ -65,14 +65,20 @@ public class TestJsonReader extends JsonTest{
             ConservationSite cs1 = new ConservationSite();
             Wildlife wildlife1 = new Wildlife("orca", 1000, ConservationStatus.CD, LocalDate.now());
             Wildlife wildlife2 = new Wildlife("blue whale", 400, ConservationStatus.EN, LocalDate.now());
-            Donor donor1 = new Donor("Jon", "jon@ubc.ca");
             cs1.addWildlife(wildlife1);
             cs1.addWildlife(wildlife2);
+            wildlife2.setAmountFunded(400);
+            cs1.moveWildlifeToFullyFundedList(wildlife2);
+            Donor donor1 = new Donor("Jon", "jon@ubc.ca");
+            wildlife1.addDonorToList(donor1);
+            wildlife1.raiseFund(300);
+            Donation donation = new Donation(wildlife1.getWildlifeID(), 300);
+            wildlife1.addDonationToRecords(donation);
+            donor1.addDonationToList(donation);
             cs1.addDonor(donor1);
-            cs1.setTotalFundingRaised(1000);
-            cs1.setTotalTargetFunding(1400);
+            cs1.setTotalFundingRaised(300);
 
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralCsJsonFile.json");
+            JsonWriter writer = new JsonWriter("./data/testReaderGeneralCsJsonFile.json");
             writer.open();
             writer.write(cs1);
             writer.close();
@@ -84,8 +90,9 @@ public class TestJsonReader extends JsonTest{
             assertEquals(cs1.getTotalFundingRaised(), cs2.getTotalFundingRaised());
             assertEquals(cs1.getWildlifeListNotFullyFunded().size(), cs2.getWildlifeListNotFullyFunded().size());
             checkWildlife(wildlife1, cs2.getWildlifeListNotFullyFunded().get(0));
-            checkWildlife(wildlife2, cs2.getWildlifeListNotFullyFunded().get(1));
+            checkWildlife(wildlife2, cs2.getWildlifeListFullyFunded().get(0));
             checkDonor(donor1, cs2.getListOfDonors().get(0));
+            checkDonations(donation, cs2.getListOfDonors().get(0).getRecordsOfDonations().get(0));
 
         } catch (IOException e) {
             fail("IOException not expected!");

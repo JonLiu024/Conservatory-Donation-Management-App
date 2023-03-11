@@ -1,6 +1,8 @@
-package formatters;
+package model.formatters;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import model.formatters.DateFormatter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +16,7 @@ public class testDateFormatter {
     public void setup() {
         localDate = LocalDate.now();
         localDateString = LocalDate.now().toString();
+
     }
 
     @Test

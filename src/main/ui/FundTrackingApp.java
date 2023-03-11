@@ -1,6 +1,6 @@
 package ui;
 
-import formatters.DateFormatter;
+import model.formatters.DateFormatter;
 import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;

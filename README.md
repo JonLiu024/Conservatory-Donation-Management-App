@@ -1,16 +1,16 @@
 # CPSC 210 Personal Project by Tong Liu
-## Fund Tracking and Donation making App for a Wildlife Conservation facility
+## Fund Tracking and Donation making App for wildlife conservatories
 ## Project Proposal:
 
 
-A wildlife conservation facility provides rescue and rehabilitation services to injured wildlife. The facility accepts and shelters injured wildlife and releases them to the wild once
+A wildlife conservatory provides rescue and rehabilitation services to injured wildlife. The facility accepts and shelters injured wildlife and releases them to the wild once
 they recover from the injury. A large portion of the funds that supports the facility is raised from the public through donations from animal lovers
 To encourage donations from the public, many non-profit organizations created websites that contains the profiles of 
 individual wildlife they attempt to rescue and encourage the public to make donations to their favorite animals through symbolic adoptions. one of the examples
 can be accessed here (https://support.worldwildlife.org/site/Donation2?df_id=17797&17797.donation=form1&s_src=AWE2308OQ18297A06836RX&s_subsrc=homepage)
 
 
-In my personal project, I want to design a fund tracking app for a newly established wildlife conservation facility. 
+In my personal project, I want to design a donation management app for a newly established wildlife conservation facility. 
 The app can be used to add and create profiles for wildlife that are rescued and sheltered at the facility and updates their donation records, list of donors
 and the total amount of donations (funds) being collected through symbolic adoption (a form of donation). This app will allow the donor to make donation to a certain wildlife sheltered at the site. The same donor
 will be able to track his/her donation records by using his donor profile ID. This project is particularly interesting to me as it 

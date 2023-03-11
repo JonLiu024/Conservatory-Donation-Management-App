@@ -1,7 +1,7 @@
 package model;
 
 
-import formatters.DateFormatter;
+import model.formatters.DateFormatter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -44,6 +44,7 @@ public class Wildlife implements Writable {
         setConservationStatus(conservationStatus);
         donationRecords = new ArrayList<>();
         listOfDonors = new ArrayList<>();
+        amountFunded = 0;
         this.isFullyFunded = false;
         setAdmissionDate(admissionDate);
         this.wildlifeID = wildlifeIDGenerator();

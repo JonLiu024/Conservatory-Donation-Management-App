@@ -1,20 +1,92 @@
 {
     "totalFundingRaised": 0,
-    "wildlifeListNotFullyFunded": [{
-        "conservationStatus": "EN",
-        "admissionDate": "2022-03-20",
-        "listOfDonors": [],
-        "speciesName": "weiou",
-        "dateFullyFunded": "null",
-        "amountFunded": 0,
-        "wildlifeID": "EN5185",
-        "description": "None",
-        "donationRecords": [],
-        "isFullyFunded": false,
-        "targetFunding": 48
-    }],
-    "totalTargetFunding": 48,
+    "wildlifeListNotFullyFunded": [
+        {
+            "conservationStatus": "EN",
+            "admissionDate": "2022-12-30",
+            "listOfDonors": [
+                {
+                    "profileCreationDate": "2023-03-10",
+                    "emailAddress": "joo@ubc.ca",
+                    "donorID": "joo",
+                    "recordsOfDonations": [{
+                        "amount": 50,
+                        "wildlifeID": "EN1423",
+                        "dateDonationMade": "2023-03-10"
+                    }],
+                    "totalFundingDonated": 50
+                },
+                {
+                    "profileCreationDate": "2023-03-10",
+                    "emailAddress": "dwer@gd.ca",
+                    "donorID": "dwer",
+                    "recordsOfDonations": [{
+                        "amount": 100,
+                        "wildlifeID": "EN1423",
+                        "dateDonationMade": "2023-03-10"
+                    }],
+                    "totalFundingDonated": 100
+                }
+            ],
+            "speciesName": "wolf",
+            "dateFullyFunded": "null",
+            "amountFunded": 150,
+            "wildlifeID": "EN1423",
+            "description": "None",
+            "donationRecords": [
+                {
+                    "amount": 50,
+                    "wildlifeID": "EN1423",
+                    "dateDonationMade": "2023-03-10"
+                },
+                {
+                    "amount": 100,
+                    "wildlifeID": "EN1423",
+                    "dateDonationMade": "2023-03-10"
+                }
+            ],
+            "isFullyFunded": false,
+            "targetFunding": 230
+        },
+        {
+            "conservationStatus": "EN",
+            "admissionDate": "2023-02-03",
+            "listOfDonors": [],
+            "speciesName": "",
+            "dateFullyFunded": "null",
+            "amountFunded": 0,
+            "wildlifeID": "EN5886",
+            "description": "lsafjd",
+            "donationRecords": [],
+            "isFullyFunded": false,
+            "targetFunding": 3234
+        }
+    ],
+    "totalTargetFunding": 3464,
     "name": "Wildlife Conservation Facility",
     "wildlifeListFullyFunded": [],
-    "listOfDonor": []
+    "listOfDonor": [
+        {
+            "profileCreationDate": "2023-03-10",
+            "emailAddress": "joo@ubc.ca",
+            "donorID": "joo",
+            "recordsOfDonations": [{
+                "amount": 50,
+                "wildlifeID": "EN1423",
+                "dateDonationMade": "2023-03-10"
+            }],
+            "totalFundingDonated": 50
+        },
+        {
+            "profileCreationDate": "2023-03-10",
+            "emailAddress": "dwer@gd.ca",
+            "donorID": "dwer",
+            "recordsOfDonations": [{
+                "amount": 100,
+                "wildlifeID": "EN1423",
+                "dateDonationMade": "2023-03-10"
+            }],
+            "totalFundingDonated": 100
+        }
+    ]
 }

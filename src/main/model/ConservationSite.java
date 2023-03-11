@@ -164,6 +164,7 @@ public class ConservationSite implements Writable {
     public void moveWildlifeToFullyFundedList(Wildlife wildlife) {
         wildlifeListNotFullyFunded.remove(wildlife);
         wildlife.setDateFullyFunded(LocalDate.now());
+        wildlife.setIsFullyFunded(true);
         wildlifeListFullyFunded.add(wildlife);
     }
 
