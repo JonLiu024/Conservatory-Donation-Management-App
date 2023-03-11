@@ -28,7 +28,7 @@ public class Wildlife implements Writable {
     private boolean isFullyFunded;      //if the wildlife is fully funded
     private double targetFunding;       //wildlife's target funding
     private double amountFunded;        //funds that has been raised for this wildlife
-    private Description description;    //a description associated with this animal
+    private String description;    //a description associated with this animal
 
 
     //REQUIRES: speciesName is not null, targetFunding > 0, ConservationStatus is not null, admissionDate is not null
@@ -47,6 +47,7 @@ public class Wildlife implements Writable {
         this.isFullyFunded = false;
         setAdmissionDate(admissionDate);
         this.wildlifeID = wildlifeIDGenerator();
+        this.description = "none";
 
     }
 
@@ -91,7 +92,7 @@ public class Wildlife implements Writable {
         return dateFullyFunded;
     }
 
-    public boolean isFullyFunded() {
+    public boolean getIsFullyFunded() {
 
         return isFullyFunded;
     }
@@ -106,7 +107,7 @@ public class Wildlife implements Writable {
         return donationRecords;
     }
 
-    public Description getDescription() {
+    public String getDescription() {
 
         return description;
     }
@@ -129,7 +130,7 @@ public class Wildlife implements Writable {
         this.targetFunding = targetFunding;
     }
 
-    public void setDescription(Description description) {
+    public void setDescription(String description) {
 
         this.description = description;
     }
@@ -230,11 +231,7 @@ public class Wildlife implements Writable {
         jsonobject.put("isFullyFunded", isFullyFunded);
         jsonobject.put("targetFunding", targetFunding);
         jsonobject.put("amountFunded", amountFunded);
-        if (description == null) {
-            jsonobject.put("description", "none");
-        } else {
-            jsonobject.put("description", description.getContents());
-        }
+        jsonobject.put("description", description);
         jsonobject.put("listOfDonors", listOfDonorsToJson());
         jsonobject.put("donationRecords", donationRecordsToJson());
         return jsonobject;
@@ -260,8 +257,6 @@ public class Wildlife implements Writable {
         }
         return jsonArray;
     }
-
-
 
 
 }

@@ -9,6 +9,7 @@ import persistence.Writable;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.*;
+import java.util.Objects;
 
 //Representing a donor profile that is associated with one donor,
 // it has a donor ID, an email address, a profile creation date, the

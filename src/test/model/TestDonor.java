@@ -54,7 +54,7 @@ public class TestDonor {
         assertEquals(1, wildlife1.getDonationRecords().size());
         assertEquals(1, wildlife1.getListOfDonors().size());
         assertTrue(wildlife1.getListOfDonors().contains(donor1));
-        assertFalse(wildlife1.isFullyFunded());
+        assertFalse(wildlife1.getIsFullyFunded());
 
     }
 
@@ -69,7 +69,7 @@ public class TestDonor {
         assertEquals(1, wildlife1.getDonationRecords().size());
         assertEquals(1, wildlife1.getListOfDonors().size());
         assertTrue(wildlife1.getListOfDonors().contains(donor1));
-        assertTrue(wildlife1.isFullyFunded());
+        assertTrue(wildlife1.getIsFullyFunded());
 
     }
 
@@ -84,7 +84,7 @@ public class TestDonor {
         assertEquals(1, wildlife1.getDonationRecords().size());
         assertEquals(1, wildlife1.getListOfDonors().size());
         assertTrue(wildlife1.getListOfDonors().contains(donor1));
-        assertTrue(wildlife1.isFullyFunded());
+        assertTrue(wildlife1.getIsFullyFunded());
 
     }
 }

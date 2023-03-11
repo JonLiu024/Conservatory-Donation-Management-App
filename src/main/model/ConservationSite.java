@@ -47,7 +47,7 @@ public class ConservationSite implements Writable {
     }
 
     public List<Donor> getListOfDonors() {
-        updateListOfDonors();
+        //updateListOfDonors();
         return listOfDonors;
     }
 
@@ -67,9 +67,6 @@ public class ConservationSite implements Writable {
 
 
     //setters
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public void setTotalFundingRaised(double totalFundingRaised) {
         this.totalFundingRaised = totalFundingRaised;

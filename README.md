@@ -43,10 +43,8 @@ Phase 1
 
 Phase 2
 - As a user I want to know the total funding required for animals of each conservation status
-- As a feature the system will automatically remove the animals whose raised funds has exceeded the target funding. The extra funds collected in the last donation will be transferred to a wildlife that has the least funding and have the most concerned conservation status 
-(I have not accomplished this feature, but intended to develop it in the next phase )
-- As a user, I want to be reminded to save all the added wildlife, donations records and donor list when I select the quit option from the application menu.
-- As a user, when I start the application, I want to be given the option to load the previously saved conservation site and restore all the list of wildlife, funding pregressions, donors and donation records.
+- As a user, I want to be reminded to save the status of my conservatory (added wildlife, donations records and donor list) before I select the quit option from the application main menu.
+- As a user, when I start the application, I want to be given the option to load the data of my conservatory from file and restore the status (list of wildlife, funding progression, donors list and donation records) from previous usages.
 
 
 

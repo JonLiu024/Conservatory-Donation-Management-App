@@ -43,7 +43,6 @@ public class Donation implements Writable {
 
 
     //Setters
-
     public void setDateDonationMade(LocalDate dateDonationMade) {
         this.dateDonationMade = dateDonationMade;
     }
@@ -56,6 +55,8 @@ public class Donation implements Writable {
         jsonObject.put("dateDonationMade", DateFormatter.toStringLocalDate(dateDonationMade));
         return jsonObject;
     }
+
+
 
 }
 

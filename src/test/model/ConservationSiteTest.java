@@ -171,7 +171,6 @@ public class ConservationSiteTest {
     public void testFundsRaisedCalculatorZero() {
         conservationSite1.addWildlife(wildlife1);
         conservationSite1.addWildlife(wildlife2);
-
         assertEquals(0, conservationSite1.fundsRaisedCalculator());
 
     }

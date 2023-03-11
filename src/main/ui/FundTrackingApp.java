@@ -151,7 +151,7 @@ public class FundTrackingApp {
         ConservationStatus conservationStatus = selectConservationStatus();
         boolean keepAsking = false;
         double targetFunding = createTargetFunding();
-        Description description = createDescription();
+        String description = createDescription();
         LocalDate admissionDate = createAdmissionDate();
         Wildlife newWildlife = new Wildlife(speciesName, targetFunding, conservationStatus, admissionDate);
         newWildlife.setDescription(description);
@@ -211,7 +211,7 @@ public class FundTrackingApp {
 
 
     //EFFECT: prompts the admin user to create a short description of the newly added wildlife and returns it
-    private Description createDescription() {
+    private String createDescription() {
         String command = "";
         System.out.println("Would you like to add a description for this wildlife?");
         while (!command.equals("y") && !command.equals("n")) {
@@ -221,12 +221,10 @@ public class FundTrackingApp {
         if (command.equals("y")) {
             scanner.nextLine();
             System.out.println("Please enter the description here:");
-            String descriptionContent = scanner.nextLine();
-            Description description = new Description(descriptionContent);
             System.out.println("You have added successfully create a description for this wildlife");
-            return description;
+            return scanner.nextLine();
         } else {
-            return null;
+            return "None";
         }
     }
 
@@ -318,14 +316,15 @@ public class FundTrackingApp {
         System.out.println("Target funding: $" + wildlife.getTargetFunding());
         System.out.println("Conservation status: " + wildlife.getConservationStatus());
         System.out.println("Admission date: " + wildlife.getAdmissionDate());
-        if (wildlife.isFullyFunded()) {
+        if (wildlife.getIsFullyFunded()) {
             System.out.println("Date fully funded: " + DateFormatter.toStringLocalDate(wildlife.getDateFullyFunded()));
         }
-        if (wildlife.getDescription() == null) {
-            System.out.println("Description : None");
-        } else {
-            System.out.println("Description: " + wildlife.getDescription().getContents());
-        }
+        System.out.println("Description: " + wildlife.getDescription());
+//        if (wildlife.getDescription() == null) {
+//            System.out.println("Description : None");
+//        } else {
+//            System.out.println("Description: " + wildlife.getDescription());
+//        }
     }
 
 

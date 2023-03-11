@@ -10,15 +10,12 @@ import java.time.LocalDate;
 public class TestDonation {
 
     private Wildlife wildlife1;
-    private Donor donor1;
 
 
 
     @BeforeEach
     public void setup() {
         wildlife1 = new Wildlife("cat", 2000, ConservationStatus.CD, LocalDate.now());
-        donor1 = new Donor("jon26", "jona@ubc.ca");
-
 
     }
 

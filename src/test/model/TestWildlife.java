@@ -14,7 +14,7 @@ public class TestWildlife {
     private Donation donation1;
     private Donation donation2;
     private Donation donation3;
-    private Description description;
+    private String description;
 
 
 
@@ -27,7 +27,7 @@ public class TestWildlife {
         donation1 = new Donation(wildlife1.getWildlifeID(), 100);
         donation2 = new Donation(wildlife2.getWildlifeID(), 20);
         donation3 = new Donation(wildlife1.getWildlifeID(), 20);
-        description = new Description("This snow leopard is injured!");
+        description = "This snow leopard is injured!";
 
     }
 
@@ -39,7 +39,7 @@ public class TestWildlife {
         assertEquals(ConservationStatus.CD, wildlife1.getConservationStatus());
         assertEquals(0, wildlife1.getListOfDonors().size());
         assertEquals(0, wildlife1.getDonationRecords().size());
-        assertFalse(wildlife1.isFullyFunded());
+        assertFalse(wildlife1.getIsFullyFunded());
         assertEquals(LocalDate.now(), wildlife1.getAdmissionDate());
         assertNotNull(wildlife1.getWildlifeID());
         assertNull(wildlife1.getDateFullyFunded());
@@ -49,7 +49,7 @@ public class TestWildlife {
     public void testSetDescription() {
         wildlife1.setDescription(description);
         assertEquals(description, wildlife1.getDescription());
-        assertEquals("This snow leopard is injured!", wildlife1.getDescription().getContents());
+        assertEquals("This snow leopard is injured!", wildlife1.getDescription());
 
     }
 
@@ -113,7 +113,7 @@ public class TestWildlife {
     public void testRaisedFundLessThanTargetFunding() {
         assertEquals(10, wildlife1.raiseFund(10));
         assertEquals(10, wildlife1.getAmountFunded());
-        assertFalse(wildlife1.isFullyFunded());
+        assertFalse(wildlife1.getIsFullyFunded());
 
     }
 
@@ -121,7 +121,7 @@ public class TestWildlife {
     public void testRaisedFundEqualsTargetFunding() {
         assertEquals(2000, wildlife1.raiseFund(2000));
         assertEquals(2000, wildlife1.getAmountFunded());
-        assertTrue(wildlife1.isFullyFunded());
+        assertTrue(wildlife1.getIsFullyFunded());
 
     }
 
@@ -130,7 +130,7 @@ public class TestWildlife {
     public void testRaisedFundLargerThanTargetFunding() {
         assertEquals(2000, wildlife1.raiseFund(2001));
         assertEquals(2000, wildlife1.getAmountFunded());
-        assertTrue(wildlife1.isFullyFunded());
+        assertTrue(wildlife1.getIsFullyFunded());
 
     }
 
