@@ -2,19 +2,95 @@
     "totalFundingRaised": 0,
     "wildlifeListNotFullyFunded": [{
         "conservationStatus": "EN",
-        "admissionDate": "2023-02-28",
-        "listOfDonors": [],
-        "speciesName": "doiweg",
+        "admissionDate": "2023-02-02",
+        "listOfDonors": [
+            {
+                "profileCreationDate": "2023-03-11",
+                "emailAddress": "tio@aubo.ca",
+                "donorID": "8974",
+                "recordsOfDonations": [{
+                    "amount": 1000,
+                    "wildlifeID": "EN9350",
+                    "dateDonationMade": "2023-03-11"
+                }],
+                "totalFundingDonated": 1000
+            },
+            {
+                "profileCreationDate": "2023-03-11",
+                "emailAddress": "i@giso.ca",
+                "donorID": "i",
+                "recordsOfDonations": [
+                    {
+                        "amount": 350,
+                        "wildlifeID": "EN9350",
+                        "dateDonationMade": "2023-03-11"
+                    },
+                    {
+                        "amount": 100,
+                        "wildlifeID": "EN9350",
+                        "dateDonationMade": "2023-03-11"
+                    }
+                ],
+                "totalFundingDonated": 450
+            }
+        ],
+        "speciesName": "bird",
         "dateFullyFunded": "null",
-        "amountFunded": 0,
-        "wildlifeID": "EN7656",
-        "description": "owihegoe hsaogd",
-        "donationRecords": [],
+        "amountFunded": 1450,
+        "wildlifeID": "EN9350",
+        "description": "oisagh goishd",
+        "donationRecords": [
+            {
+                "amount": 1000,
+                "wildlifeID": "EN9350",
+                "dateDonationMade": "2023-03-11"
+            },
+            {
+                "amount": 350,
+                "wildlifeID": "EN9350",
+                "dateDonationMade": "2023-03-11"
+            },
+            {
+                "amount": 100,
+                "wildlifeID": "EN9350",
+                "dateDonationMade": "2023-03-11"
+            }
+        ],
         "isFullyFunded": false,
-        "targetFunding": 9253
+        "targetFunding": 4930
     }],
-    "totalTargetFunding": 9253,
+    "totalTargetFunding": 4930,
     "name": "Wildlife Conservation Facility",
     "wildlifeListFullyFunded": [],
-    "listOfDonor": []
+    "listOfDonor": [
+        {
+            "profileCreationDate": "2023-03-11",
+            "emailAddress": "tio@aubo.ca",
+            "donorID": "8974",
+            "recordsOfDonations": [{
+                "amount": 1000,
+                "wildlifeID": "EN9350",
+                "dateDonationMade": "2023-03-11"
+            }],
+            "totalFundingDonated": 1000
+        },
+        {
+            "profileCreationDate": "2023-03-11",
+            "emailAddress": "i@giso.ca",
+            "donorID": "i",
+            "recordsOfDonations": [
+                {
+                    "amount": 350,
+                    "wildlifeID": "EN9350",
+                    "dateDonationMade": "2023-03-11"
+                },
+                {
+                    "amount": 100,
+                    "wildlifeID": "EN9350",
+                    "dateDonationMade": "2023-03-11"
+                }
+            ],
+            "totalFundingDonated": 450
+        }
+    ]
 }

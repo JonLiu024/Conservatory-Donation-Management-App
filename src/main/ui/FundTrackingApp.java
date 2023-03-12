@@ -276,7 +276,6 @@ public class FundTrackingApp {
 
     //EFFECT: prints out the number of donors and lists the information of all the donors
     private void viewDonorInfo() {
-        conservationSite.updateListOfDonors();
         System.out.println(conservationSite.getListOfDonors().size() + " people have made donations to "
                 + "our conservation facility.");
         if (conservationSite.getListOfDonors().size() != 0) {

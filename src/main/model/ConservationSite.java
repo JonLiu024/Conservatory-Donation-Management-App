@@ -47,7 +47,6 @@ public class ConservationSite implements Writable {
     }
 
     public List<Donor> getListOfDonors() {
-        //updateListOfDonors();
         return listOfDonors;
     }
 
@@ -120,19 +119,6 @@ public class ConservationSite implements Writable {
         return listOfAllWL;
     }
 
-
-    //MODIFIES: this
-    //EFFECT: update the list of donors based on the most recent donation records; add donors to the list of donors
-    //if they have not been previously added
-    public void updateListOfDonors() {
-        for (Wildlife wildlife : getListOfAllWL()) {
-            for (Donor donor : wildlife.getListOfDonors()) {
-                if (!listOfDonors.contains(donor)) {
-                    listOfDonors.add(donor);
-                }
-            }
-        }
-    }
 
 
     //REQUIRES:listOfDonors does not contain duplicate elements

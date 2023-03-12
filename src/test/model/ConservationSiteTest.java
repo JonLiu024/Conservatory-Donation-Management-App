@@ -13,7 +13,7 @@ public class ConservationSiteTest {
     private ConservationSite conservationSite1;
     private Wildlife wildlife1;
     private Wildlife wildlife2;
-    private Wildlife wildlife3;
+
     private Donor donor1;
     private Donor donor2;
 
@@ -23,7 +23,6 @@ public class ConservationSiteTest {
         conservationSite1 = new ConservationSite();
         wildlife1 = new Wildlife("cat", 2000, ConservationStatus.CD, LocalDate.now());
         wildlife2 = new Wildlife("dog", 1000, ConservationStatus.EN, LocalDate.now());
-        wildlife3 = new Wildlife("corba snake", 100, ConservationStatus.CD, LocalDate.now());
         donor1 = new Donor("jon26", "jona@ubc.ca");
         donor2 = new Donor("234", "great@ubc.ca");
 
@@ -124,37 +123,7 @@ public class ConservationSiteTest {
 
     }
 
-    @Test
-    public void testUpdateListOfDonorsSameDonorsMultipleWL() {
-        conservationSite1.addWildlife(wildlife1);
-        conservationSite1.addWildlife(wildlife2);
-        conservationSite1.addWildlife(wildlife3);
-        wildlife1.addDonorToList(donor1);
-        wildlife2.addDonorToList(donor1);
-        wildlife3.addDonorToList(donor1);
 
-
-        conservationSite1.updateListOfDonors();
-        assertEquals(1, conservationSite1.getListOfDonors().size());
-        assertTrue(conservationSite1.getListOfDonors().contains(donor1));
-
-    }
-
-    @Test
-    public void testUpdateListOfDonorsMultipleDonorsInOneWL() {
-        conservationSite1.addWildlife(wildlife1);
-        conservationSite1.addWildlife(wildlife2);
-        conservationSite1.addWildlife(wildlife3);
-        wildlife1.addDonorToList(donor1);
-        wildlife1.addDonorToList(donor2);
-
-
-        conservationSite1.updateListOfDonors();
-        assertEquals(2, conservationSite1.getListOfDonors().size());
-        assertTrue(conservationSite1.getListOfDonors().contains(donor1));
-        assertTrue(conservationSite1.getListOfDonors().contains(donor2));
-
-    }
 
     @Test
     public void testGetDonorIDList() {
