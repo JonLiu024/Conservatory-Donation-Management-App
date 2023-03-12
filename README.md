@@ -42,9 +42,10 @@ Phase 1
 - As a donor user I want to be able to view my donation records  
 
 Phase 2
-- As a user I want to know the total funding required for animals of each conservation status
-- As a user, I want to be reminded to save the status of my conservatory (added wildlife, donations records and donor list) before I select the quit option from the application main menu.
-- As a user, when I start the application, I want to be given the option to load the data of my conservatory from file and restore the status (list of wildlife, funding progression, donors list and donation records) from previous usages.
+- As a user I want to be able to actively save the status of my conservatory to file at the main menu (with the save option)
+- As a user, I want to be reminded to save the status of my conservatory to file when I quit the program at the main application menu 
+- As a user, when I start the application, I want to be able to load the data of my conservatory from file and restore the status (list of wildlife, funding progression, donors list and donation records) of
+- my conservatory from previous usages.
 
 
 
