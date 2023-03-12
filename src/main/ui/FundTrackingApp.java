@@ -42,6 +42,7 @@ public class FundTrackingApp {
             displayUserMenu();
             command = scanner.next().toLowerCase();
             if (command.equals("q")) {
+                optionToSave();
                 keepGoing = false;
             } else if (command.equals("1")) {
                 processCommandAdmin();
@@ -54,6 +55,22 @@ public class FundTrackingApp {
             } else {
                 System.out.println("Please enter a valid response: ");
             }
+        }
+    }
+
+    //MODIFIES: this
+    //EFFECTS: reminds the user to save the conservatory data to file; save the conservatory
+    // data to file if the user responds is "y"
+    private void optionToSave() {
+        System.out.println("Would you like to save the current state of your conservatory to file?");
+        System.out.println("Enter y for Saving, n for quiting the program");
+        String command = scanner.next().toLowerCase();
+        while (!command.equals("y") && !command.equals("n")) {
+            System.out.println("Please enter a valid response: ");
+            command = scanner.next().toLowerCase();
+        }
+        if (command.equals("y")) {
+            saveToFile();
         }
     }
 
@@ -221,8 +238,9 @@ public class FundTrackingApp {
         if (command.equals("y")) {
             scanner.nextLine();
             System.out.println("Please enter the description here:");
+            String description = scanner.nextLine();
             System.out.println("You have added successfully create a description for this wildlife");
-            return scanner.nextLine();
+            return description;
         } else {
             return "None";
         }
@@ -320,11 +338,6 @@ public class FundTrackingApp {
             System.out.println("Date fully funded: " + DateFormatter.toStringLocalDate(wildlife.getDateFullyFunded()));
         }
         System.out.println("Description: " + wildlife.getDescription());
-//        if (wildlife.getDescription() == null) {
-//            System.out.println("Description : None");
-//        } else {
-//            System.out.println("Description: " + wildlife.getDescription());
-//        }
     }
 
 
