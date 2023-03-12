@@ -38,21 +38,6 @@ public class TestDonation {
 
     }
 
-//    @Test
-//    public void testToJson() {
-//        JsonWriter jsonWriter = new JsonWriter("./data/testModelsDonationToJson.json");
-//        donation.setDateDonationMade(LocalDate.now());
-//        wildlife1.addDonationToRecords(donation);
-//        cs.addWildlife(wildlife1);
-//        try {
-//            jsonWriter.open();
-//            jsonWriter.write(cs);
-//            jsonWriter.close();
-//        } catch (IOException e) {
-//            fail("exception not expected!");
-//
-//        }
-//
-//    }
+
 }
 
