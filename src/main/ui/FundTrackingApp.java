@@ -256,20 +256,21 @@ public class FundTrackingApp {
             System.out.println("Please enter a valid selection:");
             command = scanner.next().toLowerCase();
         }
-        if (command.equals("1")) {
-            return ConservationStatus.EW;
-        } else if (command.equals("2")) {
-            return ConservationStatus.CR;
-        } else if (command.equals("3")) {
-            return ConservationStatus.EN;
-        } else if (command.equals("4")) {
-            return ConservationStatus.VU;
-        } else if (command.equals("5")) {
-            return ConservationStatus.NT;
-        } else if (command.equals("6")) {
-            return ConservationStatus.CD;
-        } else {
-            return ConservationStatus.LC;
+        switch (command) {
+            case "1":
+                return ConservationStatus.EW;
+            case "2":
+                return ConservationStatus.CR;
+            case "3":
+                return ConservationStatus.EN;
+            case "4":
+                return ConservationStatus.VU;
+            case "5":
+                return ConservationStatus.NT;
+            case "6":
+                return ConservationStatus.CD;
+            default:
+                return ConservationStatus.LC;
         }
     }
 

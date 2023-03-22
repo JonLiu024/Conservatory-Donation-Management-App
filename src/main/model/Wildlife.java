@@ -221,6 +221,8 @@ public class Wildlife implements Writable {
     }
 
 
+
+
     @Override
     public JSONObject toJson() {
         JSONObject jsonobject = new JSONObject();

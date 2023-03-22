@@ -16,6 +16,8 @@ public class ConservationSiteTest {
 
     private Donor donor1;
     private Donor donor2;
+    private Donor donor3;
+    private Donor donor4;
 
 
     @BeforeEach
@@ -25,6 +27,8 @@ public class ConservationSiteTest {
         wildlife2 = new Wildlife("dog", 1000, ConservationStatus.EN, LocalDate.now());
         donor1 = new Donor("jon26", "jona@ubc.ca");
         donor2 = new Donor("234", "great@ubc.ca");
+        donor3 = new Donor("12", "12@ubc.ca");
+        donor4 = new Donor("43", "iwt@ubc.ca");
 
     }
 
@@ -112,7 +116,7 @@ public class ConservationSiteTest {
 
 
     @Test
-    public void testAddDonor() {
+    public void testAddSameDonorTwice() {
         conservationSite1.addDonor(donor1);
         conservationSite1.addDonor(donor2);
         conservationSite1.addDonor(donor2);
@@ -129,7 +133,6 @@ public class ConservationSiteTest {
     public void testGetDonorIDList() {
         conservationSite1.addDonor(donor2);
         conservationSite1.addDonor(donor1);
-
         assertEquals(2, conservationSite1.getDonorIDList().size());
         assertTrue(conservationSite1.getDonorIDList().contains("jon26"));
         assertTrue(conservationSite1.getDonorIDList().contains("234"));
@@ -145,12 +148,53 @@ public class ConservationSiteTest {
     }
 
     @Test
+    public void testMostGenerousDonorSingleDonor() {
+        donor1.setTotalFundingDonated(98);
+        donor2.setTotalFundingDonated(99);
+        donor3.setTotalFundingDonated(100);
+        conservationSite1.addDonor(donor1);
+        conservationSite1.addDonor(donor2);
+        conservationSite1.addDonor(donor3);
+        assertEquals(1, conservationSite1.mostGenerousDonor().size());
+        assertTrue(conservationSite1.mostGenerousDonor().contains(donor3));
+    }
+
+
+    @Test
+    public void testMostGenerousMultipleDonors() {
+        donor1.setTotalFundingDonated(98);
+        donor2.setTotalFundingDonated(100);
+        donor3.setTotalFundingDonated(100);
+        conservationSite1.addDonor(donor1);
+        conservationSite1.addDonor(donor2);
+        conservationSite1.addDonor(donor3);
+        assertEquals(2, conservationSite1.mostGenerousDonor().size());
+        assertTrue(conservationSite1.mostGenerousDonor().contains(donor2));
+        assertTrue(conservationSite1.mostGenerousDonor().contains(donor3));
+    }
+
+    @Test
+    public void testMostGenerousDonorMultipleDonors() {
+        donor1.setTotalFundingDonated(98);
+        donor2.setTotalFundingDonated(100);
+        donor3.setTotalFundingDonated(100);
+        donor4.setTotalFundingDonated(1002);
+        conservationSite1.addDonor(donor1);
+        conservationSite1.addDonor(donor2);
+        conservationSite1.addDonor(donor3);
+        conservationSite1.addDonor(donor4);
+
+        assertEquals(1, conservationSite1.mostGenerousDonor().size());
+        assertTrue(conservationSite1.mostGenerousDonor().contains(donor4));
+    }
+
+
+    @Test
     public void testFundsRaisedCalculatorLargerThanZero() {
         conservationSite1.addWildlife(wildlife1);
         conservationSite1.addWildlife(wildlife2);
         wildlife1.raiseFund(100);
         wildlife2.raiseFund(200);
-
         assertEquals(wildlife1.getAmountFunded() + wildlife2.getAmountFunded(), conservationSite1.fundsRaisedCalculator());
 
     }

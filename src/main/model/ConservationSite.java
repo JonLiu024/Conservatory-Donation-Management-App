@@ -6,8 +6,10 @@ import persistence.JsonWriter;
 import persistence.Writable;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
 
 //Represents a conservation site that holds numbers of injured wildlife that are recovering
 //fully funded and a list of donors
@@ -154,7 +156,6 @@ public class ConservationSite implements Writable {
         wildlifeListFullyFunded.add(wildlife);
     }
 
-    //MODIFIES: this
     //EFFECT: calculates and returns the total funds that were raised from the donations; The total funding raised is
     //calculated as the sum of total raised funding for all wildlife in the conservation site
     public double fundsRaisedCalculator() {
@@ -165,7 +166,7 @@ public class ConservationSite implements Writable {
         return totalRaisedAmount;
     }
 
-    //MODIFIES:this
+
     //EFFECT: calculates and returns the total target funds of all wildlife; The total target funding is calculated
     //as the sum of target funding for all wildlife in the conservation site
     public double targetFundingCalculator() {
@@ -174,6 +175,22 @@ public class ConservationSite implements Writable {
             totalTargetFunding += wildlife.getTargetFunding();
         }
         return totalTargetFunding;
+    }
+
+    //EFFECT: returns the hashset of donors who have made the highest amount of donations to the conservation site
+    public List<Donor> mostGenerousDonor() {
+        List<Donor> donorList = new ArrayList<>();
+        double highestDonation = listOfDonors.get(0).getTotalFundingDonated();
+        for (Donor d: listOfDonors) {
+            if (d.getTotalFundingDonated() > highestDonation) {
+                donorList.clear();
+                donorList.add(d);
+                highestDonation = d.getTotalFundingDonated();
+            } else if (d.getTotalFundingDonated() == highestDonation) {
+                donorList.add(d);
+            }
+        }
+        return donorList;
     }
 
     @Override
