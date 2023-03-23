@@ -4,6 +4,6 @@ package ui;
 public class Main {
     public static void main(String[] args) {
 //        new FundTrackingApp();
-        new MenuFrame();
+        new LaunchFundTrackerAppGUI();
     }
 }

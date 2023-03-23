@@ -16,8 +16,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 //Representing the facility administration and fund tracking app
-public class FundTrackingApp {
-
+public class FundTrackingAppConsoleVersion {
+// ./src/main/ui/media/<file name>
     private static final String JSON_STORE = "./data/conservatory.json"; //sources file's pathname
     private Scanner scanner;   //scanner to capture user input
     private ConservationSite conservationSite; //our conservation site
@@ -26,7 +26,7 @@ public class FundTrackingApp {
 
 
     //EFFECT: run the fund tracking app
-    public FundTrackingApp() {
+    public FundTrackingAppConsoleVersion() {
         runApp();
     }
 

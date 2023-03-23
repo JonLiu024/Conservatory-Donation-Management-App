@@ -48,6 +48,10 @@ Phase 2
 - my conservatory from previous usages.
 
 
+Phase 3
 
+- Reference list 
+- wildlife Info.jpg https://www.freepik.com/premium-vector/animal-conservation-logo-design-wildlife-safari-logo-design-inspiration_29775373.htm
+- donor info.jpg https://iconscout.com/icons/animal-donation
 
 
