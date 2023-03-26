@@ -1,35 +1,35 @@
 package ui;
 
+import model.ConservationSite;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ToDonate extends JFrame implements CommonComponents, ActionListener {
+public class ToDonate extends JPanel implements ActionListener, CommonComponents {
 
     private JButton makeDonationsButton;
     private JButton trackDonationsRecordsButton;
     private JButton viewWLInfoButton;
     private JButton backToMainMenuButton;
-    private JPanel titlePanel;
+    private LaunchFundTrackerAppGUI mainFrame;
 
 
 
-    public ToDonate() {
-        this.setTitle("Menu for Donors");
+
+    public ToDonate(LaunchFundTrackerAppGUI mainFrame) {
+        this.mainFrame = mainFrame;
         this.setSize(700, 840);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
-        this.add(createTitlePanel());
         this.add(createMakeDonationButton());
         this.add(createTrackDonationsButton());
         this.add(createViewWLInfoButton());
         this.add(createBackToPreviousButton());
         this.setLayout(null);
-        this.getContentPane().setBackground(new Color(204, 255, 255));
+        this.setBackground(new Color(204, 255, 255));
         Border border = BorderFactory.createLineBorder(new Color(255, 215, 0));
-        this.setVisible(true);
+        this.setVisible(false);
 
     }
 
@@ -87,13 +87,21 @@ public class ToDonate extends JFrame implements CommonComponents, ActionListener
         return viewWLInfoButton;
     }
 
+    private void setMainMenuInvisible() {
+        mainFrame.getLoadButton().setVisible(true);
+        mainFrame.getDonationButton().setVisible(true);
+        mainFrame.getSaveButton().setVisible(true);
+        mainFrame.getAdminButton().setVisible(true);
+    }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton actionSource = (JButton) e.getSource();
         if (actionSource.equals(makeDonationsButton)) {
-
+            this.setVisible(false);
+            mainFrame.getMd().refreshWildlifeList();
+            mainFrame.getMd().setVisible(true);
         }
         if (actionSource.equals(trackDonationsRecordsButton)) {
 
@@ -102,7 +110,8 @@ public class ToDonate extends JFrame implements CommonComponents, ActionListener
 
         }
         if (actionSource.equals(backToMainMenuButton)) {
-            new LaunchFundTrackerAppGUI();
+            this.setVisible(false);
+            setMainMenuInvisible();
 
         }
 
@@ -110,22 +119,6 @@ public class ToDonate extends JFrame implements CommonComponents, ActionListener
 
 
 
-    @Override
-    public JPanel createTitlePanel() {
-        titlePanel = new JPanel();
-        titlePanel.setBounds(0, 0, 700, 140);
-        titlePanel.setBackground(new Color(204, 255, 255));
-        JLabel label1 = new JLabel();
-        ImageIcon titleImage = new ImageIcon("./data/media/logoWildlifeConservatory250.jpg");
-        String labelContent1 = "<html>Welcome to our wildlife conservatory! <BR><BR></html>";
-        label1.setText(labelContent1);
-        label1.setIcon(titleImage);
-        label1.setHorizontalTextPosition(4);
-        label1.setFont(new Font("Serif", 1, 33));
-        label1.setVerticalAlignment(1);
-        titlePanel.add(label1);
-        return titlePanel;
-    }
 
     @Override
     public JButton createBackToPreviousButton() {

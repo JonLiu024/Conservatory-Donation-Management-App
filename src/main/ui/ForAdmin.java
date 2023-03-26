@@ -1,37 +1,38 @@
 package ui;
 
+import model.ConservationSite;
+
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ForAdmin extends JFrame implements ActionListener, CommonComponents {
+public class ForAdmin extends JPanel implements ActionListener, CommonComponents {
 
     private JButton addWildlifeButton;
     private JButton trackDonorInfoButton;
     private JButton trackWildlifeInfoButton;
     private JButton backToMainMenuButton;
-    private JPanel titlePanel;
+    private JPanel trackDonorInfo;
+    private JPanel trackWildlife;
+    private LaunchFundTrackerAppGUI mainFrame;
 
 
 
-    public ForAdmin() {
-        this.setTitle("Menu for Staff");
+
+    public ForAdmin(LaunchFundTrackerAppGUI mainFrame) {
+        this.mainFrame = mainFrame;
         this.setSize(700, 840);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
-        this.add(createTitlePanel());
+        this.setBackground(new Color(204, 255, 255));
         this.add(createAddWildlifeButton());
         this.add(createTrackDonorInfoButton());
         this.add(createTrackWLInfoButton());
         this.add(createBackToPreviousButton());
         this.setLayout(null);
-        this.getContentPane().setBackground(new Color(204, 255, 255));
-        Border border = BorderFactory.createLineBorder(new Color(255, 215, 0));
-        this.setVisible(true);
+        this.setVisible(false);
 
     }
+
 
 
     public JButton createAddWildlifeButton() {
@@ -105,11 +106,20 @@ public class ForAdmin extends JFrame implements ActionListener, CommonComponents
         return backToMainMenuButton;
     }
 
+    private void setMainFrameVisible() {
+        mainFrame.getAdminButton().setVisible(true);
+        mainFrame.getDonationButton().setVisible(true);
+        mainFrame.getSaveButton().setVisible(true);
+        mainFrame.getLoadButton().setVisible(true);
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton actionSource = (JButton) e.getSource();
         if (actionSource.equals(addWildlifeButton)) {
-
+            this.setVisible(false);
+            mainFrame.getAw().setVisible(true);
         }
         if (actionSource.equals(trackDonorInfoButton)) {
 
@@ -118,26 +128,26 @@ public class ForAdmin extends JFrame implements ActionListener, CommonComponents
 
         }
         if (actionSource.equals(backToMainMenuButton)) {
-            new LaunchFundTrackerAppGUI();
-
+            this.setVisible(false);
+            setMainFrameVisible();
         }
 
     }
 
-    @Override
-    public JPanel createTitlePanel() {
-        titlePanel = new JPanel();
-        titlePanel.setBounds(0, 0, 700, 140);
-        titlePanel.setBackground(new Color(204, 255, 255));
-        JLabel label1 = new JLabel();
-        ImageIcon titleImage = new ImageIcon("./data/media/logoWildlifeConservatory250.jpg");
-        String labelContent1 = "<html>Welcome to our wildlife conservatory! <BR><BR></html>";
-        label1.setText(labelContent1);
-        label1.setIcon(titleImage);
-        label1.setHorizontalTextPosition(4);
-        label1.setFont(new Font("Serif", 1, 33));
-        label1.setVerticalAlignment(1);
-        titlePanel.add(label1);
-        return titlePanel;
+    public JButton getAddWildlifeButton() {
+        return addWildlifeButton;
     }
+
+    public JButton getTrackDonorInfoButton() {
+        return trackDonorInfoButton;
+    }
+
+    public JButton getTrackWildlifeInfoButton() {
+        return trackWildlifeInfoButton;
+    }
+
+    public JButton getBackToMainMenuButton() {
+        return backToMainMenuButton;
+    }
+
 }

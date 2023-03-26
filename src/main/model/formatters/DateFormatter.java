@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 public class DateFormatter {
 
 
-    //EFFECT: construct a dateformatter oject
+    //EFFECT: construct a dateFormatter object
     public DateFormatter() {
 
     }

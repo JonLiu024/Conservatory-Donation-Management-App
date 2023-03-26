@@ -12,20 +12,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
+
 
 public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, CommonComponents {
 
     private JPanel titlePanel;
-    private JPanel adminPanel;
-    private JPanel donorPanel;
+    private ForAdmin forAdmin;
+    private ToDonate toDonate;
+    private AddWildlife aw;
+    private MakeDonations md;
+    private CreateDonorProfile cp;
     private JButton adminButton;
     private JButton donationButton;
     private JButton saveButton;
     private JButton loadButton;
 
+
+
+
+
+
+
     private static final String JSON_STORE = "./data/conservatory.json"; //sources file's pathname
-    private ConservationSite conservationSite; //our conservation site
+    private ConservationSite cs; //our conservation site
     private JsonWriter jsonWriter; //JSonWriter to write to file
     private JsonReader jsonReader; //JSonReader to read from file
 
@@ -33,44 +42,66 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
 
     //MODIFIES: this
     //EFFECT: creates a conservation site, a jsonWriter, and a jsonReader to save or load data to/from file
-    private void init() {
-        conservationSite = new ConservationSite();
+    private void modelsInitiator() {
+        cs = new ConservationSite();
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
     }
 
+    private void mainMenuPanelInitiator() {
+        this.add(createTitlePanel());
+        this.add(createDonateButton());
+        this.add(createAdminButton());
+        this.add(createSaveButton());
+        this.add(createLoadButton());
+    }
+
+    private void panelsInitiator() {
+        aw = new AddWildlife(this);
+       forAdmin = new ForAdmin(this);
+       toDonate = new ToDonate(this);
+       md = new MakeDonations(this);
+
+
+
+
+    }
+
+    private void addPanelsToFrame() {
+        this.add(forAdmin);
+        this.add(toDonate);
+        this.add(aw);
+        this.add(md);
+    }
+
+    private void setMainMenuInvisible() {
+        adminButton.setVisible(false);
+        saveButton.setVisible(false);
+        loadButton.setVisible(false);
+        donationButton.setVisible(false);
+    }
+
+
+
+
+
 
 
     public LaunchFundTrackerAppGUI() {
-        init();
+        modelsInitiator();
+        panelsInitiator();
+        mainMenuPanelInitiator();
+        addPanelsToFrame();
         this.setTitle("Wildlife Conservatory ");
         this.setSize(700, 840);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        this.add(createTitlePanel());
-        this.add(createAdminButton());
-        this.add(createDonateButton());
-        this.add(createSaveButton());
-        this.add(createLoadButton());
-        this.add(createAdminPanel());
-        this.add(createDonatePanel());;
         this.setLayout(null);
         this.getContentPane().setBackground(new Color(204, 255, 255));
         Border border = BorderFactory.createLineBorder(new Color(255, 215, 0));
         this.setVisible(true);
     }
 
-
-    public JPanel createAdminPanel() {
-        JLabel label2 = new JLabel();
-        adminPanel = new JPanel();
-        adminPanel.setBounds(0, 141, 700, 350);
-        adminPanel.setBackground(new Color(204, 255, 255));
-        ImageIcon adminImage = new ImageIcon("./data/media/Admin.jpg");
-        label2.setIcon(adminImage);
-        adminPanel.add(label2);
-        return adminPanel;
-    }
 
 
     public JPanel createTitlePanel() {
@@ -91,22 +122,11 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
 
 
 
-    public JPanel createDonatePanel() {
-        donorPanel = new JPanel();
-        donorPanel.setBounds(0, 491, 700, 350);
-        donorPanel.setBackground(new Color(204, 255, 255));
-        JLabel label3 = new JLabel();
-        ImageIcon donateImage = new ImageIcon("./data/media/Donate.jpg");
-        label3.setIcon(donateImage);
-        donorPanel.add(label3);
-        return donorPanel;
-    }
-
 
     public JButton createAdminButton() {
         adminButton = new JButton();
         ImageIcon icon = new ImageIcon("./data/media/for admin.jpg");
-        adminButton.setBounds(276, 276, 150, 80);
+        adminButton.setBounds(251, 326, 200, 80);
         adminButton.setText("For Admin");
         adminButton.setFocusable(false);
         adminButton.setIcon(icon);
@@ -123,7 +143,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     public JButton createDonateButton() {
         donationButton = new JButton();
         ImageIcon icon = new ImageIcon("./data/media/donate logo.png");
-        donationButton.setBounds(276, 626, 150, 80);
+        donationButton.setBounds(251, 476, 200, 80);
         donationButton.setText("To Donate");
         donationButton.setFocusable(false);
         donationButton.setIcon(icon);
@@ -171,11 +191,13 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     public void actionPerformed(ActionEvent e) {
         JButton actionSource = (JButton) e.getSource();
         if (actionSource.equals(adminButton)) {
-            setVisible(false);
-            new ForAdmin();
+            setMainMenuInvisible();
+            forAdmin.setVisible(true);
         }
         if (actionSource.equals(donationButton)) {
-            new ToDonate();
+            setMainMenuInvisible();
+            toDonate.setVisible(true);
+
         }
         if (actionSource.equals(saveButton)) {
             saveToFile();
@@ -184,6 +206,46 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
             loadFromFile();
         }
 
+    }
+
+    public CreateDonorProfile getCp() {
+        return cp;
+    }
+
+    public ForAdmin getForAdmin() {
+        return forAdmin;
+    }
+
+    public ToDonate getToDonate() {
+        return toDonate;
+    }
+
+    public AddWildlife getAw() {
+        return aw;
+    }
+
+    public MakeDonations getMd() {
+        return md;
+    }
+
+    public ConservationSite getCs() {
+        return cs;
+    }
+
+    public JButton getAdminButton() {
+        return adminButton;
+    }
+
+    public JButton getDonationButton() {
+        return donationButton;
+    }
+
+    public JButton getSaveButton() {
+        return saveButton;
+    }
+
+    public JButton getLoadButton() {
+        return loadButton;
     }
 
     @Override
@@ -197,9 +259,9 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     private void saveToFile() {
         try {
             jsonWriter.open();
-            jsonWriter.write(conservationSite);
+            jsonWriter.write(cs);
             jsonWriter.close();
-            String msg = "You have successfully saved " + conservationSite.getName() + " to " + JSON_STORE;
+            String msg = "You have successfully saved " + cs.getName() + " to " + JSON_STORE;
             JOptionPane.showMessageDialog(null, msg, "Save data", JOptionPane.INFORMATION_MESSAGE);
             System.out.println(msg);
         } catch (FileNotFoundException e) {
@@ -217,8 +279,8 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     //REFERENCE: JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     private void loadFromFile() {
         try {
-            conservationSite = jsonReader.read();
-            String msg = "You have successfully loaded " + conservationSite.getName() + " from " + JSON_STORE;
+            cs = jsonReader.read();
+            String msg = "You have successfully loaded " + cs.getName() + " from " + JSON_STORE;
             JOptionPane.showMessageDialog(null, msg, "Load data", JOptionPane.INFORMATION_MESSAGE);
             System.out.println(msg);
         } catch (IOException e) {
