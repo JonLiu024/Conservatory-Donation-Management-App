@@ -102,6 +102,7 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
         JButton source = (JButton) e.getSource();
         if (source.equals(submissionButton)) {
             donate();
+            this.setVisible(false);
         }
         if (source.equals(backToPreviousButton)) {
             this.setVisible(false);
@@ -115,8 +116,8 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
         int reply = JOptionPane.showConfirmDialog(null, msg, "Donor profile",
                 JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.NO_OPTION) {
-            mainFrame.getCp().setVisible(true);
             this.setVisible(false);
+            mainFrame.getCp().setVisible(true);
         } else {
             double userIntendedAmt = optionToAmt(selectDonationAmount().getSelectedItem().toString());
             Wildlife wl = optionToWL(wildlifeOptions.getSelectedItem().toString());
@@ -126,6 +127,7 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
             }
             mainFrame.getCs().addDonor(donor);
             mainFrame.getCs().updateRaisedFunding();
+            mainFrame.getToDonate().setVisible(true);
         }
     }
 
@@ -149,7 +151,9 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
     private Donor getDonor() {
         String userID = JOptionPane.showInputDialog("Please enter your donor ID: ");
         while (!mainFrame.getCs().getDonorIDList().contains(userID)) {
-            userID = JOptionPane.showInputDialog("Please enter your donor ID: ");
+            String msg = "It seems that the ID you entered does not exist, " +
+                    "Please enter an existing donor ID: ";
+            userID = JOptionPane.showInputDialog(msg, JOptionPane.WARNING_MESSAGE);
         }
         for (Donor d : mainFrame.getCs().getListOfDonors()) {
             if (userID.equals(d.getDonorID())) {

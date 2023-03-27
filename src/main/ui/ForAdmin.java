@@ -1,7 +1,5 @@
 package ui;
 
-import model.ConservationSite;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,8 +11,6 @@ public class ForAdmin extends JPanel implements ActionListener, CommonComponents
     private JButton trackDonorInfoButton;
     private JButton trackWildlifeInfoButton;
     private JButton backToMainMenuButton;
-    private JPanel trackDonorInfo;
-    private JPanel trackWildlife;
     private LaunchFundTrackerAppGUI mainFrame;
 
 
@@ -128,7 +124,7 @@ public class ForAdmin extends JPanel implements ActionListener, CommonComponents
         }
         if (actionSource.equals(trackWildlifeInfoButton)) {
             this.setVisible(false);
-            mainFrame.getTrackWildlifeInfo().setVisible(true);
+            mainFrame.getTwlInfoAdmin().setVisible(true);
         }
         if (actionSource.equals(backToMainMenuButton)) {
             this.setVisible(false);

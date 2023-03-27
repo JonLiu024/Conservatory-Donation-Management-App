@@ -5,34 +5,26 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TrackDonationsRecords extends JPanel implements ActionListener, CommonComponents {
-
+public class TrackWildlifeInfoAdmin extends JPanel implements ActionListener, CommonComponents {
     private LaunchFundTrackerAppGUI mainFrame;
     private JButton backToPreviousButton;
 
-
-
-    public TrackDonationsRecords(LaunchFundTrackerAppGUI mainFrame) {
+    public TrackWildlifeInfoAdmin(LaunchFundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
-        this.setBounds(0, 141, 700, 700);
         this.add(createBackToPreviousButton());
-        this.setLayout(null);
+        this.setBounds(0, 141, 700, 700);
         this.setBackground(new Color(204, 255, 255));
+        this.setLayout(null);
         this.setVisible(false);
-
     }
-
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton actionSource = (JButton) e.getSource();
         if (actionSource.equals(backToPreviousButton)) {
             this.setVisible(false);
-            mainFrame.getToDonate().setVisible(true);
+            mainFrame.getForAdmin().setVisible(true);
         }
-
     }
 
     @Override

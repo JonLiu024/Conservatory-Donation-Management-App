@@ -77,6 +77,7 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
                 formatChecker(email);
                 Donor donor = new Donor(donorID, email);
                 mainFrame.getCs().addDonor(donor);
+                clearTextField();
                 this.setVisible(false);
                 mainFrame.getMd().setVisible(true);
             } catch (ExistingDonorIDException exception) {
@@ -85,6 +86,11 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
                 JOptionPane.showMessageDialog(null, exception.getMessage(), "", JOptionPane.WARNING_MESSAGE);
             }
         }
+    }
+
+    private void clearTextField() {
+        this.textFieldEmail.setText("");
+        this.textFieldDonorID.setText("");
     }
 
     @Override

@@ -13,6 +13,7 @@ import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+//Representing the panel associated with the function of adding wildlife into the conservation site
 public class AddWildlife extends JPanel implements ActionListener, CommonComponents, FormatChecker {
 
     private JComboBox conservationStatusOption;

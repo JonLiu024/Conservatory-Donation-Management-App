@@ -1,12 +1,10 @@
 package ui;
 
 import model.ConservationSite;
-import org.json.JSONObject;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,7 +22,8 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     private CreateDonorProfile cp;
     private TrackDonationsRecords trackDonationsRecords;
     private TrackDonorInfo trackDonorInfo;
-    private TrackWildlifeInfo trackWildlifeInfo;
+    private TrackWildlifeInfoDonors twlInfoDonor;
+    private TrackWildlifeInfoAdmin twlInfoAdmin;
     private JLabel backgroundLabel;
     private JButton adminButton;
     private JButton donationButton;
@@ -67,7 +66,8 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         cp = new CreateDonorProfile(this);
         trackDonationsRecords = new TrackDonationsRecords(this);
         trackDonorInfo = new TrackDonorInfo(this);
-        trackWildlifeInfo = new TrackWildlifeInfo(this);
+        twlInfoDonor = new TrackWildlifeInfoDonors(this);
+        twlInfoAdmin = new TrackWildlifeInfoAdmin(this);
 
 
     }
@@ -80,7 +80,9 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         this.add(cp);
         this.add(trackDonationsRecords);
         this.add(trackDonorInfo);
-        this.add(trackWildlifeInfo);
+        this.add(twlInfoDonor);
+        this.add(twlInfoAdmin);
+
 
     }
 
@@ -211,8 +213,12 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         return trackDonorInfo;
     }
 
-    public TrackWildlifeInfo getTrackWildlifeInfo() {
-        return trackWildlifeInfo;
+    public TrackWildlifeInfoAdmin getTwlInfoAdmin() {
+        return twlInfoAdmin;
+    }
+
+    public TrackWildlifeInfoDonors getTwlInfoDonor() {
+        return twlInfoDonor;
     }
 
     public JLabel getBackgroundLabel() {

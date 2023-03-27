@@ -1,7 +1,6 @@
 package ui;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,9 +25,7 @@ public class ToDonate extends JPanel implements ActionListener, CommonComponents
         this.add(createBackToPreviousButton());
         this.setLayout(null);
         this.setBackground(new Color(204, 255, 255));
-        Border border = BorderFactory.createLineBorder(new Color(255, 215, 0));
         this.setVisible(false);
-
     }
 
 
@@ -104,18 +101,15 @@ public class ToDonate extends JPanel implements ActionListener, CommonComponents
         }
         if (actionSource.equals(trackDonationsRecordsButton)) {
             this.setVisible(false);
-
-
+            mainFrame.getTrackDonationsRecords().setVisible(true);
         }
         if (actionSource.equals(viewWLInfoButton)) {
             this.setVisible(false);
-            mainFrame.getTrackWildlifeInfo().setVisible(true);
-
+            mainFrame.getTwlInfoDonor().setVisible(true);
         }
         if (actionSource.equals(backToMainMenuButton)) {
             this.setVisible(false);
             setMainMenuInvisible();
-
         }
 
     }
