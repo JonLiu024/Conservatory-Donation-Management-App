@@ -10,13 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestExistingDonorIDException {
 
-    private ExistingDonorIDException e;
+    private ExistingDonorIDException exception;
 
 
     @Test
     public void testConstructor() {
-        e = new ExistingDonorIDException("a new exception");
-        assertEquals("a new exception", e.getMessage());
+        exception = new ExistingDonorIDException("a new exception");
+        assertEquals("a new exception", exception.getMessage());
     }
 
 

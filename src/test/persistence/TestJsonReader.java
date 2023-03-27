@@ -23,7 +23,6 @@ public class TestJsonReader extends JsonTest{
             writer.open();
             writer.write(cs1);
             writer.close();
-
         } catch (IOException e) {
             fail("Exception should not be thrown!");
         }

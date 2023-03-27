@@ -195,7 +195,6 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         if (actionSource.equals(donationButton)) {
             setMainMenuInvisible();
             toDonate.setVisible(true);
-
         }
         if (actionSource.equals(saveButton)) {
             saveToFile();

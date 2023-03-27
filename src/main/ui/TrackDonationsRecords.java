@@ -19,7 +19,6 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Com
         this.setLayout(null);
         this.setBackground(new Color(204, 255, 255));
         this.setVisible(false);
-
     }
 
 
