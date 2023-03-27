@@ -65,6 +65,9 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         toDonate = new ToDonate(this);
         md = new MakeDonations(this);
         cp = new CreateDonorProfile(this);
+        trackDonationsRecords = new TrackDonationsRecords(this);
+        trackDonorInfo = new TrackDonorInfo(this);
+        trackWildlifeInfo = new TrackWildlifeInfo(this);
 
 
     }
@@ -75,6 +78,10 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         this.add(aw);
         this.add(md);
         this.add(cp);
+        this.add(trackDonationsRecords);
+        this.add(trackDonorInfo);
+        this.add(trackWildlifeInfo);
+
     }
 
     private void setMainMenuInvisible() {
