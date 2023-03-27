@@ -22,6 +22,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     private AddWildlife aw;
     private MakeDonations md;
     private CreateDonorProfile cp;
+    private JLabel backgroundLabel;
     private JButton adminButton;
     private JButton donationButton;
     private JButton saveButton;
@@ -49,11 +50,16 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     }
 
     private void mainMenuPanelInitiator() {
+        backgroundLabel = new JLabel();
+        ImageIcon imageIcon = new ImageIcon("./data/media/background2.jpg");
+        backgroundLabel.setIcon(imageIcon);
+        backgroundLabel.setBounds(1, 200 , 700, 500);
         this.add(createTitlePanel());
         this.add(createDonateButton());
         this.add(createAdminButton());
         this.add(createSaveButton());
         this.add(createLoadButton());
+        this.add(backgroundLabel);
     }
 
     private void panelsInitiator() {
@@ -61,6 +67,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
        forAdmin = new ForAdmin(this);
        toDonate = new ToDonate(this);
        md = new MakeDonations(this);
+       cp = new CreateDonorProfile(this);
 
 
 
@@ -79,6 +86,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         saveButton.setVisible(false);
         loadButton.setVisible(false);
         donationButton.setVisible(false);
+        backgroundLabel.setVisible(false);
     }
 
 
@@ -98,7 +106,6 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         this.setResizable(false);
         this.setLayout(null);
         this.getContentPane().setBackground(new Color(204, 255, 255));
-        Border border = BorderFactory.createLineBorder(new Color(255, 215, 0));
         this.setVisible(true);
     }
 
@@ -159,12 +166,9 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     }
 
     public JButton createSaveButton() {
-        saveButton = new JButton();
-        saveButton.setBounds(326, 741, 125, 100);
-        saveButton.setText("Save to file");
+        saveButton = new JButton("Save to file");
+        saveButton.setBounds(441, 720, 125, 80);
         saveButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
-        saveButton.setVerticalTextPosition(JButton.CENTER);
-        saveButton.setHorizontalTextPosition(JButton.CENTER);
         saveButton.setForeground(Color.black);
         saveButton.setBackground(Color.lightGray);
         saveButton.setVisible(true);
@@ -173,13 +177,10 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     }
 
     public JButton createLoadButton() {
-        loadButton = new JButton();
-        loadButton.setBounds(451, 741, 125, 100);
-        loadButton.setText("Load from file");
+        loadButton = new JButton("Load from file");
+        loadButton.setBounds(566, 720, 125, 80);
         loadButton.setFocusable(false);
         loadButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
-        loadButton.setHorizontalTextPosition(JButton.CENTER);
-        loadButton.setVerticalTextPosition(JButton.CENTER);
         loadButton.setForeground(Color.black);
         loadButton.setBackground(Color.lightGray);
         loadButton.addActionListener(this);
@@ -205,7 +206,10 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         if (actionSource.equals(loadButton)) {
             loadFromFile();
         }
+    }
 
+    public JLabel getBackgroundLabel() {
+        return backgroundLabel;
     }
 
     public CreateDonorProfile getCp() {

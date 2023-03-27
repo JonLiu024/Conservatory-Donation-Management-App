@@ -1,14 +1,9 @@
 package ui;
 
-import model.ConservationSite;
-import model.Wildlife;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MakeDonations extends JPanel implements ActionListener, CommonComponents {
 
@@ -29,13 +24,11 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
         this.mainFrame = mainFrame;
         this.setBounds(0, 141, 700, 700);
         this.setLayout(null);
-        this.add(createWildlifeOptions());
         this.add(createSubmissionButton());
         this.add(selectDonationAmount());
-        if (mainFrame.getCs().getListOfWildlifeNotFullyFunded().size() == 0) {
-            this.add(getAlertUserNoWildlife());
-        }
         this.add(createBackToPreviousButton());
+        this.add(createWildlifeOptions());
+        this.add(getAlertUserNoWildlife());
         this.setBackground(new Color(204, 255, 255));
         this.setVisible(false);
     }
@@ -44,46 +37,49 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
         alertUserNoWildlife = new JLabel();
         alertUserNoWildlife.setText("Currently, no wildlife is accepting donations! ");
         alertUserNoWildlife.setFont(new Font("Comic Sans", Font.BOLD, 18));
-        alertUserNoWildlife.setBounds(50, 161, 700, 25);
+        alertUserNoWildlife.setBounds(126, 120, 500, 25);
         return alertUserNoWildlife;
     }
 
 
     private JComboBox createWildlifeOptions() {
         JLabel label = new JLabel("Please select a wildlife to donate");
-        label.setBounds(100,200, 400, 25);
+        label.setBounds(150,200, 400, 25);
         label.setFont(new Font("Comic Sans", Font.BOLD, 15));
         this.add(label);
-        int numbOfWl = this.mainFrame.getCs().getListOfWildlifeNotFullyFunded().size();
-        String[] wildlifeList = new String[numbOfWl];
-        for (int i = 0; i < numbOfWl; i++) {
-            wildlifeList[i] = mainFrame.getCs().getListOfWildlifeNotFullyFunded().get(i).getWildlifeID();
-        }
-        wildlifeOptions = new JComboBox(wildlifeList);
-        wildlifeOptions.setBounds(100, 226, 400, 25);
+        wildlifeOptions = new JComboBox(new String[0]);
+        wildlifeOptions.setBounds(150, 226, 400, 25);
         return wildlifeOptions;
     }
 
-    public void refreshWildlifeList() {
-        int numbOfWl = this.mainFrame.getCs().getListOfWildlifeNotFullyFunded().size();
+    //Reference: https://stackoverflow.com/questions/4620295/dynamically-change-jcombobox
+    public void refreshWildlifeOptions() {
+        int numbOfWl = mainFrame.getCs().getListOfWildlifeNotFullyFunded().size();
         String[] wildlifeList = new String[numbOfWl];
         for (int i = 0; i < numbOfWl; i++) {
-            wildlifeList[i] = mainFrame.getCs().getListOfWildlifeNotFullyFunded().get(i).getWildlifeID();
+            String option = mainFrame.getCs().getListOfWildlifeNotFullyFunded().get(i).getWildlifeID() + ":"
+                    + mainFrame.getCs().getListOfWildlifeNotFullyFunded().get(i).getSpeciesName();
+            wildlifeList[i] = option;
         }
-        wildlifeOptions = new JComboBox(wildlifeList);
-        wildlifeOptions.setBounds(100, 226, 400, 25);
-        this.add(wildlifeOptions);
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(wildlifeList);
+        wildlifeOptions.removeAllItems();
+        wildlifeOptions.setModel(model);
+        if (numbOfWl == 0) {
+            alertUserNoWildlife.setVisible(true);
+        } else {
+            alertUserNoWildlife.setVisible(false);
+        }
     }
 
 
     private JComboBox selectDonationAmount() {
         JLabel label = new JLabel("Please select the amount of your donation");
-        label.setBounds(100,271, 400, 25);
+        label.setBounds(150,271, 400, 25);
         label.setFont(new Font("Comic Sans", Font.BOLD, 15));
         this.add(label);
         String[] donationOptions = {"$50", "$100", "$200", "$350", "$500"};
         donationAmount = new JComboBox(donationOptions);
-        donationAmount.setBounds(100, 296, 400, 25);
+        donationAmount.setBounds(150, 296, 400, 25);
         return donationAmount;
     }
 
@@ -108,7 +104,6 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
             int reply = JOptionPane.showConfirmDialog(null, msg, "Donor profile",
                     JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-
                 mainFrame.getCp().setVisible(true);
 
             } else {

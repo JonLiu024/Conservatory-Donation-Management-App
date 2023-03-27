@@ -1,7 +1,5 @@
 package ui;
 
-import model.ConservationSite;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -92,6 +90,7 @@ public class ToDonate extends JPanel implements ActionListener, CommonComponents
         mainFrame.getDonationButton().setVisible(true);
         mainFrame.getSaveButton().setVisible(true);
         mainFrame.getAdminButton().setVisible(true);
+        mainFrame.getBackgroundLabel().setVisible(true);
     }
 
 
@@ -100,7 +99,7 @@ public class ToDonate extends JPanel implements ActionListener, CommonComponents
         JButton actionSource = (JButton) e.getSource();
         if (actionSource.equals(makeDonationsButton)) {
             this.setVisible(false);
-            mainFrame.getMd().refreshWildlifeList();
+            mainFrame.getMd().refreshWildlifeOptions();
             mainFrame.getMd().setVisible(true);
         }
         if (actionSource.equals(trackDonationsRecordsButton)) {

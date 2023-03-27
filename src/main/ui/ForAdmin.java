@@ -111,6 +111,7 @@ public class ForAdmin extends JPanel implements ActionListener, CommonComponents
         mainFrame.getDonationButton().setVisible(true);
         mainFrame.getSaveButton().setVisible(true);
         mainFrame.getLoadButton().setVisible(true);
+        mainFrame.getBackgroundLabel().setVisible(true);
 
     }
 
