@@ -22,6 +22,9 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     private AddWildlife aw;
     private MakeDonations md;
     private CreateDonorProfile cp;
+    private TrackDonationsRecords trackDonationsRecords;
+    private TrackDonorInfo trackDonorInfo;
+    private TrackWildlifeInfo trackWildlifeInfo;
     private JLabel backgroundLabel;
     private JButton adminButton;
     private JButton donationButton;
@@ -29,16 +32,10 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     private JButton loadButton;
 
 
-
-
-
-
-
     private static final String JSON_STORE = "./data/conservatory.json"; //sources file's pathname
     private ConservationSite cs; //our conservation site
     private JsonWriter jsonWriter; //JSonWriter to write to file
     private JsonReader jsonReader; //JSonReader to read from file
-
 
 
     //MODIFIES: this
@@ -53,7 +50,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         backgroundLabel = new JLabel();
         ImageIcon imageIcon = new ImageIcon("./data/media/background2.jpg");
         backgroundLabel.setIcon(imageIcon);
-        backgroundLabel.setBounds(1, 200 , 700, 500);
+        backgroundLabel.setBounds(1, 200, 700, 500);
         this.add(createTitlePanel());
         this.add(createDonateButton());
         this.add(createAdminButton());
@@ -64,12 +61,10 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
 
     private void panelsInitiator() {
         aw = new AddWildlife(this);
-       forAdmin = new ForAdmin(this);
-       toDonate = new ToDonate(this);
-       md = new MakeDonations(this);
-       cp = new CreateDonorProfile(this);
-
-
+        forAdmin = new ForAdmin(this);
+        toDonate = new ToDonate(this);
+        md = new MakeDonations(this);
+        cp = new CreateDonorProfile(this);
 
 
     }
@@ -79,6 +74,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         this.add(toDonate);
         this.add(aw);
         this.add(md);
+        this.add(cp);
     }
 
     private void setMainMenuInvisible() {
@@ -88,11 +84,6 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         donationButton.setVisible(false);
         backgroundLabel.setVisible(false);
     }
-
-
-
-
-
 
 
     public LaunchFundTrackerAppGUI() {
@@ -110,7 +101,6 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     }
 
 
-
     public JPanel createTitlePanel() {
         titlePanel = new JPanel();
         titlePanel.setBounds(0, 0, 700, 140);
@@ -126,8 +116,6 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         titlePanel.add(label1);
         return titlePanel;
     }
-
-
 
 
     public JButton createAdminButton() {
@@ -206,6 +194,18 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         if (actionSource.equals(loadButton)) {
             loadFromFile();
         }
+    }
+
+    public TrackDonationsRecords getTrackDonationsRecords() {
+        return trackDonationsRecords;
+    }
+
+    public TrackDonorInfo getTrackDonorInfo() {
+        return trackDonorInfo;
+    }
+
+    public TrackWildlifeInfo getTrackWildlifeInfo() {
+        return trackWildlifeInfo;
     }
 
     public JLabel getBackgroundLabel() {

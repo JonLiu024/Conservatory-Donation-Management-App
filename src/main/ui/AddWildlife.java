@@ -13,7 +13,7 @@ import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AddWildlife extends JPanel implements ActionListener, CommonComponents {
+public class AddWildlife extends JPanel implements ActionListener, CommonComponents, FormatChecker {
 
     private JComboBox conservationStatusOption;
     private JTextField textFieldSpeciesName;
@@ -69,7 +69,6 @@ public class AddWildlife extends JPanel implements ActionListener, CommonCompone
         textFieldTargetFunding.setPreferredSize(new Dimension(300, 30));
         textFieldTargetFunding.setBounds(125, 150, 400, 40);
         return textFieldTargetFunding;
-
     }
 
     public JComboBox generateConservationStatusOptions() {
@@ -117,10 +116,10 @@ public class AddWildlife extends JPanel implements ActionListener, CommonCompone
         return submissionButton;
     }
 
-    private void customOptionPane() {
-        image = new ImageIcon("./data/media/AddWildlifeSuccessful.jpg");
-
-    }
+//    private void customOptionPane() {
+//        image = new ImageIcon("./data/media/AddWildlifeSuccessful.jpg");
+//
+//    }
 
 
     @Override
@@ -157,17 +156,17 @@ public class AddWildlife extends JPanel implements ActionListener, CommonCompone
         }
         ConservationStatus conservationStatus = stringToCS(conservationStatusOption.getSelectedItem().toString());
         double targetFunding = Double.parseDouble(textFieldTargetFunding.getText());
-        dateFormatChecker(textFieldAdmissionDate.getText());
+        formatChecker(textFieldAdmissionDate.getText());
         LocalDate admissionDate = DateFormatter.strToLocalDate(textFieldAdmissionDate.getText());
         Wildlife newWildlife = new Wildlife(speciesName, targetFunding, conservationStatus, admissionDate);
         newWildlife.setDescription(textDescription.getText());
         mainFrame.getCs().addWildlife(newWildlife);
     }
 
-
-    public void dateFormatChecker(String date) throws InputMismatchException {
+    @Override
+    public void formatChecker(String str) throws InputMismatchException {
         Pattern pattern = Pattern.compile("20[0-9]{2}-((0[^0^2]|1[0-2])-([0-2][0-9]|3[0-1]))|(02-([0-2][0-9]))");
-        Matcher matcher = pattern.matcher(date);
+        Matcher matcher = pattern.matcher(str);
         if (!matcher.find()) {
             throw new InputMismatchException("Please enter the admission date in required format");
         }

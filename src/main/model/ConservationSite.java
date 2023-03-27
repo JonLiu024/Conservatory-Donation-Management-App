@@ -166,6 +166,14 @@ public class ConservationSite implements Writable {
         return totalRaisedAmount;
     }
 
+    //MODIFIES: this
+    //EFFECT: the totalFundingRaised is updated, set by the fundsRasiedCalculator
+    public void updateRaisedFunding() {
+        totalFundingRaised = fundsRaisedCalculator();
+    }
+
+
+
 
     //EFFECT: calculates and returns the total target funds of all wildlife; The total target funding is calculated
     //as the sum of target funding for all wildlife in the conservation site
@@ -176,6 +184,7 @@ public class ConservationSite implements Writable {
         }
         return totalTargetFunding;
     }
+
 
     //EFFECT: returns the hashset of donors who have made the highest amount of donations to the conservation site
     public List<Donor> mostGenerousDonor() {

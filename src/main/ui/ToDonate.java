@@ -103,9 +103,13 @@ public class ToDonate extends JPanel implements ActionListener, CommonComponents
             mainFrame.getMd().setVisible(true);
         }
         if (actionSource.equals(trackDonationsRecordsButton)) {
+            this.setVisible(false);
+
 
         }
         if (actionSource.equals(viewWLInfoButton)) {
+            this.setVisible(false);
+            mainFrame.getTrackWildlifeInfo().setVisible(true);
 
         }
         if (actionSource.equals(backToMainMenuButton)) {

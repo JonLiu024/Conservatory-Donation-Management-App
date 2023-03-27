@@ -123,16 +123,17 @@ public class ForAdmin extends JPanel implements ActionListener, CommonComponents
             mainFrame.getAw().setVisible(true);
         }
         if (actionSource.equals(trackDonorInfoButton)) {
-
+            this.setVisible(false);
+            mainFrame.getTrackDonorInfo().setVisible(true);
         }
         if (actionSource.equals(trackWildlifeInfoButton)) {
-
+            this.setVisible(false);
+            mainFrame.getTrackWildlifeInfo().setVisible(true);
         }
         if (actionSource.equals(backToMainMenuButton)) {
             this.setVisible(false);
             setMainFrameVisible();
         }
-
     }
 
     public JButton getAddWildlifeButton() {

@@ -1,35 +1,80 @@
 {
     "totalFundingRaised": 0,
-    "wildlifeListNotFullyFunded": [
-        {
-            "conservationStatus": "NT",
-            "admissionDate": "2022-02-03",
-            "listOfDonors": [],
-            "speciesName": "ohi",
-            "dateFullyFunded": "null",
-            "amountFunded": 0,
-            "wildlifeID": "NT6126",
-            "description": "n",
-            "donationRecords": [],
-            "isFullyFunded": false,
-            "targetFunding": 938204
-        },
-        {
-            "conservationStatus": "VU",
-            "admissionDate": "2022-09-20",
-            "listOfDonors": [],
-            "speciesName": "sdjgl",
-            "dateFullyFunded": "null",
-            "amountFunded": 0,
-            "wildlifeID": "VU7405",
-            "description": "h",
-            "donationRecords": [],
-            "isFullyFunded": false,
-            "targetFunding": 500
-        }
-    ],
-    "totalTargetFunding": 938704,
+    "wildlifeListNotFullyFunded": [{
+        "conservationStatus": "EN",
+        "admissionDate": "2022-02-12",
+        "listOfDonors": [{
+            "profileCreationDate": "2023-03-26",
+            "emailAddress": "jon@ubc.ca",
+            "donorID": "jon",
+            "recordsOfDonations": [
+                {
+                    "amount": 50,
+                    "wildlifeID": "EN4748",
+                    "dateDonationMade": "2023-03-26"
+                },
+                {
+                    "amount": 50,
+                    "wildlifeID": "EN4748",
+                    "dateDonationMade": "2023-03-26"
+                },
+                {
+                    "amount": 50,
+                    "wildlifeID": "EN4748",
+                    "dateDonationMade": "2023-03-26"
+                }
+            ],
+            "totalFundingDonated": 150
+        }],
+        "speciesName": "orca",
+        "dateFullyFunded": "null",
+        "amountFunded": 150,
+        "wildlifeID": "EN4748",
+        "description": "b",
+        "donationRecords": [
+            {
+                "amount": 50,
+                "wildlifeID": "EN4748",
+                "dateDonationMade": "2023-03-26"
+            },
+            {
+                "amount": 50,
+                "wildlifeID": "EN4748",
+                "dateDonationMade": "2023-03-26"
+            },
+            {
+                "amount": 50,
+                "wildlifeID": "EN4748",
+                "dateDonationMade": "2023-03-26"
+            }
+        ],
+        "isFullyFunded": false,
+        "targetFunding": 1000
+    }],
+    "totalTargetFunding": 1000,
     "name": "Wildlife Conservation Facility",
     "wildlifeListFullyFunded": [],
-    "listOfDonor": []
+    "listOfDonor": [{
+        "profileCreationDate": "2023-03-26",
+        "emailAddress": "jon@ubc.ca",
+        "donorID": "jon",
+        "recordsOfDonations": [
+            {
+                "amount": 50,
+                "wildlifeID": "EN4748",
+                "dateDonationMade": "2023-03-26"
+            },
+            {
+                "amount": 50,
+                "wildlifeID": "EN4748",
+                "dateDonationMade": "2023-03-26"
+            },
+            {
+                "amount": 50,
+                "wildlifeID": "EN4748",
+                "dateDonationMade": "2023-03-26"
+            }
+        ],
+        "totalFundingDonated": 150
+    }]
 }

@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class ConservationSiteTest {
+public class TestConservationSite {
 
     private ConservationSite conservationSite1;
     private Wildlife wildlife1;
@@ -124,7 +124,17 @@ public class ConservationSiteTest {
         assertEquals(2, conservationSite1.getDonorIDList().size());
         assertTrue(conservationSite1.getListOfDonors().contains(donor1));
         assertTrue(conservationSite1.getListOfDonors().contains(donor2));
+    }
 
+
+    @Test
+    public void testUpdateRaisedFunding() {
+        conservationSite1.addWildlife(wildlife1);
+        conservationSite1.addWildlife(wildlife2);
+        wildlife1.setAmountFunded(300);
+        wildlife2.setAmountFunded(200);
+        conservationSite1.updateRaisedFunding();
+        assertEquals(500, conservationSite1.getTotalFundingRaised());
     }
 
 
@@ -136,16 +146,25 @@ public class ConservationSiteTest {
         assertEquals(2, conservationSite1.getDonorIDList().size());
         assertTrue(conservationSite1.getDonorIDList().contains("jon26"));
         assertTrue(conservationSite1.getDonorIDList().contains("234"));
-
     }
+
 
     @Test
     public void testFundsRaisedCalculatorZero() {
         conservationSite1.addWildlife(wildlife1);
         conservationSite1.addWildlife(wildlife2);
         assertEquals(0, conservationSite1.fundsRaisedCalculator());
-
     }
+
+
+    @Test
+    public void testFundsRaisedCalculator() {
+        conservationSite1.addWildlife(wildlife1);
+        conservationSite1.addWildlife(wildlife2);
+        wildlife2.setAmountFunded(200);
+        assertEquals(200, conservationSite1.fundsRaisedCalculator());
+    }
+
 
     @Test
     public void testMostGenerousDonorSingleDonor() {
