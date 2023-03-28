@@ -14,7 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 //Representing the panel associated with the function of adding wildlife into the conservation site
-public class AddWildlife extends JPanel implements ActionListener, CommonComponents, FormatChecker {
+public class AddWildlife extends JPanel implements ActionListener, Exitable, FormatDetectable {
 
     private JComboBox conservationStatusOption;
     private JTextField textFieldSpeciesName;
@@ -23,7 +23,6 @@ public class AddWildlife extends JPanel implements ActionListener, CommonCompone
     private JTextArea textDescription;
     private JButton submissionButton;
     private JButton backToPreviousButton;
-    private Icon image;
     private LaunchFundTrackerAppGUI mainFrame;
     private String dialogMsg;
 
@@ -40,7 +39,7 @@ public class AddWildlife extends JPanel implements ActionListener, CommonCompone
         this.add(createAdmissionDate());
         this.add(createDescription());
         this.add(createSubmissionButton());
-        this.add(createBackToPreviousButton());
+        this.add(createGoBackButton());
         this.setBackground(new Color(204, 255, 255));
         this.setVisible(false);
 
@@ -111,7 +110,7 @@ public class AddWildlife extends JPanel implements ActionListener, CommonCompone
         submissionButton = new JButton("Submit");
         submissionButton.setBounds(490, 610, 100, 40);
         submissionButton.setFocusable(false);
-        submissionButton.setFont(new Font("Comic Sans", 1, 12));
+        submissionButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
         submissionButton.setBackground(Color.pink);
         submissionButton.addActionListener(this);
         return submissionButton;
@@ -129,7 +128,7 @@ public class AddWildlife extends JPanel implements ActionListener, CommonCompone
         if (actionSource.equals(submissionButton)) {
             try {
                 addWildlifeToCs();
-                JOptionPane.showMessageDialog(null, dialogMsg, "", JOptionPane.INFORMATION_MESSAGE, image);
+                JOptionPane.showMessageDialog(null, dialogMsg, "", JOptionPane.INFORMATION_MESSAGE);
                 this.setVisible(false);
                 clearTextField();
                 mainFrame.getForAdmin().setVisible(true);
@@ -201,10 +200,10 @@ public class AddWildlife extends JPanel implements ActionListener, CommonCompone
     }
 
     @Override
-    public JButton createBackToPreviousButton() {
+    public JButton createGoBackButton() {
         backToPreviousButton = new JButton("Go back");
         backToPreviousButton.setBounds(590, 610, 100, 40);
-        backToPreviousButton.setFont(new Font("Comic Sans", 1, 12));
+        backToPreviousButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
         backToPreviousButton.setForeground(Color.black);
         backToPreviousButton.setBackground(Color.PINK);
         backToPreviousButton.setVisible(true);

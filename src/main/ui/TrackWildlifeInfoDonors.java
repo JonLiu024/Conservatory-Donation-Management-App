@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TrackWildlifeInfoDonors extends JPanel implements ActionListener, CommonComponents {
+public class TrackWildlifeInfoDonors extends JPanel implements ActionListener, Exitable {
     private LaunchFundTrackerAppGUI mainFrame;
     private JButton backToPreviousButton;
 
@@ -13,7 +13,7 @@ public class TrackWildlifeInfoDonors extends JPanel implements ActionListener, C
         this.mainFrame = mainFrame;
         this.setBounds(0, 141, 700, 700);
         this.setBackground(new Color(204, 255, 255));
-        this.add(createBackToPreviousButton());
+        this.add(createGoBackButton());
         this.setLayout(null);
         this.setVisible(false);
 
@@ -30,7 +30,7 @@ public class TrackWildlifeInfoDonors extends JPanel implements ActionListener, C
     }
 
     @Override
-    public JButton createBackToPreviousButton() {
+    public JButton createGoBackButton() {
         backToPreviousButton = new JButton("Go back");
         backToPreviousButton.setBounds(590, 611, 100, 40);
         backToPreviousButton.setFont(new Font("Comic Sans", 1, 12));

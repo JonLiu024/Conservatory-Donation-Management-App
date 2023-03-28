@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
-public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, CommonComponents {
+public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, Exitable {
 
     private JPanel titlePanel;
     private ForAdmin forAdmin;
@@ -22,8 +22,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     private CreateDonorProfile cp;
     private TrackDonationsRecords trackDonationsRecords;
     private TrackDonorInfo trackDonorInfo;
-    private TrackWildlifeInfoDonors twlInfoDonor;
-    private TrackWildlifeInfoAdmin twlInfoAdmin;
+    private TrackWildlifeInfo twlInfo;
     private JLabel backgroundLabel;
     private JButton adminButton;
     private JButton donationButton;
@@ -66,8 +65,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         cp = new CreateDonorProfile(this);
         trackDonationsRecords = new TrackDonationsRecords(this);
         trackDonorInfo = new TrackDonorInfo(this);
-        twlInfoDonor = new TrackWildlifeInfoDonors(this);
-        twlInfoAdmin = new TrackWildlifeInfoAdmin(this);
+        twlInfo = new TrackWildlifeInfo(this);
 
 
     }
@@ -80,8 +78,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         this.add(cp);
         this.add(trackDonationsRecords);
         this.add(trackDonorInfo);
-        this.add(twlInfoDonor);
-        this.add(twlInfoAdmin);
+        this.add(twlInfo);
 
 
     }
@@ -120,7 +117,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         label1.setText(labelContent1);
         label1.setIcon(titleImage);
         label1.setHorizontalTextPosition(4);
-        label1.setFont(new Font("Serif", 1, 33));
+        label1.setFont(new Font("Serif", Font.BOLD, 33));
         label1.setVerticalAlignment(1);
         titlePanel.add(label1);
         return titlePanel;
@@ -212,13 +209,10 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
         return trackDonorInfo;
     }
 
-    public TrackWildlifeInfoAdmin getTwlInfoAdmin() {
-        return twlInfoAdmin;
+    public TrackWildlifeInfo getTwlInfo() {
+        return twlInfo;
     }
 
-    public TrackWildlifeInfoDonors getTwlInfoDonor() {
-        return twlInfoDonor;
-    }
 
     public JLabel getBackgroundLabel() {
         return backgroundLabel;
@@ -265,7 +259,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, C
     }
 
     @Override
-    public JButton createBackToPreviousButton() {
+    public JButton createGoBackButton() {
         return null;
     }
 

@@ -1,5 +1,5 @@
 package ui;
 
-public interface FormatChecker {
+public interface FormatDetectable {
     void formatChecker(String str);
 }

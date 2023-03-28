@@ -7,9 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.InputMismatchException;
 
-public class MakeDonations extends JPanel implements ActionListener, CommonComponents {
+public class MakeDonations extends JPanel implements ActionListener, Exitable, Updateable {
 
 
     private JComboBox wildlifeOptions;
@@ -26,15 +25,15 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
         this.setLayout(null);
         this.add(createSubmissionButton());
         this.add(selectDonationAmount());
-        this.add(createBackToPreviousButton());
+        this.add(createGoBackButton());
         this.add(createWildlifeOptions());
-        this.add(getAlertUserNoWildlife());
+        this.add(createAlertUserNoWildlife());
         this.setBackground(new Color(204, 255, 255));
         this.setVisible(false);
     }
 
 
-    private JLabel getAlertUserNoWildlife() {
+    private JLabel createAlertUserNoWildlife() {
         alertUserNoWildlife = new JLabel();
         alertUserNoWildlife.setText("Currently, no wildlife is accepting donations! ");
         alertUserNoWildlife.setFont(new Font("Comic Sans", Font.BOLD, 18));
@@ -55,7 +54,8 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
 
 
     //Reference: https://stackoverflow.com/questions/4620295/dynamically-change-jcombobox
-    public void refreshWildlifeOptions() {
+    @Override
+    public void refreshComboBoxOptions() {
         int numbOfWl = mainFrame.getCs().getListOfWildlifeNotFullyFunded().size();
         String[] wildlifeList = new String[numbOfWl];
         for (int i = 0; i < numbOfWl; i++) {
@@ -122,12 +122,16 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
             double userIntendedAmt = optionToAmt(selectDonationAmount().getSelectedItem().toString());
             Wildlife wl = optionToWL(wildlifeOptions.getSelectedItem().toString());
             Donor donor = getDonor();
-            if (donor.makeDonation(wl, userIntendedAmt) < userIntendedAmt) {
+            double amount = donor.makeDonation(wl, userIntendedAmt);
+            if (amount < userIntendedAmt) {
                 mainFrame.getCs().moveWildlifeToFullyFundedList(wl);
             }
             mainFrame.getCs().addDonor(donor);
             mainFrame.getCs().updateRaisedFunding();
             mainFrame.getToDonate().setVisible(true);
+            String message = donor.getDonorID() + " has successfully donated " + "$" + amount
+                    + " to " + wl.getWildlifeID();
+            JOptionPane.showMessageDialog(null, message, "Donation Confirmation", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -143,7 +147,7 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
     }
 
     private double optionToAmt(String str) {
-        String amt = str.substring(1, str.length());
+        String amt = str.substring(1);
         return Double.parseDouble(amt);
     }
 
@@ -151,8 +155,8 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
     private Donor getDonor() {
         String userID = JOptionPane.showInputDialog("Please enter your donor ID: ");
         while (!mainFrame.getCs().getDonorIDList().contains(userID)) {
-            String msg = "It seems that the ID you entered does not exist, " +
-                    "Please enter an existing donor ID: ";
+            String msg = "It seems that the ID you entered does not exist, "
+                    + "Please enter an existing donor ID: ";
             userID = JOptionPane.showInputDialog(msg, JOptionPane.WARNING_MESSAGE);
         }
         for (Donor d : mainFrame.getCs().getListOfDonors()) {
@@ -165,10 +169,10 @@ public class MakeDonations extends JPanel implements ActionListener, CommonCompo
 
 
     @Override
-    public JButton createBackToPreviousButton() {
+    public JButton createGoBackButton() {
         backToPreviousButton = new JButton("Go back");
         backToPreviousButton.setBounds(590, 611, 100, 40);
-        backToPreviousButton.setFont(new Font("Comic Sans", 1, 12));
+        backToPreviousButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
         backToPreviousButton.setForeground(Color.black);
         backToPreviousButton.setBackground(Color.PINK);
         backToPreviousButton.setVisible(true);

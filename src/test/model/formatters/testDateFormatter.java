@@ -22,12 +22,14 @@ public class testDateFormatter {
     @Test
     public void testToStringLocalDate() {
         assertEquals(localDateString, DateFormatter.toStringLocalDate(localDate));
+        assertEquals("None", DateFormatter.toStringLocalDate(null));
 
     }
 
     @Test
     public void testStrToLocalDate() {
         assertEquals(localDate, DateFormatter.strToLocalDate(localDateString));
+        assertNull(DateFormatter.strToLocalDate("None"));
 
     }
 

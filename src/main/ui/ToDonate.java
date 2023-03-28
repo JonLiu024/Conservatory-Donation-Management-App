@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ToDonate extends JPanel implements ActionListener, CommonComponents {
+public class ToDonate extends JPanel implements ActionListener, Exitable {
 
     private JButton makeDonationsButton;
     private JButton trackDonationsRecordsButton;
@@ -22,7 +22,7 @@ public class ToDonate extends JPanel implements ActionListener, CommonComponents
         this.add(createMakeDonationButton());
         this.add(createTrackDonationsButton());
         this.add(createViewWLInfoButton());
-        this.add(createBackToPreviousButton());
+        this.add(createGoBackButton());
         this.setLayout(null);
         this.setBackground(new Color(204, 255, 255));
         this.setVisible(false);
@@ -38,7 +38,7 @@ public class ToDonate extends JPanel implements ActionListener, CommonComponents
         makeDonationsButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
         makeDonationsButton.setVerticalTextPosition(JButton.BOTTOM);
         makeDonationsButton.setHorizontalTextPosition(JButton.CENTER);
-        makeDonationsButton.setIconTextGap(1);;
+        makeDonationsButton.setIconTextGap(1);
         makeDonationsButton.setForeground(Color.black);
         makeDonationsButton.setBackground(Color.PINK);
         makeDonationsButton.setVisible(true);
@@ -56,7 +56,7 @@ public class ToDonate extends JPanel implements ActionListener, CommonComponents
         trackDonationsRecordsButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
         trackDonationsRecordsButton.setVerticalTextPosition(JButton.BOTTOM);
         trackDonationsRecordsButton.setHorizontalTextPosition(JButton.CENTER);
-        trackDonationsRecordsButton.setIconTextGap(1);;
+        trackDonationsRecordsButton.setIconTextGap(1);
         trackDonationsRecordsButton.setForeground(Color.black);
         trackDonationsRecordsButton.setBackground(Color.PINK);
         trackDonationsRecordsButton.setVisible(true);
@@ -96,7 +96,7 @@ public class ToDonate extends JPanel implements ActionListener, CommonComponents
         JButton actionSource = (JButton) e.getSource();
         if (actionSource.equals(makeDonationsButton)) {
             this.setVisible(false);
-            mainFrame.getMd().refreshWildlifeOptions();
+            mainFrame.getMd().refreshComboBoxOptions();
             mainFrame.getMd().setVisible(true);
         }
         if (actionSource.equals(trackDonationsRecordsButton)) {
@@ -105,7 +105,8 @@ public class ToDonate extends JPanel implements ActionListener, CommonComponents
         }
         if (actionSource.equals(viewWLInfoButton)) {
             this.setVisible(false);
-            mainFrame.getTwlInfoDonor().setVisible(true);
+            mainFrame.getTwlInfo().refreshComboBoxOptions();
+            mainFrame.getTwlInfo().setVisible(true);
         }
         if (actionSource.equals(backToMainMenuButton)) {
             this.setVisible(false);
@@ -118,7 +119,7 @@ public class ToDonate extends JPanel implements ActionListener, CommonComponents
 
 
     @Override
-    public JButton createBackToPreviousButton() {
+    public JButton createGoBackButton() {
         backToMainMenuButton = new JButton();
         ImageIcon backImage = new ImageIcon("./data/media/back to previous menu .jpg");
         backToMainMenuButton.setIcon(backImage);

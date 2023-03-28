@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ForAdmin extends JPanel implements ActionListener, CommonComponents {
+public class ForAdmin extends JPanel implements ActionListener, Exitable {
 
     private JButton addWildlifeButton;
     private JButton trackDonorInfoButton;
@@ -23,7 +23,7 @@ public class ForAdmin extends JPanel implements ActionListener, CommonComponents
         this.add(createAddWildlifeButton());
         this.add(createTrackDonorInfoButton());
         this.add(createTrackWLInfoButton());
-        this.add(createBackToPreviousButton());
+        this.add(createGoBackButton());
         this.setLayout(null);
         this.setVisible(false);
 
@@ -40,7 +40,7 @@ public class ForAdmin extends JPanel implements ActionListener, CommonComponents
         addWildlifeButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
         addWildlifeButton.setVerticalTextPosition(JButton.BOTTOM);
         addWildlifeButton.setHorizontalTextPosition(JButton.CENTER);
-        addWildlifeButton.setIconTextGap(1);;
+        addWildlifeButton.setIconTextGap(1);
         addWildlifeButton.setForeground(Color.black);
         addWildlifeButton.setBackground(Color.PINK);
         addWildlifeButton.setVisible(true);
@@ -58,7 +58,7 @@ public class ForAdmin extends JPanel implements ActionListener, CommonComponents
         trackDonorInfoButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
         trackDonorInfoButton.setVerticalTextPosition(JButton.BOTTOM);
         trackDonorInfoButton.setHorizontalTextPosition(JButton.CENTER);
-        trackDonorInfoButton.setIconTextGap(1);;
+        trackDonorInfoButton.setIconTextGap(1);
         trackDonorInfoButton.setForeground(Color.black);
         trackDonorInfoButton.setBackground(Color.PINK);
         trackDonorInfoButton.setVisible(true);
@@ -85,7 +85,7 @@ public class ForAdmin extends JPanel implements ActionListener, CommonComponents
     }
 
     @Override
-    public JButton createBackToPreviousButton() {
+    public JButton createGoBackButton() {
         backToMainMenuButton = new JButton();
         ImageIcon backImage = new ImageIcon("./data/media/back to previous menu .jpg");
         backToMainMenuButton.setIcon(backImage);
@@ -120,12 +120,13 @@ public class ForAdmin extends JPanel implements ActionListener, CommonComponents
         }
         if (actionSource.equals(trackDonorInfoButton)) {
             this.setVisible(false);
-            mainFrame.getTrackDonorInfo().refreshDonorOptions();
+            mainFrame.getTrackDonorInfo().refreshComboBoxOptions();
             mainFrame.getTrackDonorInfo().setVisible(true);
         }
         if (actionSource.equals(trackWildlifeInfoButton)) {
             this.setVisible(false);
-            mainFrame.getTwlInfoAdmin().setVisible(true);
+            mainFrame.getTwlInfo().refreshComboBoxOptions();
+            mainFrame.getTwlInfo().setVisible(true);
         }
         if (actionSource.equals(backToMainMenuButton)) {
             this.setVisible(false);

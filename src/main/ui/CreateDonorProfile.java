@@ -11,7 +11,7 @@ import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CreateDonorProfile extends JPanel implements ActionListener, FormatChecker {
+public class CreateDonorProfile extends JPanel implements ActionListener, FormatDetectable {
     private LaunchFundTrackerAppGUI mainFrame;
     private JTextField textFieldDonorID;
     private JTextField textFieldEmail;
@@ -34,7 +34,7 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
         submissionButton = new JButton("Submit");
         submissionButton.setBounds(490, 610, 100, 40);
         submissionButton.setFocusable(false);
-        submissionButton.setFont(new Font("Comic Sans", 1, 12));
+        submissionButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
         submissionButton.setBackground(Color.pink);
         submissionButton.addActionListener(this);
         return submissionButton;
@@ -95,7 +95,7 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
 
     @Override
     public void formatChecker(String str) throws InputMismatchException {
-        Pattern pattern = Pattern.compile("[0-9a-z]+(\\.[0-9a-z]+)*@[a-z0-9]+\\.(com|ca)");;
+        Pattern pattern = Pattern.compile("[0-9a-z]+(\\.[0-9a-z]+)*@[a-z0-9]+\\.(com|ca)");
         Matcher matcher = pattern.matcher(str);
         if (!matcher.find()) {
             throw new InputMismatchException("Please enter your email address in valid format: ");
