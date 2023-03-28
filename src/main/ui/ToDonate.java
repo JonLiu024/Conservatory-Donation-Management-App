@@ -10,7 +10,7 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
     private JButton makeDonationsButton;
     private JButton trackDonationsRecordsButton;
     private JButton viewWLInfoButton;
-    private JButton backToMainMenuButton;
+    private JButton GoBackButton;
     private LaunchFundTrackerAppGUI mainFrame;
 
 
@@ -108,7 +108,7 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
             mainFrame.getTwlInfo().refreshComboBoxOptions();
             mainFrame.getTwlInfo().setVisible(true);
         }
-        if (actionSource.equals(backToMainMenuButton)) {
+        if (actionSource.equals(GoBackButton)) {
             this.setVisible(false);
             setMainMenuInvisible();
         }
@@ -120,19 +120,19 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
 
     @Override
     public JButton createGoBackButton() {
-        backToMainMenuButton = new JButton();
+        GoBackButton = new JButton();
         ImageIcon backImage = new ImageIcon("./data/media/back to previous menu .jpg");
-        backToMainMenuButton.setIcon(backImage);
-        backToMainMenuButton.setBounds(401, 500, 200, 125);
-        backToMainMenuButton.setText("Back to the main menu");
-        backToMainMenuButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
-        backToMainMenuButton.setVerticalTextPosition(JButton.BOTTOM);
-        backToMainMenuButton.setHorizontalTextPosition(JButton.CENTER);
-        backToMainMenuButton.setIconTextGap(1);
-        backToMainMenuButton.setForeground(Color.black);
-        backToMainMenuButton.setBackground(Color.PINK);
-        backToMainMenuButton.setVisible(true);
-        backToMainMenuButton.addActionListener(this);
-        return backToMainMenuButton;
+        GoBackButton.setIcon(backImage);
+        GoBackButton.setBounds(401, 500, 200, 125);
+        GoBackButton.setText("Back to the main menu");
+        GoBackButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        GoBackButton.setVerticalTextPosition(JButton.BOTTOM);
+        GoBackButton.setHorizontalTextPosition(JButton.CENTER);
+        GoBackButton.setIconTextGap(1);
+        GoBackButton.setForeground(Color.black);
+        GoBackButton.setBackground(Color.PINK);
+        GoBackButton.setVisible(true);
+        GoBackButton.addActionListener(this);
+        return GoBackButton;
     }
 }

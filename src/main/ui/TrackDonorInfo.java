@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, Updateable {
+public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, Updatable {
     private LaunchFundTrackerAppGUI mainFrame;
     private JButton backToPreviousButton;
     private JButton trackButton;

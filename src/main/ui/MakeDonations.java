@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MakeDonations extends JPanel implements ActionListener, Exitable, Updateable {
+public class MakeDonations extends JPanel implements ActionListener, Exitable, Updatable {
 
 
     private JComboBox wildlifeOptions;
@@ -16,7 +16,7 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
     private JLabel alertUserNoWildlife;
     private LaunchFundTrackerAppGUI mainFrame;
     private JButton submissionButton;
-    private JButton backToPreviousButton;
+    private JButton GoBackButton;
 
 
     public MakeDonations(LaunchFundTrackerAppGUI mainFrame) {
@@ -104,7 +104,7 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
             donate();
             this.setVisible(false);
         }
-        if (source.equals(backToPreviousButton)) {
+        if (source.equals(GoBackButton)) {
             this.setVisible(false);
             mainFrame.getToDonate().setVisible(true);
         }
@@ -170,13 +170,13 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
 
     @Override
     public JButton createGoBackButton() {
-        backToPreviousButton = new JButton("Go back");
-        backToPreviousButton.setBounds(590, 611, 100, 40);
-        backToPreviousButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
-        backToPreviousButton.setForeground(Color.black);
-        backToPreviousButton.setBackground(Color.PINK);
-        backToPreviousButton.setVisible(true);
-        backToPreviousButton.addActionListener(this);
-        return backToPreviousButton;
+        GoBackButton = new JButton("Go back");
+        GoBackButton.setBounds(590, 611, 100, 40);
+        GoBackButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
+        GoBackButton.setForeground(Color.black);
+        GoBackButton.setBackground(Color.PINK);
+        GoBackButton.setVisible(true);
+        GoBackButton.addActionListener(this);
+        return GoBackButton;
     }
 }

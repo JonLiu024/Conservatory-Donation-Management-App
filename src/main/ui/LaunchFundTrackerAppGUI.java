@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
-public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, Exitable {
+public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
 
     private JPanel titlePanel;
     private ForAdmin forAdmin;
@@ -258,10 +258,6 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener, E
         return loadButton;
     }
 
-    @Override
-    public JButton createGoBackButton() {
-        return null;
-    }
 
     // EFFECTS: saves the conservation site states to file, alert the user with a window message showing if
     //saving data to file is successful

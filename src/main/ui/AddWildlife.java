@@ -22,7 +22,7 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
     private JTextField textFieldAdmissionDate;
     private JTextArea textDescription;
     private JButton submissionButton;
-    private JButton backToPreviousButton;
+    private JButton GoBackButton;
     private LaunchFundTrackerAppGUI mainFrame;
     private String dialogMsg;
 
@@ -142,7 +142,7 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
                 JOptionPane.showMessageDialog(null, exception.getMessage(), "", JOptionPane.WARNING_MESSAGE);
             }
         }
-        if (actionSource.equals(backToPreviousButton)) {
+        if (actionSource.equals(GoBackButton)) {
             this.setVisible(false);
             mainFrame.getForAdmin().setVisible(true);
         }
@@ -201,14 +201,14 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
 
     @Override
     public JButton createGoBackButton() {
-        backToPreviousButton = new JButton("Go back");
-        backToPreviousButton.setBounds(590, 610, 100, 40);
-        backToPreviousButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
-        backToPreviousButton.setForeground(Color.black);
-        backToPreviousButton.setBackground(Color.PINK);
-        backToPreviousButton.setVisible(true);
-        backToPreviousButton.addActionListener(this);
-        return backToPreviousButton;
+        GoBackButton = new JButton("Go back");
+        GoBackButton.setBounds(590, 610, 100, 40);
+        GoBackButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
+        GoBackButton.setForeground(Color.black);
+        GoBackButton.setBackground(Color.PINK);
+        GoBackButton.setVisible(true);
+        GoBackButton.addActionListener(this);
+        return GoBackButton;
     }
 }
 

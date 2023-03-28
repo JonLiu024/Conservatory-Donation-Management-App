@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitable,
-        Updateable {
+        Updatable {
     private LaunchFundTrackerAppGUI mainFrame;
     private JButton backToPreviousButton;
     private JButton trackButton;
