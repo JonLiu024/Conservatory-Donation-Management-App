@@ -2,18 +2,15 @@ package model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import persistence.JsonWriter;
 import persistence.Writable;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Set;
 
 //Represents a conservation site that holds numbers of injured wildlife that are recovering
 //fully funded and a list of donors
-public class ConservationSite implements Writable {
+public class Conservatory implements Writable {
     private List<Wildlife> wildlifeListNotFullyFunded; //list of admitted wildlife that have not been fully funded yet
     private List<Wildlife> wildlifeListFullyFunded;   // list of admitted wildlife that have been fully funded
     private List<Donor> listOfDonors;   //list of donors profiles that have made donations to the wildlife
@@ -22,11 +19,11 @@ public class ConservationSite implements Writable {
     private String name;
 
 
-    //EFFECT: create a conservation site object; the totalTargetFunding and totalFundingRaised are set zero,
+    //EFFECT: create a Conservatory object; the totalTargetFunding and totalFundingRaised are set zero,
     // listOfDonors is set as an empty donor arraylists;
     // wildlifeListNotFullyFunded is set as an empty wildlife arraylist
     // wildlifeListFullyFunded is set as an empty wildlife arraylist
-    public ConservationSite() {
+    public Conservatory() {
         this.totalTargetFunding = 0;
         this.totalFundingRaised = 0;
         wildlifeListNotFullyFunded = new ArrayList<>();

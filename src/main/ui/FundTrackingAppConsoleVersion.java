@@ -20,7 +20,7 @@ public class FundTrackingAppConsoleVersion {
 // ./src/main/ui/media/<file name>
     private static final String JSON_STORE = "./data/conservatory.json"; //sources file's pathname
     private Scanner scanner;   //scanner to capture user input
-    private ConservationSite conservationSite; //our conservation site
+    private Conservatory conservatory; //our conservation site
     private JsonWriter jsonWriter; //JSonWriter to write to file
     private JsonReader jsonReader; //JSonReader to read from file
 
@@ -79,9 +79,9 @@ public class FundTrackingAppConsoleVersion {
     private void saveToFile() {
         try {
             jsonWriter.open();
-            jsonWriter.write(conservationSite);
+            jsonWriter.write(conservatory);
             jsonWriter.close();
-            System.out.println("You have successfully saved " + conservationSite.getName() + " to " + JSON_STORE);
+            System.out.println("You have successfully saved " + conservatory.getName() + " to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -93,8 +93,8 @@ public class FundTrackingAppConsoleVersion {
     //REFERENCE: JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     private void loadFromFile() {
         try {
-            conservationSite = jsonReader.read();
-            System.out.println("You have successfully loaded " + conservationSite.getName() + " from " + JSON_STORE);
+            conservatory = jsonReader.read();
+            System.out.println("You have successfully loaded " + conservatory.getName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
@@ -148,15 +148,15 @@ public class FundTrackingAppConsoleVersion {
     //EFFECT: prints out the total number of the wildlife in the facility,
     // the total target funding, and total raised funding
     private void viewFacilityInfo() {
-        System.out.println("Our conservation site currently holds " + conservationSite.getListOfAllWL().size()
+        System.out.println("Our conservation site currently holds " + conservatory.getListOfAllWL().size()
                 + " wildlife");
-        System.out.println(conservationSite.getListOfWildlifeNotFullyFunded().size()
+        System.out.println(conservatory.getListOfWildlifeNotFullyFunded().size()
                 + " wildlife are still accepting donations");
-        System.out.println(conservationSite.getWildlifeListFullyFunded().size()
+        System.out.println(conservatory.getWildlifeListFullyFunded().size()
                 + " wildlife are fully funded");
         System.out.println("The total target funding of all wildlife is $"
-                + conservationSite.targetFundingCalculator());
-        System.out.println("$" + conservationSite.fundsRaisedCalculator() + " has been raised from all donations");
+                + conservatory.targetFundingCalculator());
+        System.out.println("$" + conservatory.fundsRaisedCalculator() + " has been raised from all donations");
     }
 
 
@@ -172,7 +172,7 @@ public class FundTrackingAppConsoleVersion {
         LocalDate admissionDate = createAdmissionDate();
         Wildlife newWildlife = new Wildlife(speciesName, targetFunding, conservationStatus, admissionDate);
         newWildlife.setDescription(description);
-        conservationSite.addWildlife(newWildlife);
+        conservatory.addWildlife(newWildlife);
         addNewWildlifeMsg(newWildlife);
     }
 
@@ -277,11 +277,11 @@ public class FundTrackingAppConsoleVersion {
 
     //EFFECT: prints out the number of donors and lists the information of all the donors
     private void viewDonorInfo() {
-        System.out.println(conservationSite.getListOfDonors().size() + " people have made donations to "
+        System.out.println(conservatory.getListOfDonors().size() + " people have made donations to "
                 + "our conservation facility.");
-        if (conservationSite.getListOfDonors().size() != 0) {
+        if (conservatory.getListOfDonors().size() != 0) {
             System.out.println("They are listed as follow: ");
-            for (Donor donor : conservationSite.getListOfDonors()) {
+            for (Donor donor : conservatory.getListOfDonors()) {
                 System.out.println("Donor ID: " + donor.getDonorID() + "\t" + "Email address: "
                         + donor.getEmailAddress()
                         + "\t" + "profile creation date: "
@@ -296,12 +296,12 @@ public class FundTrackingAppConsoleVersion {
     //and prompts the user to select specific wildlife to view its information if the conservation site has at least
     //one wildlife
     private void viewWildlifeInfo() {
-        System.out.println("Our conservation site currently has " + conservationSite.getListOfAllWL().size()
+        System.out.println("Our conservation site currently has " + conservatory.getListOfAllWL().size()
                 + " wildlife");
-        System.out.println(conservationSite.getListOfWildlifeNotFullyFunded().size()
+        System.out.println(conservatory.getListOfWildlifeNotFullyFunded().size()
                 + " wildlife are accepting donation\n"
-                + conservationSite.getWildlifeListFullyFunded().size() + " wildlife have been fully funded");
-        if (conservationSite.getListOfAllWL().size() != 0) {
+                + conservatory.getWildlifeListFullyFunded().size() + " wildlife have been fully funded");
+        if (conservatory.getListOfAllWL().size() != 0) {
             viewSpecificWildlifeInfo();
         }
     }
@@ -314,7 +314,7 @@ public class FundTrackingAppConsoleVersion {
         first:
         while (true) {
             entry = scanner.next();
-            for (Wildlife wildlife : conservationSite.getListOfAllWL()) {
+            for (Wildlife wildlife : conservatory.getListOfAllWL()) {
                 if (wildlife.getWildlifeID().equals(entry)) {
                     printWildlifeInfo(wildlife);
                     break first;
@@ -345,12 +345,12 @@ public class FundTrackingAppConsoleVersion {
     //has at least one wildlife
     private void displayAllWL() {
         System.out.println("***********************************************************");
-        if (conservationSite.getListOfAllWL().size() == 0) {
+        if (conservatory.getListOfAllWL().size() == 0) {
             System.out.println("The conservation site currently has no wildlife!");
         } else {
             System.out.println("The wildlife in the conservation sites are listed as following: ");
             System.out.println("(Wildlife ID : Wildlife Species)");
-            for (Wildlife wildlife : conservationSite.getListOfAllWL()) {
+            for (Wildlife wildlife : conservatory.getListOfAllWL()) {
                 System.out.println(wildlife.getWildlifeID() + " : " + wildlife.getSpeciesName());
             }
         }
@@ -361,12 +361,12 @@ public class FundTrackingAppConsoleVersion {
     //EFFECT: prints out all the wildlife that are not fully funded in the form of (wildlife ID: wildlife species)
     //prints out message to alert user if there is no wildlife accepting donations
     private void displayAllWLNotFullyFunded() {
-        if (conservationSite.getListOfWildlifeNotFullyFunded().size() == 0) {
+        if (conservatory.getListOfWildlifeNotFullyFunded().size() == 0) {
             System.out.println("There is no wildlife currently accepting donations");
             System.out.println("Please wait for the admin team to create new wildlife profile");
         } else {
             System.out.println("These wildlife are currently accepting donations: ");
-            for (Wildlife wildlife : conservationSite.getListOfWildlifeNotFullyFunded()) {
+            for (Wildlife wildlife : conservatory.getListOfWildlifeNotFullyFunded()) {
                 System.out.println(wildlife.getWildlifeID() + " : " + wildlife.getSpeciesName());
             }
         }
@@ -377,7 +377,7 @@ public class FundTrackingAppConsoleVersion {
     //one wildlife if the conservation site has at least one wildlife
     private void makeDonation() {
         displayAllWLNotFullyFunded();
-        if (conservationSite.getListOfAllWL().size() != 0) {
+        if (conservatory.getListOfAllWL().size() != 0) {
             toDonate();
         }
     }
@@ -391,15 +391,15 @@ public class FundTrackingAppConsoleVersion {
         first:
         while (!selectionFound) {
             String command = scanner.next();
-            for (Wildlife wildlife : conservationSite.getListOfWildlifeNotFullyFunded()) {
+            for (Wildlife wildlife : conservatory.getListOfWildlifeNotFullyFunded()) {
                 if (wildlife.getWildlifeID().equals(command)) {
                     double userIntendedAmount = selectDonationAmt();
                     Donor donor = getDonor();
                     double actualFundingAmt = donor.makeDonation(wildlife, userIntendedAmount);
-                    conservationSite.addDonor(donor);
+                    conservatory.addDonor(donor);
                     makeDonationMsg(userIntendedAmount, actualFundingAmt, wildlife);
                     if (actualFundingAmt < userIntendedAmount) {
-                        conservationSite.moveWildlifeToFullyFundedList(wildlife);
+                        conservatory.moveWildlifeToFullyFundedList(wildlife);
                     }
                     selectionFound = true;
                     break first;
@@ -451,7 +451,7 @@ public class FundTrackingAppConsoleVersion {
     //it
     private Donor findDonorFromList() {
         Donor donor = null;
-        List<String> donorIDList = conservationSite.getDonorIDList();
+        List<String> donorIDList = conservatory.getDonorIDList();
         if (donorIDList.size() == 0) {
             System.out.println("No one has made donations to our conservation facility yet");
         } else {
@@ -461,7 +461,7 @@ public class FundTrackingAppConsoleVersion {
                 System.out.println("Please enter an existing donor ID: ");
                 entry = scanner.next();
             }
-            for (Donor d : conservationSite.getListOfDonors()) {
+            for (Donor d : conservatory.getListOfDonors()) {
                 if (d.getDonorID().equals(entry)) {
                     donor = d;
                 }
@@ -521,7 +521,7 @@ public class FundTrackingAppConsoleVersion {
     //EFFECT: prompts the user to create a donor ID and returns this ID, re-prompts the user
     //to enter a non-existing ID if the id he entered already existed
     private String createDonorID() {
-        List<String> donorIDList = conservationSite.getDonorIDList();
+        List<String> donorIDList = conservatory.getDonorIDList();
         System.out.println("Please create your donor user ID and enter it here:  ");
         String entryID = scanner.next();
         while (donorIDList.contains(entryID)) {
@@ -549,7 +549,7 @@ public class FundTrackingAppConsoleVersion {
     //MODIFIES: this
     //EFFECT: initiates the conservation site and the scanner object to capture user inputs
     private void init() {
-        conservationSite = new ConservationSite();
+        conservatory = new Conservatory();
         scanner = new Scanner(System.in);
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);

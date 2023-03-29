@@ -1,6 +1,6 @@
 package persistence;
 
-import model.ConservationSite;
+import model.Conservatory;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -36,7 +36,7 @@ public class JsonWriter {
     //EFFECTS: converts the data in conservation site cs into a JSON object and writes
     //the JSON to file.
     //REFERENCE: JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
-    public void write(ConservationSite cs) {
+    public void write(Conservatory cs) {
         JSONObject json = cs.toJson();
         saveToFile(json.toString(INDENTFACTOR));
     }

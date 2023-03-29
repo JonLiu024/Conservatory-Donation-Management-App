@@ -13,8 +13,8 @@ import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//Representing the panel associated with the function of adding wildlife into the conservation site
-public class AddWildlife extends JPanel implements ActionListener, Exitable, FormatDetectable {
+//Representing the panel and the function to add wildlife to the conservation site
+public class AddWildlife extends JPanel implements ActionListener, Exitable, FormatDetectable, Resetable {
 
     private JComboBox conservationStatusOption;
     private JTextField textFieldSpeciesName;
@@ -23,11 +23,12 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
     private JTextArea textDescription;
     private JButton submissionButton;
     private JButton goBackButton;
-    private LaunchFundTrackerAppGUI mainFrame;
+    private final LaunchFundTrackerAppGUI mainFrame;
     private String dialogMsg;
 
-
-
+    //REQUIRES: mainFrame is not null
+    //EFFECT: construct a AddWildlife object with associate features of the panels (bounds, background colour, layout),
+    //sets mainFrame, and adds associated JComponents
     public AddWildlife(LaunchFundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         dialogMsg = "Wildlife added successfully";
@@ -116,10 +117,6 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
         return submissionButton;
     }
 
-//    private void customOptionPane() {
-//        image = new ImageIcon("./data/media/AddWildlifeSuccessful.jpg");
-//
-//    }
 
 
     @Override
@@ -130,7 +127,7 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
                 addWildlifeToCs();
                 JOptionPane.showMessageDialog(null, dialogMsg, "", JOptionPane.INFORMATION_MESSAGE);
                 this.setVisible(false);
-                clearTextField();
+                clearContents();
                 mainFrame.getForAdmin().setVisible(true);
             } catch (NullPointerException exception) {
                 String msg = "Please fill in all the required information sections ";
@@ -148,8 +145,10 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
         }
     }
 
-
-    private void addWildlifeToCs() throws NullPointerException, NumberFormatException,InputMismatchException {
+    //MODIFIES: this
+    //EFFECTS: create a wildlife and set its fields by the textFields inputs, adds the wildlife into the cs of
+    //mainFrame
+    private void addWildlifeToCs() {
         String speciesName = textFieldSpeciesName.getText();
         if (speciesName.equals("")) {
             throw new NullPointerException();
@@ -172,14 +171,9 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
         }
     }
 
-    private void clearTextField() {
-        textDescription.setText("");
-        textFieldSpeciesName.setText("");
-        textFieldAdmissionDate.setText("");
-        textFieldTargetFunding.setText("");
 
-    }
-
+    //REQUIRES: cs is not null
+    //EFFECT: convert the string into its corresponding conservation status and returns it
     public ConservationStatus stringToCS(String cs) {
         switch (cs) {
             case "Least Concerned":
@@ -209,6 +203,14 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
         goBackButton.setVisible(true);
         goBackButton.addActionListener(this);
         return goBackButton;
+    }
+
+    @Override
+    public void clearContents() {
+        textDescription.setText("");
+        textFieldSpeciesName.setText("");
+        textFieldAdmissionDate.setText("");
+        textFieldTargetFunding.setText("");
     }
 }
 

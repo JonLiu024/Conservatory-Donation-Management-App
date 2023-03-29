@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class TrackDonationsRecords extends JPanel implements ActionListener, Exitable, Resetable {
 
-    private LaunchFundTrackerAppGUI mainFrame;
+    private final LaunchFundTrackerAppGUI mainFrame;
     private JButton backToPreviousButton;
     private JTextField userEntry;
     private JLabel donationRecordsLabel;
@@ -85,17 +85,20 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
 
 
     private void refreshDonationRecordsLabel(Donor d) {
-        String contents = "<html>The donations records for " + d.getDonorID() + "are listed below:";
-        for (Donation donation : d.getRecordsOfDonations()) {
-            String wlID = donation.getWildlifeID();
-            double amt = donation.getAmount();
-            String date = DateFormatter.toStringLocalDate(donation.getDateDonationMade());
-            String msg = "<br>$" + amt + " was donated to " + wlID + " on " + date;
-            System.out.println(msg);
-            contents = contents + msg;
+        String contents = "<html>The donations records for " + d.getDonorID() + " are listed below:";
+        if (d.getRecordsOfDonations().size() == 0) {
+            contents = d.getDonorID() + " has not make any donation yet!";
+        } else {
+            for (Donation donation : d.getRecordsOfDonations()) {
+                String wlID = donation.getWildlifeID();
+                double amt = donation.getAmount();
+                String date = DateFormatter.toStringLocalDate(donation.getDateDonationMade());
+                String msg = "<br>$" + amt + " was donated to " + wlID + " on " + date;
+                System.out.println(msg);
+                contents = contents + msg;
+            }
+            contents += "</html>";
         }
-        contents += "</html>";
-        System.out.println(contents);
         donationRecordsLabel.setText(contents);
     }
 

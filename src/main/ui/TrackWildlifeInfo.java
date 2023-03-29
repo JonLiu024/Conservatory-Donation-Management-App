@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitable,
         Updatable, Resetable {
-    private LaunchFundTrackerAppGUI mainFrame;
+    private final LaunchFundTrackerAppGUI mainFrame;
     private JButton backToPreviousButton;
     private JButton trackButton;
     private JButton trackFullyFundedWlButton;

@@ -14,7 +14,7 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
     private JComboBox wildlifeOptions;
     private JComboBox donationAmount;
     private JLabel alertUserNoWildlife;
-    private LaunchFundTrackerAppGUI mainFrame;
+    private final LaunchFundTrackerAppGUI mainFrame;
     private JButton submissionButton;
     private JButton goBackButton;
 

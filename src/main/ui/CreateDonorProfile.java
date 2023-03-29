@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CreateDonorProfile extends JPanel implements ActionListener, FormatDetectable {
-    private LaunchFundTrackerAppGUI mainFrame;
+    private final LaunchFundTrackerAppGUI mainFrame;
     private JTextField textFieldDonorID;
     private JTextField textFieldEmail;
     private JButton submissionButton;

@@ -11,7 +11,7 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
     private JButton trackDonationsRecordsButton;
     private JButton trackWLInfoButton;
     private JButton goBackButton;
-    private LaunchFundTrackerAppGUI mainFrame;
+    private final LaunchFundTrackerAppGUI mainFrame;
 
 
 

@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, Updatable, Resetable {
-    private LaunchFundTrackerAppGUI mainFrame;
+    private final LaunchFundTrackerAppGUI mainFrame;
     private JButton backToPreviousButton;
     private JButton trackButton;
     private JComboBox donorList;

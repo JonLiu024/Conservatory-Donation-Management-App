@@ -1,11 +1,9 @@
 package persistence;
 
-import model.ConservationSite;
+import model.Conservatory;
 import model.ConservationStatus;
 import model.Donor;
 import model.Wildlife;
-import org.json.JSONObject;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -31,14 +29,14 @@ public class TestJsonWriter extends JsonTest{
     @Test
     void testWriterEmptyCsValidFile() {
         try{
-            ConservationSite cs = new ConservationSite();
+            Conservatory cs = new Conservatory();
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyCsJsonFile.json");
             writer.open();
             writer.write(cs);
             writer.close();
 
             JsonReader jsonReader = new JsonReader("./data/testWriterEmptyCsJsonFile.json");
-            ConservationSite cs1 = jsonReader.read();
+            Conservatory cs1 = jsonReader.read();
             assertEquals(cs.getName(), cs1.getName());
             assertEquals(0, cs1.getListOfDonors().size());
             assertEquals(0, cs1.getListOfWildlifeNotFullyFunded().size());
@@ -54,7 +52,7 @@ public class TestJsonWriter extends JsonTest{
     @Test
     void testWriterGeneralCsValidFile() {
         try{
-            ConservationSite cs = new ConservationSite();
+            Conservatory cs = new Conservatory();
             Wildlife wildlife1 = new Wildlife("orca", 1000, ConservationStatus.CD, LocalDate.now());
             Wildlife wildlife2 = new Wildlife("blue whale", 400, ConservationStatus.EN, LocalDate.now());
             Donor donor1 = new Donor("Jon", "jon@ubc.ca");
@@ -70,7 +68,7 @@ public class TestJsonWriter extends JsonTest{
             writer.close();
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralCsJsonFile.json");
-            ConservationSite cs1 = reader.read();
+            Conservatory cs1 = reader.read();
             assertEquals(cs.getName(), cs1.getName());
             assertEquals(cs.getTotalTargetFunding(), cs1.getTotalTargetFunding());
             assertEquals(cs.getTotalFundingRaised(), cs1.getTotalFundingRaised());

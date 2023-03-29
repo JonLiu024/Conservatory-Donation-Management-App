@@ -4,10 +4,8 @@ import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -18,7 +16,7 @@ public class TestJsonReader extends JsonTest{
     @BeforeEach
     void setup() {
         try {
-            ConservationSite cs1 = new ConservationSite();
+            Conservatory cs1 = new Conservatory();
             JsonWriter writer = new JsonWriter("./data/testReaderEmptyCsJsonFile.json");
             writer.open();
             writer.write(cs1);
@@ -32,7 +30,7 @@ public class TestJsonReader extends JsonTest{
     void testReaderNonExistingFile() {
         JsonReader jsonReader = new JsonReader("./data/NoSuchFile.json");
         try {
-            ConservationSite cs = jsonReader.read();
+            Conservatory cs = jsonReader.read();
             fail("IO exception expected");
         } catch (IOException e) {
             //pass
@@ -45,7 +43,7 @@ public class TestJsonReader extends JsonTest{
     void testReaderEmptyFile() {
         JsonReader jsonReader = new JsonReader("./data/testReaderEmptyCsJsonFile.json");
         try {
-            ConservationSite cs = jsonReader.read();
+            Conservatory cs = jsonReader.read();
             assertEquals("Wildlife Conservation Facility", cs.getName());
             assertEquals(0, cs.getListOfWildlifeNotFullyFunded().size());
             assertEquals(0, cs.getWildlifeListFullyFunded().size());
@@ -61,7 +59,7 @@ public class TestJsonReader extends JsonTest{
     void testReaderGeneralConservationSite() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralCsJsonFile.json");
         try{
-            ConservationSite cs1 = new ConservationSite();
+            Conservatory cs1 = new Conservatory();
             Wildlife wildlife1 = new Wildlife("orca", 1000, ConservationStatus.CD, LocalDate.now());
             Wildlife wildlife2 = new Wildlife("blue whale", 400, ConservationStatus.EN, LocalDate.now());
             cs1.addWildlife(wildlife1);
@@ -83,7 +81,7 @@ public class TestJsonReader extends JsonTest{
             writer.close();
 
 
-            ConservationSite cs2 = reader.read();
+            Conservatory cs2 = reader.read();
             assertEquals(cs1.getName(), cs2.getName());
             assertEquals(cs1.getTotalTargetFunding(), cs2.getTotalTargetFunding());
             assertEquals(cs1.getTotalFundingRaised(), cs2.getTotalFundingRaised());

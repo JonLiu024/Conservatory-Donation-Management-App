@@ -1,6 +1,6 @@
 package ui;
 
-import model.ConservationSite;
+import model.Conservatory;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -31,7 +31,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
 
 
     private static final String JSON_STORE = "./data/conservatory.json"; //sources file's pathname
-    private ConservationSite cs; //our conservation site
+    private Conservatory cs; //our conservation site
     private JsonWriter jsonWriter; //JSonWriter to write to file
     private JsonReader jsonReader; //JSonReader to read from file
 
@@ -39,7 +39,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
     //MODIFIES: this
     //EFFECT: creates a conservation site, a jsonWriter, and a jsonReader to save or load data to/from file
     private void modelsInitiator() {
-        cs = new ConservationSite();
+        cs = new Conservatory();
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
     }
@@ -238,7 +238,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         return md;
     }
 
-    public ConservationSite getCs() {
+    public Conservatory getCs() {
         return cs;
     }
 

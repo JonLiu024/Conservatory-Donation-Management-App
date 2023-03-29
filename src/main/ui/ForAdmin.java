@@ -11,7 +11,7 @@ public class ForAdmin extends JPanel implements ActionListener, Exitable {
     private JButton trackDonorInfoButton;
     private JButton trackWildlifeInfoButton;
     private JButton goBackButton;
-    private LaunchFundTrackerAppGUI mainFrame;
+    private final LaunchFundTrackerAppGUI mainFrame;
 
 
 

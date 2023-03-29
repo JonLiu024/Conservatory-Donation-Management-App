@@ -2,7 +2,7 @@ package persistence;
 
 
 import model.formatters.DateFormatter;
-import model.ConservationSite;
+import model.Conservatory;
 import model.ConservationStatus;
 import model.Wildlife;
 import model.Donor;
@@ -34,7 +34,7 @@ public class JsonReader {
     //EFFECTS: reads a conservationSite from file and returns it;
     // throws IOException if an error occurs reading data from file
     //REFERENCE: JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
-    public ConservationSite read() throws IOException {
+    public Conservatory read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseConservationSite(jsonObject);
@@ -42,8 +42,8 @@ public class JsonReader {
     }
 
     //EFFECTS: parses conservationSite from JSON object and returns it
-    public ConservationSite parseConservationSite(JSONObject jsonObject) {
-        ConservationSite cs = new ConservationSite();
+    public Conservatory parseConservationSite(JSONObject jsonObject) {
+        Conservatory cs = new Conservatory();
         implementsWildlifeList(cs, jsonObject);
         implementsDonorList(cs, jsonObject);
         cs.setTotalTargetFunding(jsonObject.getDouble("totalTargetFunding"));
@@ -55,7 +55,7 @@ public class JsonReader {
     //MODIFIES: cs
     //EFFECTS: parses wildlifeListNotFullyFunded and wildlifeListFullyFunded from JSON object
     //and added them into the conservation site cs
-    private void implementsWildlifeList(ConservationSite cs, JSONObject jsonObject) {
+    private void implementsWildlifeList(Conservatory cs, JSONObject jsonObject) {
         JSONArray jsonArrayWlNotFullyFunded = jsonObject.getJSONArray("wildlifeListNotFullyFunded");
         List<Wildlife> wildlifeListNotFullyFunded = new ArrayList<>();
         for (Object json: jsonArrayWlNotFullyFunded) {
@@ -76,7 +76,7 @@ public class JsonReader {
     //REQUIRES: cs is not null
     //MODIFIES: cs
     //EFFECT: parses list of donors from the JSON object and adds that into the Conservation site cs
-    private void implementsDonorList(ConservationSite cs, JSONObject jsonObject) {
+    private void implementsDonorList(Conservatory cs, JSONObject jsonObject) {
         JSONArray donorsListJsonArray = jsonObject.getJSONArray("listOfDonor");
         List<Donor> listOfDonor = new ArrayList<>();
         for (Object json: donorsListJsonArray) {
