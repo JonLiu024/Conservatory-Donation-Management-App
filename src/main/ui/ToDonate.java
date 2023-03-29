@@ -9,7 +9,7 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
 
     private JButton makeDonationsButton;
     private JButton trackDonationsRecordsButton;
-    private JButton viewWLInfoButton;
+    private JButton trackWLInfoButton;
     private JButton GoBackButton;
     private LaunchFundTrackerAppGUI mainFrame;
 
@@ -66,20 +66,20 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
 
 
     public JButton createViewWLInfoButton() {
-        viewWLInfoButton = new JButton();
+        trackWLInfoButton = new JButton();
         ImageIcon trackWLInfoImage = new ImageIcon("./data/media/wildlife info.jpg");
-        viewWLInfoButton.setIcon(trackWLInfoImage);
-        viewWLInfoButton.setBounds(101, 500, 200, 125);
-        viewWLInfoButton.setText("Track wildlife info");
-        viewWLInfoButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
-        viewWLInfoButton.setVerticalTextPosition(JButton.BOTTOM);
-        viewWLInfoButton.setHorizontalTextPosition(JButton.CENTER);
-        viewWLInfoButton.setIconTextGap(1);
-        viewWLInfoButton.setForeground(Color.black);
-        viewWLInfoButton.setBackground(Color.PINK);
-        viewWLInfoButton.setVisible(true);
-        viewWLInfoButton.addActionListener(this);
-        return viewWLInfoButton;
+        trackWLInfoButton.setIcon(trackWLInfoImage);
+        trackWLInfoButton.setBounds(101, 500, 200, 125);
+        trackWLInfoButton.setText("Track wildlife info");
+        trackWLInfoButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        trackWLInfoButton.setVerticalTextPosition(JButton.BOTTOM);
+        trackWLInfoButton.setHorizontalTextPosition(JButton.CENTER);
+        trackWLInfoButton.setIconTextGap(1);
+        trackWLInfoButton.setForeground(Color.black);
+        trackWLInfoButton.setBackground(Color.PINK);
+        trackWLInfoButton.setVisible(true);
+        trackWLInfoButton.addActionListener(this);
+        return trackWLInfoButton;
     }
 
     private void setMainMenuInvisible() {
@@ -103,7 +103,7 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
             this.setVisible(false);
             mainFrame.getTrackDonationsRecords().setVisible(true);
         }
-        if (actionSource.equals(viewWLInfoButton)) {
+        if (actionSource.equals(trackWLInfoButton)) {
             this.setVisible(false);
             mainFrame.getTwlInfo().refreshComboBoxOptions();
             mainFrame.getTwlInfo().setVisible(true);

@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TrackDonationsRecords extends JPanel implements ActionListener, Exitable {
+public class TrackDonationsRecords extends JPanel implements ActionListener, Exitable, Resetable {
 
     private LaunchFundTrackerAppGUI mainFrame;
     private JButton backToPreviousButton;
@@ -54,9 +54,6 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
         return userEntry;
     }
 
-    private void clearTextField() {
-        userEntry.setText("");
-    }
 
 
     @Override
@@ -64,7 +61,7 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
         JButton actionSource = (JButton) e.getSource();
         if (actionSource.equals(backToPreviousButton)) {
             this.setVisible(false);
-            clearTextField();
+            clearContents();
             mainFrame.getToDonate().setVisible(true);
         }
         if (actionSource.equals(trackDonationButton)) {
@@ -88,12 +85,13 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
 
 
     private void refreshDonationRecordsLabel(Donor d) {
-        String contents = "<html>";
+        String contents = "<html>The donations records for " + d.getDonorID() + "are listed below:";
         for (Donation donation : d.getRecordsOfDonations()) {
             String wlID = donation.getWildlifeID();
             double amt = donation.getAmount();
             String date = DateFormatter.toStringLocalDate(donation.getDateDonationMade());
             String msg = "<br>$" + amt + " was donated to " + wlID + " on " + date;
+            System.out.println(msg);
             contents = contents + msg;
         }
         contents += "</html>";
@@ -105,7 +103,6 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
     private Donor findDonor() {
         String donorID = userEntry.getText();
         Map<String, Donor> donorMap = new HashMap<>();
-        List<String> donorIDList = mainFrame.getCs().getDonorIDList();
         List<Donor> donorList = mainFrame.getCs().getListOfDonors();
         for (Donor d : donorList) {
             donorMap.put(d.getDonorID(), d);
@@ -123,5 +120,11 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
         backToPreviousButton.setVisible(true);
         backToPreviousButton.addActionListener(this);
         return backToPreviousButton;
+    }
+
+    @Override
+    public void clearContents() {
+        userEntry.setText("");
+        donationRecordsLabel.setText("");
     }
 }

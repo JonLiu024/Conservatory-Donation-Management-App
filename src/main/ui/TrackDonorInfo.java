@@ -43,7 +43,7 @@ public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, 
         if (actionSource.equals(backToPreviousButton)) {
             donorList.setSelectedIndex(0);
             this.setVisible(false);
-            clearLabelContents();
+            clearContents();
             mainFrame.getForAdmin().setVisible(true);
         }
         if (actionSource.equals(mostGenerousDonorButton)) {
@@ -90,6 +90,10 @@ public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, 
     }
 
     private void refreshMostGenerousDonor() {
+        if (mainFrame.getCs().getListOfDonors().size() == 0) {
+            String msg = "Currently there is no donor!";
+            mostGenerousDonorLabel.setText(msg);
+        }
         List<Donor> mostGenerousDonorList = mainFrame.getCs().mostGenerousDonor();
         String msg = "<html>Currently, the most generous donor(s) in our conservatory are: ";
         for (Donor d: mostGenerousDonorList) {
@@ -150,7 +154,7 @@ public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, 
 
     @Override
     public void refreshComboBoxOptions() {
-        int numOfDonors = mainFrame.getCs().getDonorIDList().size();
+        int numOfDonors = mainFrame.getCs().getListOfDonors().size();
         String[] list = new String[numOfDonors + 1];
         list[0] = "-";
         for (int i = 0; i < numOfDonors; i++) {
@@ -160,10 +164,14 @@ public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, 
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(list);
         donorList.removeAllItems();
         donorList.setModel(model);
+        if (numOfDonors == 0) {
+            String msg = "No one has made any donation yet!";
+            JOptionPane.showMessageDialog(null, msg, "", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     @Override
-    public void clearLabelContents() {
+    public void clearContents() {
         mostGenerousDonorLabel.setText("");
         donorInfoSummary.setText("");
     }

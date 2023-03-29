@@ -123,7 +123,7 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
             Wildlife wl = optionToWL(wildlifeOptions.getSelectedItem().toString());
             Donor donor = getDonor();
             double amount = donor.makeDonation(wl, userIntendedAmt);
-            if (amount < userIntendedAmt) {
+            if (wl.getAmountFunded() == wl.getTargetFunding()) {
                 mainFrame.getCs().moveWildlifeToFullyFundedList(wl);
             }
             mainFrame.getCs().addDonor(donor);

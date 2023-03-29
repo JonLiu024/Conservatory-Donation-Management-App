@@ -1,6 +1,5 @@
 package ui;
 
-import model.Donor;
 import model.Wildlife;
 import model.formatters.DateFormatter;
 
@@ -143,7 +142,7 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
         }
         if (actionSource.equals(backToPreviousButton)) {
             wildlifeOptions.setSelectedItem("-");
-            clearLabelContents();
+            clearContents();
             this.setVisible(false);
             mainFrame.getForAdmin().setVisible(true);
         }
@@ -183,7 +182,7 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
     }
 
     @Override
-    public void clearLabelContents() {
+    public void clearContents() {
         fullyFundedWlLabel.setText("");
         wildlifeInfoSummary.setText("");
     }

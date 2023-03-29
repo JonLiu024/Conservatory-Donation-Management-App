@@ -87,7 +87,7 @@ public class Donor implements Writable {
         this.recordsOfDonations = recordsOfDonations;
     }
 
-    //REQUIRES: amount > 0,
+    //REQUIRES: amount > 0, wildlife is not null
     //MODIFIES: this, wildlife
     //EFFECT: amountFunded of wildlife is increased by amount, and amount is returned if the wildlife
     // is not fully funded after the increment, otherwise the amountFunded of wildlife is increased
