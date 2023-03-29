@@ -50,8 +50,15 @@ Phase 2
 
 Phase 3
 
-- Reference list 
-- wildlife Info.jpg https://www.freepik.com/premium-vector/animal-conservation-logo-design-wildlife-safari-logo-design-inspiration_29775373.htm
-- donor info.jpg https://iconscout.com/icons/animal-donation
+- Photos Reference list 
+- wildlife Info.jpg (https://www.freepik.com/premium-vector/animal-conservation-logo-design-wildlife-safari-logo-design-inspiration_29775373.htm)
+- donor info.jpg (https://iconscout.com/icons/animal-donation)
+- add wildlife .jpg (https://iconscout.com/icons/animal-donation)
+- AddWildlifeSuccessful.jpg
+- donate logo.png (https://www.pngegg.com/en/png-eedma)
+- donor info2 .jpg (https://iconscout.com/icons/animal-donation)
+- logoWildlifeConservatory250.jpg (https://scalebranding.com/product/15938/)
+- make donation.jpg (https://iconscout.com/icons/animal-donation)
+- wildlife info.jpg (https://www.freepik.com/premium-vector/animal-conservation-logo-design-wildlife-safari-logo-design-inspiration_29775373.htm)
 
 

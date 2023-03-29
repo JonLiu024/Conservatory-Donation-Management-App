@@ -55,12 +55,12 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
 
     public JTextField createEmailTextField() {
         JLabel label = new JLabel("Please enter your email: ");
-        label.setBounds(125,325, 400, 25);
+        label.setBounds(125,250, 400, 25);
         label.setFont(new Font("Comic Sans", Font.BOLD, 15));
         this.add(label);
         textFieldEmail = new JTextField();
         textFieldEmail.setPreferredSize(new Dimension(300, 30));
-        textFieldEmail.setBounds(125, 350, 400, 40);
+        textFieldEmail.setBounds(125, 276, 400, 40);
         return textFieldEmail;
     }
 
@@ -83,7 +83,8 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
             } catch (ExistingDonorIDException exception) {
                 JOptionPane.showMessageDialog(null, exception.getMessage(), "", JOptionPane.WARNING_MESSAGE);
             } catch (InputMismatchException exception) {
-                JOptionPane.showMessageDialog(null, exception.getMessage(), "", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter correct email format: ",
+                        "", JOptionPane.WARNING_MESSAGE);
             }
         }
     }

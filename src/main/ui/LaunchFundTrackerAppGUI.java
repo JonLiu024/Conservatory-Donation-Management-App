@@ -161,7 +161,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
 
     public JButton createSaveButton() {
         saveButton = new JButton("Save to file");
-        saveButton.setBounds(441, 720, 125, 80);
+        saveButton.setBounds(421, 720, 135, 80);
         saveButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
         saveButton.setForeground(Color.black);
         saveButton.setBackground(Color.lightGray);
@@ -172,7 +172,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
 
     public JButton createLoadButton() {
         loadButton = new JButton("Load from file");
-        loadButton.setBounds(566, 720, 125, 80);
+        loadButton.setBounds(556, 720, 135, 80);
         loadButton.setFocusable(false);
         loadButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
         loadButton.setForeground(Color.black);

@@ -7,15 +7,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, Updatable {
+public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, Updatable, Resetable {
     private LaunchFundTrackerAppGUI mainFrame;
     private JButton backToPreviousButton;
     private JButton trackButton;
     private JComboBox donorList;
     private JLabel donorInfoSummary;
+    private JLabel mostGenerousDonorLabel;
     private JButton mostGenerousDonorButton;
 
     public TrackDonorInfo(LaunchFundTrackerAppGUI mainFrame) {
@@ -27,6 +29,7 @@ public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, 
         this.add(createDonorOptions());
         this.add(createDonorInfoLabel());
         this.add(createMostGenerousButton());
+        this.add(createMostGenerousDonorLabel());
         this.setBackground(new Color(204, 255, 255));
         this.setVisible(false);
     }
@@ -40,21 +43,34 @@ public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, 
         if (actionSource.equals(backToPreviousButton)) {
             donorList.setSelectedIndex(0);
             this.setVisible(false);
+            clearLabelContents();
             mainFrame.getForAdmin().setVisible(true);
         }
         if (actionSource.equals(mostGenerousDonorButton)) {
-            mainFrame.getCs().mostGenerousDonor();
+            refreshMostGenerousDonor();
         }
     }
 
+
+
     private JLabel createDonorInfoLabel() {
         donorInfoSummary = new JLabel();
-        donorInfoSummary.setBounds(95, 180, 435, 120);
+        donorInfoSummary.setBounds(95, 160, 435, 120);
         donorInfoSummary.setFont(new Font("Comic Sans", Font.BOLD, 15));
         donorInfoSummary.setBackground(new Color(204, 255, 255));
         donorInfoSummary.setForeground(Color.black);
         donorInfoSummary.setVisible(true);
         return  donorInfoSummary;
+    }
+
+    private JLabel createMostGenerousDonorLabel() {
+        mostGenerousDonorLabel = new JLabel();
+        mostGenerousDonorLabel.setBounds(95, 370, 500, 120);
+        mostGenerousDonorLabel.setBackground(new Color(204, 255, 255));
+        mostGenerousDonorLabel.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        mostGenerousDonorLabel.setForeground(Color.black);
+        mostGenerousDonorLabel.setVisible(true);
+        return mostGenerousDonorLabel;
     }
 
 
@@ -73,10 +89,20 @@ public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, 
         }
     }
 
+    private void refreshMostGenerousDonor() {
+        List<Donor> mostGenerousDonorList = mainFrame.getCs().mostGenerousDonor();
+        String msg = "<html>Currently, the most generous donor(s) in our conservatory are: ";
+        for (Donor d: mostGenerousDonorList) {
+            msg = msg + "<br>Donor ID: " + d.getDonorID();
+        }
+        System.out.println(msg);
+        mostGenerousDonorLabel.setText(msg);
+    }
+
 
     private JButton createMostGenerousButton() {
         mostGenerousDonorButton = new JButton("Most generous donor");
-        mostGenerousDonorButton.setBounds(525, 180, 160, 40);
+        mostGenerousDonorButton.setBounds(525, 320, 160, 40);
         mostGenerousDonorButton.addActionListener(this);
         return mostGenerousDonorButton;
     }
@@ -135,4 +161,12 @@ public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, 
         donorList.removeAllItems();
         donorList.setModel(model);
     }
+
+    @Override
+    public void clearLabelContents() {
+        mostGenerousDonorLabel.setText("");
+        donorInfoSummary.setText("");
+    }
+
+
 }

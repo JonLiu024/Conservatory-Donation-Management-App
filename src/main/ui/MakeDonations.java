@@ -90,7 +90,7 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
         submissionButton = new JButton("Submit");
         submissionButton.setBounds(490, 611, 100, 40);
         submissionButton.setFocusable(false);
-        submissionButton.setFont(new Font("Comic Sans", 1, 12));
+        submissionButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
         submissionButton.setBackground(Color.pink);
         submissionButton.addActionListener(this);
         return submissionButton;
@@ -119,7 +119,7 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
             this.setVisible(false);
             mainFrame.getCp().setVisible(true);
         } else {
-            double userIntendedAmt = optionToAmt(selectDonationAmount().getSelectedItem().toString());
+            double userIntendedAmt = optionToAmt(donationAmount.getSelectedItem().toString());
             Wildlife wl = optionToWL(wildlifeOptions.getSelectedItem().toString());
             Donor donor = getDonor();
             double amount = donor.makeDonation(wl, userIntendedAmt);
