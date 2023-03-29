@@ -60,7 +60,9 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
             String amountRaised = "$" + wl.getAmountFunded();
             String targetFunding = "$" + wl.getTargetFunding();
             String dateFullyFunded = DateFormatter.toStringLocalDate(wl.getDateFullyFunded());
-            if (dateFullyFunded.equals("null")) dateFullyFunded = "None";
+            if (dateFullyFunded.equals("null")) {
+                dateFullyFunded = "None";
+            }
             String admissonDate = DateFormatter.toStringLocalDate(wl.getAdmissionDate());
             String cs = wl.getConservationStatus().toString();
             String description = wl.getDescription();
@@ -99,7 +101,7 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
         List<Wildlife> fullyFundedList = mainFrame.getCs().getWildlifeListFullyFunded();
         String msg = "<html>Currently, There are " + fullyFundedList.size()
                 + " fully funded wildlife in the conservatory: ";
-        for (Wildlife wl: fullyFundedList) {
+        for (Wildlife wl : fullyFundedList) {
             msg += "<br>Wildlife ID (Species Name): " + wl.getWildlifeID() + " (" + wl.getSpeciesName() + ")";
         }
         msg += "</html>";
@@ -110,10 +112,10 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
     private Wildlife findWlFromSelection() {
         String selection = wildlifeOptions.getSelectedItem().toString();
         if (selection.length() > 6) {
-            selection = selection.substring(0,6);
+            selection = selection.substring(0, 6);
         }
         Map<String, Wildlife> wildlifeMap = new HashMap<>();
-        for (Wildlife wl: mainFrame.getCs().getListOfAllWL()) {
+        for (Wildlife wl : mainFrame.getCs().getListOfAllWL()) {
             wildlifeMap.put(wl.getWildlifeID(), wl);
         }
         return wildlifeMap.get(selection);
@@ -122,7 +124,7 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
 
     public JComboBox createWlOptions() {
         JLabel label = new JLabel("Please select a wildlife to view: ");
-        label.setBounds(95,25, 500, 25);
+        label.setBounds(95, 25, 500, 25);
         label.setFont(new Font("Comic Sans", Font.BOLD, 20));
         this.add(label);
         String[] list = new String[0];
@@ -177,7 +179,7 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
         wildlifeOptions.setModel(model);
         if (numOfWl == 0) {
             String msg = "Currently, no wildlife is accepting donations! ";
-           JOptionPane.showMessageDialog(null, msg, "Alert", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, msg, "Alert", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

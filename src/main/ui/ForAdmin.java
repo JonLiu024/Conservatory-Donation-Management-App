@@ -10,7 +10,7 @@ public class ForAdmin extends JPanel implements ActionListener, Exitable {
     private JButton addWildlifeButton;
     private JButton trackDonorInfoButton;
     private JButton trackWildlifeInfoButton;
-    private JButton GoBackButton;
+    private JButton goBackButton;
     private LaunchFundTrackerAppGUI mainFrame;
 
 
@@ -86,20 +86,20 @@ public class ForAdmin extends JPanel implements ActionListener, Exitable {
 
     @Override
     public JButton createGoBackButton() {
-        GoBackButton = new JButton();
+        goBackButton = new JButton();
         ImageIcon backImage = new ImageIcon("./data/media/back to previous menu .jpg");
-        GoBackButton.setIcon(backImage);
-        GoBackButton.setBounds(401, 500, 200, 125);
-        GoBackButton.setText("Back to the main menu");
-        GoBackButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
-        GoBackButton.setVerticalTextPosition(JButton.BOTTOM);
-        GoBackButton.setHorizontalTextPosition(JButton.CENTER);
-        GoBackButton.setIconTextGap(1);
-        GoBackButton.setForeground(Color.black);
-        GoBackButton.setBackground(Color.PINK);
-        GoBackButton.setVisible(true);
-        GoBackButton.addActionListener(this);
-        return GoBackButton;
+        goBackButton.setIcon(backImage);
+        goBackButton.setBounds(401, 500, 200, 125);
+        goBackButton.setText("Back to the main menu");
+        goBackButton.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        goBackButton.setVerticalTextPosition(JButton.BOTTOM);
+        goBackButton.setHorizontalTextPosition(JButton.CENTER);
+        goBackButton.setIconTextGap(1);
+        goBackButton.setForeground(Color.black);
+        goBackButton.setBackground(Color.PINK);
+        goBackButton.setVisible(true);
+        goBackButton.addActionListener(this);
+        return goBackButton;
     }
 
     private void setMainFrameVisible() {
@@ -128,7 +128,7 @@ public class ForAdmin extends JPanel implements ActionListener, Exitable {
             mainFrame.getTwlInfo().refreshComboBoxOptions();
             mainFrame.getTwlInfo().setVisible(true);
         }
-        if (actionSource.equals(GoBackButton)) {
+        if (actionSource.equals(goBackButton)) {
             this.setVisible(false);
             setMainFrameVisible();
         }
@@ -147,7 +147,7 @@ public class ForAdmin extends JPanel implements ActionListener, Exitable {
     }
 
     public JButton getGoBackButton() {
-        return GoBackButton;
+        return goBackButton;
     }
 
 }

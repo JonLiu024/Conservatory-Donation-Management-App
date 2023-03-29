@@ -16,7 +16,7 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
     private JLabel alertUserNoWildlife;
     private LaunchFundTrackerAppGUI mainFrame;
     private JButton submissionButton;
-    private JButton GoBackButton;
+    private JButton goBackButton;
 
 
     public MakeDonations(LaunchFundTrackerAppGUI mainFrame) {
@@ -104,7 +104,7 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
             donate();
             this.setVisible(false);
         }
-        if (source.equals(GoBackButton)) {
+        if (source.equals(goBackButton)) {
             this.setVisible(false);
             mainFrame.getToDonate().setVisible(true);
         }
@@ -170,13 +170,13 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
 
     @Override
     public JButton createGoBackButton() {
-        GoBackButton = new JButton("Go back");
-        GoBackButton.setBounds(590, 611, 100, 40);
-        GoBackButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
-        GoBackButton.setForeground(Color.black);
-        GoBackButton.setBackground(Color.PINK);
-        GoBackButton.setVisible(true);
-        GoBackButton.addActionListener(this);
-        return GoBackButton;
+        goBackButton = new JButton("Go back");
+        goBackButton.setBounds(590, 611, 100, 40);
+        goBackButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
+        goBackButton.setForeground(Color.black);
+        goBackButton.setBackground(Color.PINK);
+        goBackButton.setVisible(true);
+        goBackButton.addActionListener(this);
+        return goBackButton;
     }
 }
