@@ -85,8 +85,8 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
     //EFFECTS: sets and returns the label to show the donation records of the chosen donor
     private JLabel createDonationRecordsLabel() {
         donationRecordsLabel = new JLabel();
-        donationRecordsLabel.setBounds(100, 70, 450, 550);
-        donationRecordsLabel.setFont(new Font("Comic Sans", Font.BOLD, 18));
+        donationRecordsLabel.setBounds(100, 70, 500, 550);
+        donationRecordsLabel.setFont(new Font("Comic Sans", Font.BOLD, 15));
         return donationRecordsLabel;
     }
 

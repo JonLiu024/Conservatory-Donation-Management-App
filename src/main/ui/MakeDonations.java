@@ -137,18 +137,19 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
             double amount = donor.makeDonation(wl, userIntendedAmt);
             if (wl.getAmountFunded() == wl.getTargetFunding()) {
                 mainFrame.getCs().moveWildlifeToFullyFundedList(wl);
+                String message = wl.getWildlifeID() + " only needs " + "$" + amount + " to be fully funded! ";
+                JOptionPane.showMessageDialog(null, message, "", JOptionPane.INFORMATION_MESSAGE);
             }
             mainFrame.getCs().addDonor(donor);
             mainFrame.getCs().updateRaisedFunding();
             mainFrame.getToDonate().setVisible(true);
-            String message = donor.getDonorID() + " has successfully donated " + "$" + amount
-                    + " to " + wl.getWildlifeID();
-            JOptionPane.showMessageDialog(null, message, "Donation Confirmation", JOptionPane.INFORMATION_MESSAGE);
+            String message = "You have successfully donated " + "$" + amount + " to " + wl.getWildlifeID();
+            JOptionPane.showMessageDialog(null, message, "", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
     //REQUIRES: the length of the str > 6
-    //EFFECTS: truncates str to a 6 wildlife ID string, finds the wildlife object and returns it
+    //EFFECTS: truncates str to a 6 character wildlife ID string, finds the wildlife object and returns it
     private Wildlife optionToWL(String str) {
         String wildlifeID = str.substring(0, 6);
         for (Wildlife wl : mainFrame.getCs().getListOfWildlifeNotFullyFunded()) {
@@ -160,7 +161,7 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
     }
 
 
-    //EFFECTS: removes the "$" char at the front of the str and converts it to a double
+    //EFFECTS: removes the "$" char at the front of the str and converts it to a double and returns it
     private double optionToAmt(String str) {
         String amt = str.substring(1);
         return Double.parseDouble(amt);
