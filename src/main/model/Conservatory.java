@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Conservatory implements Writable {
     private List<Wildlife> wildlifeListNotFullyFunded; //list of admitted wildlife that have not been fully funded yet
     private List<Wildlife> wildlifeListFullyFunded;   // list of admitted wildlife that have been fully funded
-    private List<Donor> listOfDonors;   //list of donors profiles that have made donations to the wildlife
+    private List<Donor> listOfDonors;   //list of donors profiles
     private double totalTargetFunding;  //the total amount of funding to be raised
     private double totalFundingRaised;  //the total amount of funding that has been raised
     private String name;
@@ -30,7 +30,6 @@ public class Conservatory implements Writable {
         wildlifeListFullyFunded = new ArrayList<>();
         listOfDonors = new ArrayList<>();
         name = "Wildlife Conservation Facility";
-
     }
 
 

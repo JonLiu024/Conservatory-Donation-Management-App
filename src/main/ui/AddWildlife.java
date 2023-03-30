@@ -47,7 +47,8 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
     }
 
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns a textField for user to enter species name of the added wildlife
     public JTextField createSpeciesNameTextField() {
         JLabel label = new JLabel("Species Name");
         label.setBounds(125,30, 400, 20);
@@ -60,7 +61,8 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
 
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns a textField for the user to enter the target funding of the added wildlife
     public JTextField createTFTextField() {
         JLabel label = new JLabel("Target Funding");
         label.setBounds(125,125, 400, 25);
@@ -72,6 +74,9 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
         return textFieldTargetFunding;
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: sets and returns a jcombobox for user to select the conservation status of the added wildlife
     public JComboBox generateConservationStatusOptions() {
         JLabel label = new JLabel("Please select the conservation status");
         label.setBounds(125,225, 400, 25);
@@ -84,7 +89,8 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
         return conservationStatusOption;
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns a JtextField for the user to enter the admission date of the added wildlife
     public JTextField createAdmissionDate() {
         JLabel label = new JLabel("Admission Date (YYYY-MM-dd)");
         label.setBounds(125,325, 400, 25);
@@ -96,6 +102,9 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
         return textFieldAdmissionDate;
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: sets and returns a textField for the user to enter the description of the added wildlife
     public JTextArea createDescription() {
         JLabel label = new JLabel("Description (Enter \"none\" for no description)");
         label.setBounds(125,425, 600, 25);
@@ -107,6 +116,9 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
         return textDescription;
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: sets and returns a JButton for the user to submit the information of the added wildlife
     public JButton createSubmissionButton() {
         submissionButton = new JButton("Submit");
         submissionButton.setBounds(490, 610, 100, 40);
@@ -118,7 +130,11 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
     }
 
 
-
+    //MODIFIES: this
+    //EFFECTS: adds the wildlife into the cs of the mainFrame if the submissionButton is clicke, pops up a error message
+    //window if any textfield is left blank, pops up a warning message window if the entered
+    // target funding is not a valid number, pops up a warning message window if the entered date is not valid
+    //,exits to the previous menu page if the goBackButton is clicked,
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton actionSource = (JButton) e.getSource();

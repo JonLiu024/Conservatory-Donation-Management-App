@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//Representing a JPanel components of the LauNchFundTrackerAppGUI for admin users to use the app
 public class ForAdmin extends JPanel implements ActionListener, Exitable {
 
     private JButton addWildlifeButton;
@@ -15,7 +16,9 @@ public class ForAdmin extends JPanel implements ActionListener, Exitable {
 
 
 
-
+    //REQUIRES: mainFrame is not null
+    //EFFECT: constructs a ForAdmin components and sets its associated features (bounds, background colour, layout);
+    //sets the mainFrame and adds the associated components
     public ForAdmin(LaunchFundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         this.setSize(700, 840);
@@ -30,7 +33,8 @@ public class ForAdmin extends JPanel implements ActionListener, Exitable {
     }
 
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns the Jbutton for the user to navigate to the Add a wildlife page
     public JButton createAddWildlifeButton() {
         addWildlifeButton = new JButton();
         ImageIcon addWLImage = new ImageIcon("./data/media/add wildlife .jpg");
@@ -49,6 +53,9 @@ public class ForAdmin extends JPanel implements ActionListener, Exitable {
     }
 
 
+
+    //MODIFIES: this
+    //EFFECTS: sets and returns the Jbutton for the user to navigate to the Track donor info page
     public JButton createTrackDonorInfoButton() {
         trackDonorInfoButton = new JButton();
         ImageIcon addTrackDonorImage = new ImageIcon("./data/media/donor info2 .jpg");
@@ -66,7 +73,8 @@ public class ForAdmin extends JPanel implements ActionListener, Exitable {
         return trackDonorInfoButton;
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns a Jbutton to navigate the user to the Track Wildlife info page
     public JButton createTrackWLInfoButton() {
         trackWildlifeInfoButton = new JButton();
         ImageIcon trackWLInfoImage = new ImageIcon("./data/media/wildlife info.jpg");
@@ -102,6 +110,9 @@ public class ForAdmin extends JPanel implements ActionListener, Exitable {
         return goBackButton;
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: sets the main menu JComponents visible
     private void setMainFrameVisible() {
         mainFrame.getAdminButton().setVisible(true);
         mainFrame.getDonationButton().setVisible(true);
@@ -134,20 +145,5 @@ public class ForAdmin extends JPanel implements ActionListener, Exitable {
         }
     }
 
-    public JButton getAddWildlifeButton() {
-        return addWildlifeButton;
-    }
-
-    public JButton getTrackDonorInfoButton() {
-        return trackDonorInfoButton;
-    }
-
-    public JButton getTrackWildlifeInfoButton() {
-        return trackWildlifeInfoButton;
-    }
-
-    public JButton getGoBackButton() {
-        return goBackButton;
-    }
 
 }

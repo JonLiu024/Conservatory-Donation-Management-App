@@ -74,6 +74,9 @@ User stories:
 - You can view the donation records of a donor by clicking **Track donation records** button, entering the donor ID in the provided textfield, and clicking the **Track donor info** button
 
 
+## Main source of reference
+Tutoring source: https://youtu.be/Kmgo00avvEw 
+
 
 
 ## Photos Reference list: 

@@ -1,284 +1,110 @@
 {
-    "totalFundingRaised": 3100,
+    "totalFundingRaised": 550,
     "wildlifeListNotFullyFunded": [
         {
-            "conservationStatus": "NT",
-            "admissionDate": "2023-02-03",
-            "listOfDonors": [
-                {
-                    "profileCreationDate": "2023-03-28",
-                    "emailAddress": "jim@usd.ca",
-                    "donorID": "jimmy",
-                    "recordsOfDonations": [{
-                        "amount": 200,
-                        "wildlifeID": "NT9689",
-                        "dateDonationMade": "2023-03-28"
-                    }],
-                    "totalFundingDonated": 200
-                },
-                {
-                    "profileCreationDate": "2023-03-28",
-                    "emailAddress": "anie@ubc.ca",
-                    "donorID": "annie22",
-                    "recordsOfDonations": [
-                        {
-                            "amount": 500,
-                            "wildlifeID": "LC8722",
-                            "dateDonationMade": "2023-03-29"
-                        },
-                        {
-                            "amount": 500,
-                            "wildlifeID": "NT9689",
-                            "dateDonationMade": "2023-03-29"
-                        },
-                        {
-                            "amount": 500,
-                            "wildlifeID": "CR8377",
-                            "dateDonationMade": "2023-03-29"
-                        }
-                    ],
-                    "totalFundingDonated": 1500
-                }
-            ],
-            "speciesName": "Nile crocodile",
-            "dateFullyFunded": "null",
-            "amountFunded": 700,
-            "wildlifeID": "NT9689",
-            "description": "monster of the Nile river\ninjured ",
-            "donationRecords": [
-                {
-                    "amount": 200,
-                    "wildlifeID": "NT9689",
-                    "dateDonationMade": "2023-03-28"
-                },
-                {
-                    "amount": 500,
-                    "wildlifeID": "NT9689",
-                    "dateDonationMade": "2023-03-29"
-                }
-            ],
-            "isFullyFunded": false,
-            "targetFunding": 1000
-        },
-        {
-            "conservationStatus": "CR",
-            "admissionDate": "2021-09-12",
-            "listOfDonors": [
-                {
-                    "profileCreationDate": "2023-03-28",
-                    "emailAddress": "ch@iosgd.ca",
-                    "donorID": "chris",
-                    "recordsOfDonations": [{
-                        "amount": 500,
-                        "wildlifeID": "CR8377",
-                        "dateDonationMade": "2023-03-28"
-                    }],
-                    "totalFundingDonated": 500
-                },
-                {
-                    "profileCreationDate": "2023-03-28",
-                    "emailAddress": "jon@ubc.ca",
-                    "donorID": "jonathon",
-                    "recordsOfDonations": [
-                        {
-                            "amount": 400,
-                            "wildlifeID": "CD9816",
-                            "dateDonationMade": "2023-03-28"
-                        },
-                        {
-                            "amount": 500,
-                            "wildlifeID": "CR8377",
-                            "dateDonationMade": "2023-03-28"
-                        }
-                    ],
-                    "totalFundingDonated": 900
-                },
-                {
-                    "profileCreationDate": "2023-03-28",
-                    "emailAddress": "anie@ubc.ca",
-                    "donorID": "annie22",
-                    "recordsOfDonations": [
-                        {
-                            "amount": 500,
-                            "wildlifeID": "LC8722",
-                            "dateDonationMade": "2023-03-29"
-                        },
-                        {
-                            "amount": 500,
-                            "wildlifeID": "NT9689",
-                            "dateDonationMade": "2023-03-29"
-                        },
-                        {
-                            "amount": 500,
-                            "wildlifeID": "CR8377",
-                            "dateDonationMade": "2023-03-29"
-                        }
-                    ],
-                    "totalFundingDonated": 1500
-                }
-            ],
-            "speciesName": "blue whale",
-            "dateFullyFunded": "null",
-            "amountFunded": 1500,
-            "wildlifeID": "CR8377",
-            "description": "very endangered animals",
-            "donationRecords": [
-                {
-                    "amount": 500,
-                    "wildlifeID": "CR8377",
-                    "dateDonationMade": "2023-03-28"
-                },
-                {
-                    "amount": 500,
-                    "wildlifeID": "CR8377",
-                    "dateDonationMade": "2023-03-28"
-                },
-                {
-                    "amount": 500,
-                    "wildlifeID": "CR8377",
-                    "dateDonationMade": "2023-03-29"
-                }
-            ],
-            "isFullyFunded": false,
-            "targetFunding": 2003
-        },
-        {
-            "conservationStatus": "LC",
-            "admissionDate": "2022-02-12",
+            "conservationStatus": "VU",
+            "admissionDate": "2023-02-23",
             "listOfDonors": [{
-                "profileCreationDate": "2023-03-28",
-                "emailAddress": "anie@ubc.ca",
-                "donorID": "annie22",
-                "recordsOfDonations": [
-                    {
-                        "amount": 500,
-                        "wildlifeID": "LC8722",
-                        "dateDonationMade": "2023-03-29"
-                    },
-                    {
-                        "amount": 500,
-                        "wildlifeID": "NT9689",
-                        "dateDonationMade": "2023-03-29"
-                    },
-                    {
-                        "amount": 500,
-                        "wildlifeID": "CR8377",
-                        "dateDonationMade": "2023-03-29"
-                    }
-                ],
-                "totalFundingDonated": 1500
+                "profileCreationDate": "2023-03-29",
+                "emailAddress": "jon@ubc.ca",
+                "donorID": "jonathan",
+                "recordsOfDonations": [{
+                    "amount": 350,
+                    "wildlifeID": "VU4012",
+                    "dateDonationMade": "2023-03-29"
+                }],
+                "totalFundingDonated": 350
             }],
-            "speciesName": "dog",
+            "speciesName": "South resident orca",
             "dateFullyFunded": "null",
-            "amountFunded": 500,
-            "wildlifeID": "LC8722",
-            "description": "dog",
+            "amountFunded": 350,
+            "wildlifeID": "VU4012",
+            "description": "Wolves of the ocean",
             "donationRecords": [{
-                "amount": 500,
-                "wildlifeID": "LC8722",
+                "amount": 350,
+                "wildlifeID": "VU4012",
                 "dateDonationMade": "2023-03-29"
             }],
             "isFullyFunded": false,
-            "targetFunding": 3224
+            "targetFunding": 4500
+        },
+        {
+            "conservationStatus": "CR",
+            "admissionDate": "2023-02-12",
+            "listOfDonors": [{
+                "profileCreationDate": "2023-03-29",
+                "emailAddress": "jesse@ubc.ca",
+                "donorID": "jesse",
+                "recordsOfDonations": [{
+                    "amount": 200,
+                    "wildlifeID": "CR9619",
+                    "dateDonationMade": "2023-03-29"
+                }],
+                "totalFundingDonated": 200
+            }],
+            "speciesName": "Siberian Tiger",
+            "dateFullyFunded": "null",
+            "amountFunded": 200,
+            "wildlifeID": "CR9619",
+            "description": "abandoned cubs found in the forest",
+            "donationRecords": [{
+                "amount": 200,
+                "wildlifeID": "CR9619",
+                "dateDonationMade": "2023-03-29"
+            }],
+            "isFullyFunded": false,
+            "targetFunding": 3243
+        },
+        {
+            "conservationStatus": "EN",
+            "admissionDate": "2023-02-12",
+            "listOfDonors": [],
+            "speciesName": "Amazon river otter",
+            "dateFullyFunded": "null",
+            "amountFunded": 0,
+            "wildlifeID": "EN7466",
+            "description": "Amazon river",
+            "donationRecords": [],
+            "isFullyFunded": false,
+            "targetFunding": 2322
+        },
+        {
+            "conservationStatus": "EN",
+            "admissionDate": "2022-12-21",
+            "listOfDonors": [],
+            "speciesName": "Snow leopard",
+            "dateFullyFunded": "null",
+            "amountFunded": 0,
+            "wildlifeID": "EN9172",
+            "description": "rehabilitation",
+            "donationRecords": [],
+            "isFullyFunded": false,
+            "targetFunding": 2000
         }
     ],
-    "totalTargetFunding": 6627,
+    "totalTargetFunding": 12065,
     "name": "Wildlife Conservation Facility",
-    "wildlifeListFullyFunded": [{
-        "conservationStatus": "CD",
-        "admissionDate": "2021-02-12",
-        "listOfDonors": [{
-            "profileCreationDate": "2023-03-28",
-            "emailAddress": "jon@ubc.ca",
-            "donorID": "jonathon",
-            "recordsOfDonations": [
-                {
-                    "amount": 400,
-                    "wildlifeID": "CD9816",
-                    "dateDonationMade": "2023-03-28"
-                },
-                {
-                    "amount": 500,
-                    "wildlifeID": "CR8377",
-                    "dateDonationMade": "2023-03-28"
-                }
-            ],
-            "totalFundingDonated": 900
-        }],
-        "speciesName": "clouded leopard",
-        "dateFullyFunded": "2023-03-28",
-        "amountFunded": 400,
-        "wildlifeID": "CD9816",
-        "description": "queen of the jungle",
-        "donationRecords": [{
-            "amount": 400,
-            "wildlifeID": "CD9816",
-            "dateDonationMade": "2023-03-28"
-        }],
-        "isFullyFunded": true,
-        "targetFunding": 400
-    }],
+    "wildlifeListFullyFunded": [],
     "listOfDonor": [
         {
-            "profileCreationDate": "2023-03-28",
+            "profileCreationDate": "2023-03-29",
             "emailAddress": "jon@ubc.ca",
-            "donorID": "jonathon",
-            "recordsOfDonations": [
-                {
-                    "amount": 400,
-                    "wildlifeID": "CD9816",
-                    "dateDonationMade": "2023-03-28"
-                },
-                {
-                    "amount": 500,
-                    "wildlifeID": "CR8377",
-                    "dateDonationMade": "2023-03-28"
-                }
-            ],
-            "totalFundingDonated": 900
-        },
-        {
-            "profileCreationDate": "2023-03-28",
-            "emailAddress": "anie@ubc.ca",
-            "donorID": "annie22",
-            "recordsOfDonations": [
-                {
-                    "amount": 500,
-                    "wildlifeID": "LC8722",
-                    "dateDonationMade": "2023-03-29"
-                },
-                {
-                    "amount": 500,
-                    "wildlifeID": "NT9689",
-                    "dateDonationMade": "2023-03-29"
-                },
-                {
-                    "amount": 500,
-                    "wildlifeID": "CR8377",
-                    "dateDonationMade": "2023-03-29"
-                }
-            ],
-            "totalFundingDonated": 1500
-        },
-        {
-            "profileCreationDate": "2023-03-28",
-            "emailAddress": "ch@iosgd.ca",
-            "donorID": "chris",
+            "donorID": "jonathan",
             "recordsOfDonations": [{
-                "amount": 500,
-                "wildlifeID": "CR8377",
-                "dateDonationMade": "2023-03-28"
+                "amount": 350,
+                "wildlifeID": "VU4012",
+                "dateDonationMade": "2023-03-29"
             }],
-            "totalFundingDonated": 500
+            "totalFundingDonated": 350
         },
         {
-            "profileCreationDate": "2023-03-28",
-            "emailAddress": "jim@usd.ca",
-            "donorID": "jimmy",
+            "profileCreationDate": "2023-03-29",
+            "emailAddress": "jesse@ubc.ca",
+            "donorID": "jesse",
             "recordsOfDonations": [{
                 "amount": 200,
-                "wildlifeID": "NT9689",
-                "dateDonationMade": "2023-03-28"
+                "wildlifeID": "CR9619",
+                "dateDonationMade": "2023-03-29"
             }],
             "totalFundingDonated": 200
         }

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
+//Representing the JPanel and the function to track wildlife information
 public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitable,
         Updatable, Resetable {
     private final LaunchFundTrackerAppGUI mainFrame;
@@ -21,7 +22,8 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
     private JLabel wildlifeInfoSummary;
     private JLabel fullyFundedWlLabel;
 
-
+    //REQUIRES: mainFrame is not null
+    //EFFECTS: creates a TrackWildlifeInfo object, sets the mainFrame, and adds the associated JComponents
     public TrackWildlifeInfo(LaunchFundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         this.add(createGoBackButton());
@@ -36,6 +38,8 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
         this.setVisible(false);
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets and returns the button to track the wildlife information
     private JButton createTrackWlButton() {
         trackButton = new JButton("Track wildlife info");
         trackButton.setBounds(525, 50, 160, 40);
@@ -43,6 +47,9 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
         return trackButton;
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: sets and returns the button to show the ID list of the fully funded wildlife
     private JButton createTrackFFWlButton() {
         trackFullyFundedWlButton = new JButton("Fully funded wildlife");
         trackFullyFundedWlButton.setBounds(525, 360, 160, 40);
@@ -50,7 +57,8 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
         return trackFullyFundedWlButton;
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: updates the text contents of wildlifeInfoSummary based on the information of wl
     private void refreshWlInfoSummary(Wildlife wl) {
         if (wl == null) {
             wildlifeInfoSummary.setText("");
@@ -76,7 +84,8 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
         }
     }
 
-
+    //MODIFIES: this
+    //REQUIRES:
     private JLabel createWlInfoLabel() {
         wildlifeInfoSummary = new JLabel();
         wildlifeInfoSummary.setBounds(95, 50, 435, 300);

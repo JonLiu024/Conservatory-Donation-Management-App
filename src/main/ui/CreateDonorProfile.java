@@ -11,13 +11,17 @@ import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CreateDonorProfile extends JPanel implements ActionListener, FormatDetectable {
+//Representing a JPanel components of the LauNchFundTrackerAppGUI for users to create a donor profile
+public class CreateDonorProfile extends JPanel implements ActionListener, FormatDetectable, Resetable {
     private final LaunchFundTrackerAppGUI mainFrame;
     private JTextField textFieldDonorID;
     private JTextField textFieldEmail;
     private JButton submissionButton;
 
-
+    //REQUIRES: mainFrame is not null
+    //EFFECTS: creates a createDonorProfile with associated features (bounds, background colour, layout);
+    //sets mainFrame and adds the associated Jcomponents
+    //REFERENCE:
     public CreateDonorProfile(LaunchFundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         this.setBounds(0, 141, 700, 700);
@@ -29,7 +33,8 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
         this.setVisible(false);
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns the Jbutton for the user to submit their donor profile information
     public JButton createSubmissionButton() {
         submissionButton = new JButton("Submit");
         submissionButton.setBounds(490, 610, 100, 40);
@@ -40,7 +45,8 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
         return submissionButton;
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns a Jtextfield for the user to enter the donor ID of their created profile
     public JTextField createDonorIDTextField() {
         JLabel label = new JLabel("Please create a donor ID: ");
         label.setBounds(125,125, 400, 25);
@@ -52,7 +58,8 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
         return textFieldDonorID;
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns a Jtextfield for the user to enter the email address of their created profile
     public JTextField createEmailTextField() {
         JLabel label = new JLabel("Please enter your email: ");
         label.setBounds(125,250, 400, 25);
@@ -77,7 +84,7 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
                 formatChecker(email);
                 Donor donor = new Donor(donorID, email);
                 mainFrame.getCs().addDonor(donor);
-                clearTextField();
+                clearContents();
                 this.setVisible(false);
                 mainFrame.getMd().setVisible(true);
             } catch (ExistingDonorIDException exception) {
@@ -89,10 +96,7 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
         }
     }
 
-    private void clearTextField() {
-        this.textFieldEmail.setText("");
-        this.textFieldDonorID.setText("");
-    }
+
 
     @Override
     public void formatChecker(String str) throws InputMismatchException {
@@ -102,5 +106,11 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
             throw new InputMismatchException("Please enter your email address in valid format: ");
         }
 
+    }
+
+    @Override
+    public void clearContents() {
+        this.textFieldEmail.setText("");
+        this.textFieldDonorID.setText("");
     }
 }

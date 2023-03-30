@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//Representing the ToDonate JPanel and the menu page for donors
 public class ToDonate extends JPanel implements ActionListener, Exitable {
 
     private JButton makeDonationsButton;
@@ -15,7 +16,8 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
 
 
 
-
+    //REQUIRES: mainFrame is not null
+    //EFFECTS: creates a ToDonate object; sets the mainFrame and adds the associated JComponents
     public ToDonate(LaunchFundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         this.setSize(700, 840);
@@ -29,6 +31,8 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
     }
 
 
+    //MODIFIES: this
+    //EFFECTS: sets and returns the button for the user to view the Make a donation page
     public JButton createMakeDonationButton() {
         makeDonationsButton = new JButton();
         ImageIcon donationsImage = new ImageIcon("./data/media/make donation.jpg");
@@ -46,7 +50,8 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
         return makeDonationsButton;
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns the button for the user to view the Track donations page
     public JButton createTrackDonationsButton() {
         trackDonationsRecordsButton = new JButton();
         ImageIcon addTrackDonorImage = new ImageIcon("./data/media/donor info2 .jpg");
@@ -65,6 +70,8 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
     }
 
 
+    //MODIFIES: this
+    //EFFECTS: sets and returns the button for the user to view track wildlife info page
     public JButton createViewWLInfoButton() {
         trackWLInfoButton = new JButton();
         ImageIcon trackWLInfoImage = new ImageIcon("./data/media/wildlife info.jpg");
@@ -82,6 +89,9 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
         return trackWLInfoButton;
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: sets the main menu components visible
     private void setMainMenuInvisible() {
         mainFrame.getLoadButton().setVisible(true);
         mainFrame.getDonationButton().setVisible(true);

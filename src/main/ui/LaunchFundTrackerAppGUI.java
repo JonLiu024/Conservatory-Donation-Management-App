@@ -11,23 +11,23 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-
+//Representing the main frame of the app
 public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
 
-    private JPanel titlePanel;
-    private ForAdmin forAdmin;
-    private ToDonate toDonate;
-    private AddWildlife aw;
-    private MakeDonations md;
-    private CreateDonorProfile cp;
-    private TrackDonationsRecords trackDonationsRecords;
-    private TrackDonorInfo trackDonorInfo;
-    private TrackWildlifeInfo twlInfo;
-    private JLabel backgroundLabel;
-    private JButton adminButton;
-    private JButton donationButton;
-    private JButton saveButton;
-    private JButton loadButton;
+    private JPanel titlePanel;  //title section of the app
+    private ForAdmin forAdmin;  //the page for admins
+    private ToDonate toDonate;  //the page for donors
+    private AddWildlife aw;     //the page to add a wildlife
+    private MakeDonations md;    //the page to make donations
+    private CreateDonorProfile cp; //the page to create donor profile
+    private TrackDonationsRecords trackDonationsRecords; //the page to track donations records
+    private TrackDonorInfo trackDonorInfo; //the page to track donor information
+    private TrackWildlifeInfo twlInfo;     //the page to track wildlife information
+    private JLabel backgroundLabel;        //the section that contains background image
+    private JButton adminButton;            //the button to navigate to the admin page
+    private JButton donationButton;         //the button to navigate to the donor page
+    private JButton saveButton;             //the button to save the state of app to file
+    private JButton loadButton;             //the button to load data from the file
 
 
     private static final String JSON_STORE = "./data/conservatory.json"; //sources file's pathname
@@ -37,26 +37,38 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
 
 
     //MODIFIES: this
-    //EFFECT: creates a conservation site, a jsonWriter, and a jsonReader to save or load data to/from file
+    //EFFECT: instantiates a conservation site, a jsonWriter, and a jsonReader to save or load data to/from file
     private void modelsInitiator() {
         cs = new Conservatory();
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: adds the component buttons and labels to this,
     private void mainMenuPanelInitiator() {
-        backgroundLabel = new JLabel();
-        ImageIcon imageIcon = new ImageIcon("./data/media/background2.jpg");
-        backgroundLabel.setIcon(imageIcon);
-        backgroundLabel.setBounds(1, 200, 700, 500);
         this.add(createTitlePanel());
         this.add(createDonateButton());
         this.add(createAdminButton());
         this.add(createSaveButton());
         this.add(createLoadButton());
-        this.add(backgroundLabel);
+        this.add(createBackgroundLabel());
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: sets the associated features of the background label
+    private JLabel createBackgroundLabel() {
+        backgroundLabel = new JLabel();
+        ImageIcon imageIcon = new ImageIcon("./data/media/background2.jpg");
+        backgroundLabel.setIcon(imageIcon);
+        backgroundLabel.setBounds(1, 200, 700, 500);
+        return backgroundLabel;
+    }
+
+    //MODIFIES: this
+    //EFFECT: instantiates the associated JComponents of this
     private void panelsInitiator() {
         aw = new AddWildlife(this);
         forAdmin = new ForAdmin(this);
@@ -66,10 +78,11 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         trackDonationsRecords = new TrackDonationsRecords(this);
         trackDonorInfo = new TrackDonorInfo(this);
         twlInfo = new TrackWildlifeInfo(this);
-
-
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: adds the component labels to this
     private void addPanelsToFrame() {
         this.add(forAdmin);
         this.add(toDonate);
@@ -79,10 +92,11 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         this.add(trackDonationsRecords);
         this.add(trackDonorInfo);
         this.add(twlInfo);
-
-
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: sets the Main menu components invisible
     private void setMainMenuInvisible() {
         adminButton.setVisible(false);
         saveButton.setVisible(false);
@@ -91,7 +105,8 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         backgroundLabel.setVisible(false);
     }
 
-
+    //EFFECTS: create a LaunchFundTrackerAppGUI objects, instantiates and adds all the asscociated JComponents
+    //, sets the features of the JFrame
     public LaunchFundTrackerAppGUI() {
         modelsInitiator();
         panelsInitiator();
@@ -106,7 +121,8 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: sets the titlePanel with associated features (photos, background colour and bounds) and returns it
     public JPanel createTitlePanel() {
         titlePanel = new JPanel();
         titlePanel.setBounds(0, 0, 700, 140);
@@ -123,7 +139,8 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         return titlePanel;
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns the button to show the admin menu
     public JButton createAdminButton() {
         adminButton = new JButton();
         ImageIcon icon = new ImageIcon("./data/media/for admin.jpg");
@@ -141,6 +158,9 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         return adminButton;
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: sets and returns the button to show the donate menu
     public JButton createDonateButton() {
         donationButton = new JButton();
         ImageIcon icon = new ImageIcon("./data/media/donate logo.png");
@@ -159,6 +179,10 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         return donationButton;
     }
 
+
+
+    //MODIFIES: this
+    //EFFECTS: sets and returns the button to save the state of the conservatory to file
     public JButton createSaveButton() {
         saveButton = new JButton("Save to file");
         saveButton.setBounds(421, 720, 135, 80);
@@ -170,6 +194,8 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         return saveButton;
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets and returns the button to load the status of the conservatory from file
     public JButton createLoadButton() {
         loadButton = new JButton("Load from file");
         loadButton.setBounds(556, 720, 135, 80);
@@ -201,6 +227,8 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         }
     }
 
+
+    //Getters
     public TrackDonationsRecords getTrackDonationsRecords() {
         return trackDonationsRecords;
     }

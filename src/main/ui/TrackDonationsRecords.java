@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+//Representing a TrackDonationRecords JPanel and the function to track the donation records fo the conservtory
 public class TrackDonationsRecords extends JPanel implements ActionListener, Exitable, Resetable {
 
     private final LaunchFundTrackerAppGUI mainFrame;
@@ -20,7 +22,8 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
     private JLabel donationRecordsLabel;
     private JButton trackDonationButton;
 
-
+    //REQUIRES: mainFrame is not null
+    //EFFECTS: creates an TrackDonationsRecords objects, sets the mainFrame, and adds the associated components
     public TrackDonationsRecords(LaunchFundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         this.setBounds(0, 141, 700, 700);
@@ -33,6 +36,8 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
         this.setVisible(false);
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets and returns the button for the user to track donations records of the chosen donor
     private JButton createTrackDonationsButton() {
         trackDonationButton = new JButton("Track donation records");
         trackDonationButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
@@ -41,7 +46,8 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
         return trackDonationButton;
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns the textfield for the user to enter the donor ID
     private JTextField createUserEntryTextField() {
         JLabel label = new JLabel();
         label.setBounds(100, 50, 380, 25);
@@ -50,7 +56,7 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
         this.add(label);
         userEntry = new JTextField();
         userEntry.setSize(new Dimension(400, 20));
-        userEntry.setBounds(95, 76, 400, 40);
+        userEntry.setBounds(100, 76, 400, 40);
         return userEntry;
     }
 
@@ -75,7 +81,8 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
 
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns the label to show the donation records of the chosen donor
     private JLabel createDonationRecordsLabel() {
         donationRecordsLabel = new JLabel();
         donationRecordsLabel.setBounds(100, 70, 450, 550);
@@ -83,7 +90,9 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
         return donationRecordsLabel;
     }
 
-
+    //REQUIRES: d is not null
+    //MODIFIES: this
+    //EFFECTS: update the text of donationRecordsLabel with the donor information of d
     private void refreshDonationRecordsLabel(Donor d) {
         String contents = "<html>The donations records for " + d.getDonorID() + " are listed below:";
         if (d.getRecordsOfDonations().size() == 0) {
@@ -102,7 +111,7 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
         donationRecordsLabel.setText(contents);
     }
 
-
+    //EFFECTS: finds the donor based on the user entry in the donor ID textfield and returns it
     private Donor findDonor() {
         String donorID = userEntry.getText();
         Map<String, Donor> donorMap = new HashMap<>();

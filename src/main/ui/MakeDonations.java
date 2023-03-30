@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//Representing the panel and the function to make donations
 public class MakeDonations extends JPanel implements ActionListener, Exitable, Updatable {
 
 
@@ -18,7 +19,8 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
     private JButton submissionButton;
     private JButton goBackButton;
 
-
+    //REQUIRES: mainFrame is not null
+    //EFFECTS: creates a MakeDonations object; set the mainFrame and adds the associated Jcomponents
     public MakeDonations(LaunchFundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         this.setBounds(0, 141, 700, 700);
@@ -33,6 +35,8 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
     }
 
 
+    //MODIFIES: this
+    //EFFECTS: sets and returns the label to alert the user that there is no wildlife in the conservatory
     private JLabel createAlertUserNoWildlife() {
         alertUserNoWildlife = new JLabel();
         alertUserNoWildlife.setText("Currently, no wildlife is accepting donations! ");
@@ -41,7 +45,8 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
         return alertUserNoWildlife;
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: sets and returns the Jcombobox for the user to select the wildlife to donate
     private JComboBox createWildlifeOptions() {
         JLabel label = new JLabel("Please select a wildlife to donate");
         label.setBounds(150, 200, 400, 25);
@@ -53,7 +58,7 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
     }
 
 
-    //Reference: https://stackoverflow.com/questions/4620295/dynamically-change-jcombobox
+
     @Override
     public void refreshComboBoxOptions() {
         int numbOfWl = mainFrame.getCs().getListOfWildlifeNotFullyFunded().size();
@@ -74,6 +79,8 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
     }
 
 
+    //MODIFIES: this
+    //EFFECTS: sets and returns a Jcombobox for the user to select the amount of donations
     private JComboBox selectDonationAmount() {
         JLabel label = new JLabel("Please select the amount of your donation");
         label.setBounds(150, 271, 400, 25);
@@ -86,6 +93,8 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
     }
 
 
+    //MODIFIES: this
+    //EFFECTS: sets and returns a Jbutton for the user to submit their donations
     private JButton createSubmissionButton() {
         submissionButton = new JButton("Submit");
         submissionButton.setBounds(490, 611, 100, 40);
@@ -110,7 +119,10 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
         }
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: prompts a show confirmation window asking the user if he/she has an existing donor ID, if yes, prompts
+    //the user to enter the donor ID and makes the donations to the chosen wildlife, if no, show the user the page to
+    //create donor profile
     public void donate() {
         String msg = "Do you have a donor ID with us?";
         int reply = JOptionPane.showConfirmDialog(null, msg, "Donor profile",
@@ -135,7 +147,8 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
         }
     }
 
-
+    //REQUIRES: the length of the str > 6
+    //EFFECTS: truncates str to a 6 wildlife ID string, finds the wildlife object and returns it
     private Wildlife optionToWL(String str) {
         String wildlifeID = str.substring(0, 6);
         for (Wildlife wl : mainFrame.getCs().getListOfWildlifeNotFullyFunded()) {
@@ -146,16 +159,21 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
         return null;
     }
 
+
+    //EFFECTS: removes the "$" char at the front of the str and converts it to a double
     private double optionToAmt(String str) {
         String amt = str.substring(1);
         return Double.parseDouble(amt);
     }
 
 
+    //EFFECTS: shows an Input window for the user to enter the donor ID, if the entered ID does not exisit, keeps
+    //prompting the user to enter donor ID until an existing ID is entered, finds the donor of the donor ID and
+    // returns it
     private Donor getDonor() {
         String userID = JOptionPane.showInputDialog("Please enter your donor ID: ");
         while (!mainFrame.getCs().getDonorIDList().contains(userID)) {
-            String msg = "It seems that the ID you entered does not exist, "
+            String msg = "Oops, the ID you entered does not exist, "
                     + "Please enter an existing donor ID: ";
             userID = JOptionPane.showInputDialog(msg, JOptionPane.WARNING_MESSAGE);
         }
