@@ -85,7 +85,7 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
     }
 
     //MODIFIES: this
-    //REQUIRES:
+    //EFFECTS: sets and returns a JLabel to show the wildlife information
     private JLabel createWlInfoLabel() {
         wildlifeInfoSummary = new JLabel();
         wildlifeInfoSummary.setBounds(95, 50, 435, 300);
@@ -96,6 +96,9 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
         return wildlifeInfoSummary;
     }
 
+
+    //MODIFIES: this
+    //EFFECTS: sets and returns the JLabel to show fully funded wildlife list
     private JLabel createFfWlLabel() {
         fullyFundedWlLabel = new JLabel();
         fullyFundedWlLabel.setBounds(95, 365, 500, 120);
@@ -106,6 +109,8 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
         return fullyFundedWlLabel;
     }
 
+    //MODIFIES: this
+    //EFFECTS: updates the text contents of fullyFundedWlLabel based on the information of cs's list of fully funded wildlife
     private void refreshFullyFundedWlLabel() {
         List<Wildlife> fullyFundedList = mainFrame.getCs().getWildlifeListFullyFunded();
         String msg = "<html>Currently, There are " + fullyFundedList.size()
@@ -114,10 +119,10 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
             msg += "<br>Wildlife ID (Species Name): " + wl.getWildlifeID() + " (" + wl.getSpeciesName() + ")";
         }
         msg += "</html>";
-        System.out.println(msg);
         fullyFundedWlLabel.setText(msg);
     }
 
+    //EFFECT: finds and return the wildlife object from the user input of wildlife ID
     private Wildlife findWlFromSelection() {
         String selection = wildlifeOptions.getSelectedItem().toString();
         if (selection.length() > 6) {
@@ -131,6 +136,8 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
     }
 
 
+    //MODIFIES: this
+    //EFFECTS: sets and returns the JLabel for the user to select the wildlife to view
     public JComboBox createWlOptions() {
         JLabel label = new JLabel("Please select a wildlife to view: ");
         label.setBounds(95, 25, 500, 25);
@@ -164,7 +171,7 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
     public JButton createGoBackButton() {
         backToPreviousButton = new JButton("Go back");
         backToPreviousButton.setBounds(590, 611, 100, 40);
-        backToPreviousButton.setFont(new Font("Comic Sans", 1, 12));
+        backToPreviousButton.setFont(new Font("Comic Sans", Font.BOLD, 12));
         backToPreviousButton.setForeground(Color.black);
         backToPreviousButton.setBackground(Color.PINK);
         backToPreviousButton.setVisible(true);

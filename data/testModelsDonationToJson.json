@@ -1,0 +1,20 @@
+{
+    "totalFundingRaised": 0,
+    "wildlifeListNotFullyFunded": [{
+        "conservationStatus": "CD",
+        "admissionDate": "2023-03-11",
+        "listOfDonors": [],
+        "speciesName": "cat",
+        "dateFullyFunded": "null",
+        "amountFunded": 0,
+        "wildlifeID": "CD6867",
+        "description": "none",
+        "donationRecords": [],
+        "isFullyFunded": false,
+        "targetFunding": 2000
+    }],
+    "totalTargetFunding": 2000,
+    "name": "Wildlife Conservation Facility",
+    "wildlifeListFullyFunded": [],
+    "listOfDonor": []
+}
