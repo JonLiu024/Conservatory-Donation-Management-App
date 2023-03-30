@@ -110,7 +110,8 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
     }
 
     //MODIFIES: this
-    //EFFECTS: updates the text contents of fullyFundedWlLabel based on the information of cs's list of fully funded wildlife
+    //EFFECTS: updates the text contents of fullyFundedWlLabel based on the information of
+    // cs's list of fully funded
     private void refreshFullyFundedWlLabel() {
         List<Wildlife> fullyFundedList = mainFrame.getCs().getWildlifeListFullyFunded();
         String msg = "<html>Currently, There are " + fullyFundedList.size()
