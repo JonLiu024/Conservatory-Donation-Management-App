@@ -93,7 +93,6 @@ public class Donor implements Writable {
     // is not fully funded after the increment, otherwise the amountFunded of wildlife is increased
     // to the targetFunding and the increment amount is returned
     public double makeDonation(Wildlife wildlife, double amount) {
-
         double actualFundingAmt = wildlife.raiseFund(amount);
         Donation donation = new Donation(wildlife.getWildlifeID(), actualFundingAmt);
         recordsOfDonations.add(donation);

@@ -123,6 +123,7 @@ public class MakeDonations extends JPanel implements ActionListener, Exitable, U
     //EFFECTS: prompts a show confirmation window asking the user if he/she has an existing donor ID, if yes, prompts
     //the user to enter the donor ID and makes the donations to the chosen wildlife, if no, show the user the page to
     //create donor profile
+    //EFFECTS: https://stackoverflow.com/questions/8396870/joptionpane-yes-or-no-window
     public void donate() {
         String msg = "Do you have a donor ID with us?";
         int reply = JOptionPane.showConfirmDialog(null, msg, "Donor profile",

@@ -129,11 +129,11 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         titlePanel.setBackground(new Color(204, 255, 255));
         JLabel label1 = new JLabel();
         ImageIcon titleImage = new ImageIcon("./data/media/logoWildlifeConservatory250.jpg");
-        String labelContent1 = "<html>Welcome to our wildlife conservatory! <BR><BR></html>";
+        String labelContent1 = "<html>Welcome to Tong's wildlife conservatory!<BR><BR></html>";
         label1.setText(labelContent1);
         label1.setIcon(titleImage);
-        label1.setHorizontalTextPosition(4);
-        label1.setFont(new Font("Serif", Font.BOLD, 33));
+        label1.setLayout(null);
+        label1.setFont(new Font("Serif", Font.BOLD, 30));
         label1.setVerticalAlignment(1);
         titlePanel.add(label1);
         return titlePanel;
@@ -287,7 +287,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
     }
 
 
-    // EFFECTS: saves the conservation site states to file, alert the user with a window message showing if
+    // EFFECTS: saves the conservation site states to file, alert the user with a window message showing whether or not
     //saving data to file is successful
     //REFERENCE: JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     private void saveToFile() {
