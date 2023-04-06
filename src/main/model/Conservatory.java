@@ -181,8 +181,8 @@ public class Conservatory implements Writable {
         return totalTargetFunding;
     }
 
-
-    //EFFECT: returns the hashset of donors who have made the highest amount of donations to the conservation site
+    //REQUIRES: listOfDonors.size() > 0
+    //EFFECT: returns the list of donor(s) who have(has) made the highest amount of donations to the conservation site
     public List<Donor> mostGenerousDonor() {
         List<Donor> donorList = new ArrayList<>();
         double highestDonation = listOfDonors.get(0).getTotalFundingDonated();

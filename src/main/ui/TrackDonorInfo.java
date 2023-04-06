@@ -102,14 +102,15 @@ public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, 
         if (mainFrame.getCs().getListOfDonors().size() == 0) {
             String msg = "Currently there is no donor!";
             mostGenerousDonorLabel.setText(msg);
+        } else {
+            List<Donor> mostGenerousDonorList = mainFrame.getCs().mostGenerousDonor();
+            String msg = "<html>Currently, the most generous donor(s) in our conservatory are: ";
+            for (Donor d: mostGenerousDonorList) {
+                msg = msg + "<br>Donor ID: " + d.getDonorID();
+            }
+            System.out.println(msg);
+            mostGenerousDonorLabel.setText(msg);
         }
-        List<Donor> mostGenerousDonorList = mainFrame.getCs().mostGenerousDonor();
-        String msg = "<html>Currently, the most generous donor(s) in our conservatory are: ";
-        for (Donor d: mostGenerousDonorList) {
-            msg = msg + "<br>Donor ID: " + d.getDonorID();
-        }
-        System.out.println(msg);
-        mostGenerousDonorLabel.setText(msg);
     }
 
     //MODIFIES: this
