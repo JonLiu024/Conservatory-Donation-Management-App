@@ -96,6 +96,10 @@ public class Conservatory implements Writable {
     public void addDonor(Donor d) {
         if (!listOfDonors.contains(d)) {
             listOfDonors.add(d);
+            String description = "A donor profile (Donor ID: " + d.getDonorID() + ") is created and added into " +
+                    "the conservatory's management system";
+            Event donorProfileCreationEvent = new Event(description);
+            EventLog.getInstance().logEvent(donorProfileCreationEvent);
         }
     }
 
@@ -138,6 +142,9 @@ public class Conservatory implements Writable {
         if (!wildlifeListNotFullyFunded.contains(wildlife)) {
             wildlifeListNotFullyFunded.add(wildlife);
             totalTargetFunding += wildlife.getTargetFunding();
+            String description = "A wildlife (" + wildlife.getWildlifeID() + ") is added into the Conservatory ";
+            Event addWildlifeEvent = new Event(description);
+            EventLog.getInstance().logEvent(addWildlifeEvent);
         }
     }
 
@@ -150,6 +157,10 @@ public class Conservatory implements Writable {
         wildlife.setDateFullyFunded(LocalDate.now());
         wildlife.setIsFullyFunded(true);
         wildlifeListFullyFunded.add(wildlife);
+        String description = "A wildlife (" + wildlife.getWildlifeID() + ") becomes fully funded, it is " +
+                "added into the fullyfunded wildlife list";
+        Event fullyFulledEvent = new Event(description);
+        EventLog.getInstance().logEvent(fullyFulledEvent);
     }
 
     //EFFECT: calculates and returns the total funds that were raised from the donations; The total funding raised is

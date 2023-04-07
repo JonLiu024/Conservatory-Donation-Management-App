@@ -96,6 +96,8 @@ public class Donor implements Writable {
         double actualFundingAmt = wildlife.raiseFund(amount);
         Donation donation = new Donation(wildlife.getWildlifeID(), actualFundingAmt);
         recordsOfDonations.add(donation);
+//        String description = "A new donation of $" + donation.getAmount() + "to " + donation.getWildlifeID() +
+//                " is added to " + this.getDonorID();
         totalFundingDonated += actualFundingAmt;
         wildlife.addDonationToRecords(donation);
         wildlife.addDonorToList(this);
