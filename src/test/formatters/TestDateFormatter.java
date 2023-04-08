@@ -1,14 +1,15 @@
-package model.formatters;
+package formatters;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import model.formatters.DateFormatter;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-public class testDateFormatter {
+public class TestDateFormatter {
     private LocalDate localDate;
     private String localDateString;
 
@@ -21,7 +22,7 @@ public class testDateFormatter {
 
     @Test
     public void testToStringLocalDate() {
-        assertEquals(localDateString, DateFormatter.toStringLocalDate(localDate));
+        Assertions.assertEquals(localDateString, DateFormatter.toStringLocalDate(localDate));
         assertEquals("null", DateFormatter.toStringLocalDate(null));
 
     }

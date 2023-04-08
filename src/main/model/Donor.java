@@ -1,7 +1,7 @@
 package model;
 
 
-import model.formatters.DateFormatter;
+import formatters.DateFormatter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -95,9 +95,8 @@ public class Donor implements Writable {
     public double makeDonation(Wildlife wildlife, double amount) {
         double actualFundingAmt = wildlife.raiseFund(amount);
         Donation donation = new Donation(wildlife.getWildlifeID(), actualFundingAmt);
-        recordsOfDonations.add(donation);
-//        String description = "A new donation of $" + donation.getAmount() + "to " + donation.getWildlifeID() +
-//                " is added to " + this.getDonorID();
+//        recordsOfDonations.add(donation);
+        this.addDonationToList(donation);
         totalFundingDonated += actualFundingAmt;
         wildlife.addDonationToRecords(donation);
         wildlife.addDonorToList(this);
@@ -113,6 +112,10 @@ public class Donor implements Writable {
     public void addDonationToList(Donation d) {
         if (!recordsOfDonations.contains(d)) {
             recordsOfDonations.add(d);
+            String description = "A donation ($" + d.getAmount() + ", wildlife ID: " + d.getWildlifeID()
+                    + ") is added to " + this.getDonorID() + "'s donation list";
+            Event addDonationToDonorEvent = new Event(description);
+            EventLog.getInstance().logEvent(addDonationToDonorEvent);
         }
     }
 

@@ -105,7 +105,6 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
         if (!matcher.find()) {
             throw new InputMismatchException("Please enter your email address in valid format: ");
         }
-
     }
 
     @Override

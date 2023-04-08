@@ -1,7 +1,7 @@
 package ui;
 
 import model.Wildlife;
-import model.formatters.DateFormatter;
+import formatters.DateFormatter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -79,7 +79,6 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
                     + cs + "<br>Funding Raised:" + amountRaised + "<br>Target Funding:" + targetFunding
                     + "<br>Admission Date:" + admissonDate + "<br>Date Fully Funded:" + dateFullyFunded
                     + "<br>Description:" + "<br>" + description + "</html>";
-            System.out.println(msg);
             wildlifeInfoSummary.setText(msg);
         }
     }

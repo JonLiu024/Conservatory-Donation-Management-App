@@ -1,13 +1,14 @@
 package ui;
 
 import model.Conservatory;
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -67,6 +68,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         return backgroundLabel;
     }
 
+
     //MODIFIES: this
     //EFFECT: instantiates the associated JComponents of this
     private void panelsInitiator() {
@@ -105,6 +107,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         backgroundLabel.setVisible(false);
     }
 
+
     //EFFECTS: create a LaunchFundTrackerAppGUI objects, instantiates and adds all the asscociated JComponents
     //, sets the features of the JFrame
     public LaunchFundTrackerAppGUI() {
@@ -112,6 +115,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         panelsInitiator();
         mainMenuPanelInitiator();
         addPanelsToFrame();
+        windowEventHandler();
         this.setTitle("Wildlife Conservatory ");
         this.setSize(700, 840);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -120,6 +124,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         this.getContentPane().setBackground(new Color(204, 255, 255));
         this.setVisible(true);
     }
+
 
     //MODIFIES: this
     //EFFECTS: sets the titlePanel with associated features (photos, background colour and bounds) and returns it
@@ -138,6 +143,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
         titlePanel.add(label1);
         return titlePanel;
     }
+
 
     //MODIFIES: this
     //EFFECTS: sets and returns the button to show the admin menu
@@ -323,5 +329,30 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
             System.out.println(msg);
         }
     }
+
+
+    //MODIFIES: this
+    //EFFECTS: adds a WindowAdapter object into the list of observers of this, windowClosing methods of observer
+    //windowAdaptor is overriden and implemented
+    //pops up a confirmation window when users attempt to close the app, prints out the key events during the usage if
+    //user selects YES;
+    //REFERENCE: https://stackoverflow.com/questions/16295942/java-swing-adding-action-listener-for-exit-on-close
+    private void windowEventHandler() {
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                int reply = JOptionPane.showConfirmDialog(null,"Are you sure to close! "
+                                + "Please make sure that you have save the state of your conservatory !", null,
+                        JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
+                    for (Event event: EventLog.getInstance()) {
+                        System.out.println(event.getDescription());
+                    }
+                }
+            }
+        });
+    }
+
 
 }

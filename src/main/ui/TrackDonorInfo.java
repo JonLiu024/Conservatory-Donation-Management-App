@@ -1,7 +1,7 @@
 package ui;
 
 import model.Donor;
-import model.formatters.DateFormatter;
+import formatters.DateFormatter;
 
 import javax.swing.*;
 import java.awt.*;

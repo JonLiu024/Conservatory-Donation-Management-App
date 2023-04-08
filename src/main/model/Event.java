@@ -5,36 +5,27 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-/**
- * Represents an alarm system event.
- */
+//Representing events occurring during the operation of the program
 public class Event {
     private static final int HASH_CONSTANT = 13;
     private Date dateLogged;
     private String description;
 
-    /**
-     * Creates an event with the given description
-     * and the current date/time stamp.
-     * @param description  a description of the event
-     */
+
+    //REQUIRES: description is not null;
+    //EFFECTS: constructs an event object with date being set to the current date and a description set
+    // as the parameter;
     public Event(String description) {
         dateLogged = Calendar.getInstance().getTime();
         this.description = description;
     }
 
-    /**
-     * Gets the date of this event (includes time).
-     * @return  the date of the event
-     */
+    //EFFECTS: returns the date the event is logged into the EventLog
     public Date getDate() {
         return dateLogged;
     }
 
-    /**
-     * Gets the description of this event.
-     * @return  the description of the event
-     */
+    //EFFECTS: returns the description of the event
     public String getDescription() {
         return description;
     }

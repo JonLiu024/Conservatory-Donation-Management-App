@@ -1,7 +1,7 @@
 package model;
 
 
-import model.formatters.DateFormatter;
+import formatters.DateFormatter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -16,7 +16,6 @@ import java.util.Random;
 //a species name, conservation status, an admission date, target funding, and currently raised funding,
 //and a short description
 public class Wildlife implements Writable {
-
 
     private String wildlifeID;      //wildlife's ID in the conservation site
     private String speciesName;     //wildlife's species
@@ -187,6 +186,10 @@ public class Wildlife implements Writable {
     public void addDonorToList(Donor donor) {
         if (!listOfDonors.contains(donor)) {
             listOfDonors.add(donor);
+            String description = "Donor (" + donor.getDonorID() + ") is added to " + this.getWildlifeID()
+                    + "'s donor list";
+            Event addDonorToWlEvent = new Event(description);
+            EventLog.getInstance().logEvent(addDonorToWlEvent);
         }
     }
 
@@ -198,6 +201,10 @@ public class Wildlife implements Writable {
         if (!donationRecords.contains(d)) {
             if (d.getWildlifeID().equals(wildlifeID)) {
                 donationRecords.add(d);
+                String description = "A donation ($" + d.getAmount() + ", wildlife ID: " + this.getWildlifeID()
+                        + ") is added to " + this.getWildlifeID() + "'s donation list";
+                Event addDonationToWildlifeEvent = new Event(description);
+                EventLog.getInstance().logEvent(addDonationToWildlifeEvent);
             }
         }
     }

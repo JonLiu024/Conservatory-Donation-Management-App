@@ -1,5 +1,5 @@
 {
-    "totalFundingRaised": 2050,
+    "totalFundingRaised": 2772,
     "wildlifeListNotFullyFunded": [
         {
             "conservationStatus": "VU",
@@ -67,39 +67,76 @@
             "donationRecords": [],
             "isFullyFunded": false,
             "targetFunding": 2322
+        }
+    ],
+    "totalTargetFunding": 12287,
+    "name": "Wildlife Conservation Facility",
+    "wildlifeListFullyFunded": [
+        {
+            "conservationStatus": "NT",
+            "admissionDate": "2012-02-12",
+            "listOfDonors": [{
+                "profileCreationDate": "2023-04-08",
+                "emailAddress": "j@ubc.ca",
+                "donorID": "jerry",
+                "recordsOfDonations": [
+                    {
+                        "amount": 500,
+                        "wildlifeID": "EN9172",
+                        "dateDonationMade": "2023-04-08"
+                    },
+                    {
+                        "amount": 500,
+                        "wildlifeID": "EN9172",
+                        "dateDonationMade": "2023-04-08"
+                    },
+                    {
+                        "amount": 222,
+                        "wildlifeID": "NT6616",
+                        "dateDonationMade": "2023-04-08"
+                    }
+                ],
+                "totalFundingDonated": 1222
+            }],
+            "speciesName": "CAT",
+            "dateFullyFunded": "2023-04-08",
+            "amountFunded": 222,
+            "wildlifeID": "NT6616",
+            "description": "a",
+            "donationRecords": [{
+                "amount": 222,
+                "wildlifeID": "NT6616",
+                "dateDonationMade": "2023-04-08"
+            }],
+            "isFullyFunded": true,
+            "targetFunding": 222
         },
         {
             "conservationStatus": "EN",
             "admissionDate": "2022-12-21",
             "listOfDonors": [
                 {
-                    "profileCreationDate": "2023-03-30",
-                    "emailAddress": "tom@uab.ca",
-                    "donorID": "Tom",
-                    "recordsOfDonations": [{
-                        "amount": 500,
-                        "wildlifeID": "EN9172",
-                        "dateDonationMade": "2023-03-30"
-                    }],
-                    "totalFundingDonated": 500
-                },
-                {
-                    "profileCreationDate": "2023-03-29",
-                    "emailAddress": "jesse@ubc.ca",
-                    "donorID": "jesse",
+                    "profileCreationDate": "2023-04-08",
+                    "emailAddress": "j@ubc.ca",
+                    "donorID": "jerry",
                     "recordsOfDonations": [
                         {
-                            "amount": 200,
-                            "wildlifeID": "CR9619",
-                            "dateDonationMade": "2023-03-29"
+                            "amount": 500,
+                            "wildlifeID": "EN9172",
+                            "dateDonationMade": "2023-04-08"
                         },
                         {
                             "amount": 500,
                             "wildlifeID": "EN9172",
-                            "dateDonationMade": "2023-03-30"
+                            "dateDonationMade": "2023-04-08"
+                        },
+                        {
+                            "amount": 222,
+                            "wildlifeID": "NT6616",
+                            "dateDonationMade": "2023-04-08"
                         }
                     ],
-                    "totalFundingDonated": 700
+                    "totalFundingDonated": 1222
                 },
                 {
                     "profileCreationDate": "2023-03-29",
@@ -114,41 +151,48 @@
                         {
                             "amount": 500,
                             "wildlifeID": "EN9172",
-                            "dateDonationMade": "2023-03-30"
+                            "dateDonationMade": "2023-04-08"
+                        },
+                        {
+                            "amount": 500,
+                            "wildlifeID": "EN9172",
+                            "dateDonationMade": "2023-04-08"
                         }
                     ],
-                    "totalFundingDonated": 850
+                    "totalFundingDonated": 1350
                 }
             ],
             "speciesName": "Snow leopard",
-            "dateFullyFunded": "null",
-            "amountFunded": 1500,
+            "dateFullyFunded": "2023-04-08",
+            "amountFunded": 2000,
             "wildlifeID": "EN9172",
             "description": "rehabilitation",
             "donationRecords": [
                 {
                     "amount": 500,
                     "wildlifeID": "EN9172",
-                    "dateDonationMade": "2023-03-30"
+                    "dateDonationMade": "2023-04-08"
                 },
                 {
                     "amount": 500,
                     "wildlifeID": "EN9172",
-                    "dateDonationMade": "2023-03-30"
+                    "dateDonationMade": "2023-04-08"
                 },
                 {
                     "amount": 500,
                     "wildlifeID": "EN9172",
-                    "dateDonationMade": "2023-03-30"
+                    "dateDonationMade": "2023-04-08"
+                },
+                {
+                    "amount": 500,
+                    "wildlifeID": "EN9172",
+                    "dateDonationMade": "2023-04-08"
                 }
             ],
-            "isFullyFunded": false,
+            "isFullyFunded": true,
             "targetFunding": 2000
         }
     ],
-    "totalTargetFunding": 12065,
-    "name": "Wildlife Conservation Facility",
-    "wildlifeListFullyFunded": [],
     "listOfDonor": [
         {
             "profileCreationDate": "2023-03-29",
@@ -163,39 +207,49 @@
                 {
                     "amount": 500,
                     "wildlifeID": "EN9172",
-                    "dateDonationMade": "2023-03-30"
+                    "dateDonationMade": "2023-04-08"
+                },
+                {
+                    "amount": 500,
+                    "wildlifeID": "EN9172",
+                    "dateDonationMade": "2023-04-08"
                 }
             ],
-            "totalFundingDonated": 850
+            "totalFundingDonated": 1350
         },
         {
             "profileCreationDate": "2023-03-29",
             "emailAddress": "jesse@ubc.ca",
             "donorID": "jesse",
+            "recordsOfDonations": [{
+                "amount": 200,
+                "wildlifeID": "CR9619",
+                "dateDonationMade": "2023-03-29"
+            }],
+            "totalFundingDonated": 200
+        },
+        {
+            "profileCreationDate": "2023-04-08",
+            "emailAddress": "j@ubc.ca",
+            "donorID": "jerry",
             "recordsOfDonations": [
                 {
-                    "amount": 200,
-                    "wildlifeID": "CR9619",
-                    "dateDonationMade": "2023-03-29"
+                    "amount": 500,
+                    "wildlifeID": "EN9172",
+                    "dateDonationMade": "2023-04-08"
                 },
                 {
                     "amount": 500,
                     "wildlifeID": "EN9172",
-                    "dateDonationMade": "2023-03-30"
+                    "dateDonationMade": "2023-04-08"
+                },
+                {
+                    "amount": 222,
+                    "wildlifeID": "NT6616",
+                    "dateDonationMade": "2023-04-08"
                 }
             ],
-            "totalFundingDonated": 700
-        },
-        {
-            "profileCreationDate": "2023-03-30",
-            "emailAddress": "tom@uab.ca",
-            "donorID": "Tom",
-            "recordsOfDonations": [{
-                "amount": 500,
-                "wildlifeID": "EN9172",
-                "dateDonationMade": "2023-03-30"
-            }],
-            "totalFundingDonated": 500
+            "totalFundingDonated": 1222
         }
     ]
 }

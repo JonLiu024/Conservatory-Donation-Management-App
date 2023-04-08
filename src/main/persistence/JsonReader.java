@@ -1,7 +1,7 @@
 package persistence;
 
 
-import model.formatters.DateFormatter;
+import formatters.DateFormatter;
 import model.Conservatory;
 import model.ConservationStatus;
 import model.Wildlife;

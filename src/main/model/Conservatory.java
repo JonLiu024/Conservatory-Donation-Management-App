@@ -16,7 +16,7 @@ public class Conservatory implements Writable {
     private List<Donor> listOfDonors;   //list of donors profiles
     private double totalTargetFunding;  //the total amount of funding to be raised
     private double totalFundingRaised;  //the total amount of funding that has been raised
-    private String name;
+    private String name; //the conservatory's name
 
 
     //EFFECT: create a Conservatory object; the totalTargetFunding and totalFundingRaised are set zero,
@@ -96,8 +96,8 @@ public class Conservatory implements Writable {
     public void addDonor(Donor d) {
         if (!listOfDonors.contains(d)) {
             listOfDonors.add(d);
-            String description = "A donor profile (Donor ID: " + d.getDonorID() + ") is created and added into " +
-                    "the conservatory's management system";
+            String description = "A donor profile (Donor ID: " + d.getDonorID() + ") is created and added into "
+                    + "the conservatory";
             Event donorProfileCreationEvent = new Event(description);
             EventLog.getInstance().logEvent(donorProfileCreationEvent);
         }
@@ -142,7 +142,7 @@ public class Conservatory implements Writable {
         if (!wildlifeListNotFullyFunded.contains(wildlife)) {
             wildlifeListNotFullyFunded.add(wildlife);
             totalTargetFunding += wildlife.getTargetFunding();
-            String description = "A wildlife (" + wildlife.getWildlifeID() + ") is added into the Conservatory ";
+            String description = "A wildlife (" + wildlife.getWildlifeID() + ") is added to the Conservatory ";
             Event addWildlifeEvent = new Event(description);
             EventLog.getInstance().logEvent(addWildlifeEvent);
         }
@@ -157,8 +157,8 @@ public class Conservatory implements Writable {
         wildlife.setDateFullyFunded(LocalDate.now());
         wildlife.setIsFullyFunded(true);
         wildlifeListFullyFunded.add(wildlife);
-        String description = "A wildlife (" + wildlife.getWildlifeID() + ") becomes fully funded, it is " +
-                "added into the fullyfunded wildlife list";
+        String description = "A wildlife (" + wildlife.getWildlifeID() + ") becomes fully funded, it is "
+                + "added to the list of fully funded wildlife";
         Event fullyFulledEvent = new Event(description);
         EventLog.getInstance().logEvent(fullyFulledEvent);
     }
@@ -218,7 +218,6 @@ public class Conservatory implements Writable {
         jsonObject.put("totalTargetFunding", totalTargetFunding);
         jsonObject.put("totalFundingRaised", totalFundingRaised);
         jsonObject.put("name", name);
-
         return jsonObject;
     }
 
@@ -227,11 +226,9 @@ public class Conservatory implements Writable {
     //EFFECT: returns wildlife that are not fully funded as a JSON array
     private JSONArray wildlifeListNotFullyFundedToJson() {
         JSONArray jsonArray = new JSONArray();
-
         for (Wildlife wl: wildlifeListNotFullyFunded) {
             jsonArray.put(wl.toJson());
         }
-
         return jsonArray;
     }
 
@@ -240,11 +237,9 @@ public class Conservatory implements Writable {
     //EFFECT: returns wildlife that are fully funded as a JSON array
     private JSONArray wildlifeListFullyFundedToJson() {
         JSONArray jsonArray = new JSONArray();
-
         for (Wildlife wl: wildlifeListFullyFunded) {
             jsonArray.put(wl.toJson());
         }
-
         return jsonArray;
     }
 
@@ -252,7 +247,6 @@ public class Conservatory implements Writable {
     //EFFECT: returns all donors that have made donations as a JSON array
     private JSONArray listOfDonorToJson() {
         JSONArray jsonArray = new JSONArray();
-
         for (Donor d: listOfDonors) {
             jsonArray.put(d.toJson());
         }

@@ -3,7 +3,7 @@ package model;
 
 import org.json.JSONObject;
 import persistence.Writable;
-import model.formatters.DateFormatter;
+import formatters.DateFormatter;
 
 import java.time.LocalDate;
 

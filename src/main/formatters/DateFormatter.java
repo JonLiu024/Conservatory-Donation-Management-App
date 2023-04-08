@@ -1,4 +1,4 @@
-package model.formatters;
+package formatters;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -10,7 +10,6 @@ public class DateFormatter {
 
     //EFFECT: construct a dateFormatter object
     public DateFormatter() {
-
     }
 
 

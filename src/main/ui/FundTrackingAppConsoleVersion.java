@@ -1,6 +1,6 @@
 package ui;
 
-import model.formatters.DateFormatter;
+import formatters.DateFormatter;
 import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -309,7 +309,7 @@ public class FundTrackingAppConsoleVersion {
     //EFFECT: prompts the user to select a wildlife from the list to view its information
     private void viewSpecificWildlifeInfo() {
         displayAllWL();
-        String entry = "";
+        String entry;
         System.out.println("Please enter the ID for your selected wildlife: ");
         first:
         while (true) {

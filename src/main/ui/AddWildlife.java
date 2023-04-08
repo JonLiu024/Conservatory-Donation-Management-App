@@ -2,7 +2,7 @@ package ui;
 
 import model.ConservationStatus;
 import model.Wildlife;
-import model.formatters.DateFormatter;
+import formatters.DateFormatter;
 
 import javax.swing.*;
 import java.awt.*;

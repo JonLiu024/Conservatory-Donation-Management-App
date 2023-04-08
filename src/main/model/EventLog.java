@@ -5,31 +5,25 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-/**
- * Represents a log of alarm system events.
- * We use the Singleton Design Pattern to ensure that there is only
- * one EventLog in the system and that the system has global access
- * to the single instance of the EventLog.
- */
+
+
+//Representing a log of the important events occurring in the conservatory
+//A singleton design pattern is implemented to ensure that there is only one EventLog in the
+//system  and that the system has global access to the single instance of the EventLog
 public class EventLog implements Iterable<Event> {
-    /** the only EventLog in the system (Singleton Design Pattern) */
-    private static EventLog theLog;
+
+    private static EventLog theLog; //the only single eventLog object in the system
     private Collection<Event> events;
 
-    /**
-     * Prevent external construction.
-     * (Singleton Design Pattern).
-     */
+    //EFFECTS: constructs an eventLog object and restricts the instantiation of the class
+    //within the class
     private EventLog() {
         events = new ArrayList<Event>();
     }
 
-    /**
-     * Gets instance of EventLog - creates it
-     * if it doesn't already exist.
-     * (Singleton Design Pattern)
-     * @return  instance of EventLog
-     */
+
+    //EFFECT: creates an instance of EventLog as following the singleton design pattern,
+    //instantiates EventLog if it hasn't yet been instantiated, returns the instance of EventLog
     public static EventLog getInstance() {
         if (theLog == null) {
             theLog = new EventLog();
@@ -37,17 +31,14 @@ public class EventLog implements Iterable<Event> {
         return theLog;
     }
 
-    /**
-     * Adds an event to the event log.
-     * @param e the event to be added
-     */
+
+    //REQUIRES: e is not null
+    //EFFECTS: e is added into the list of events
     public void logEvent(Event e) {
         events.add(e);
     }
 
-    /**
-     * Clears the event log and logs the event.
-     */
+    //EFFECTS: clears all events in events, an event of log clearance is constructed and added into the list of event
     public void clear() {
         events.clear();
         logEvent(new Event("Event log cleared."));
