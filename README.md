@@ -73,6 +73,25 @@ User stories:
 - You can create a donor profile by clicking **Submit** in **Make a donation** page, A window will pop up asking if you have a donor profile. Select No to proceed to the **Create donor profile** page, enter your information and click **Submit** 
 - You can view the donation records of a donor by clicking **Track donation records** button, entering the donor ID in the provided textfield, and clicking the **Track donor info** button
 
+## Phase 4 Task 2
+# Representative sample events print-out:
+- A wildlife (EN0642) is added to the Conservatory 
+- A donor profile (Donor ID: Tong) is created and added into the conservatory 
+- A donation ($500.0, wildlife ID: EN0642) is added to Tong's donation list
+- A donation ($500.0, wildlife ID: EN0642) is added to EN0642's donation list
+- Donor (Tong) is added to EN0642's donor list
+- A donation ($500.0, wildlife ID: EN0642) is added to Tong's donation list
+- A donation ($500.0, wildlife ID: EN0642) is added to EN0642's donation list
+- A wildlife (EN0642) becomes fully funded, it is added to the list of fully funded wildlife
+
+- A donation ($500.0, wildlife ID: CR9619) is added to Tong's donation list
+- A donation ($500.0, wildlife ID: CR9619) is added to CR9619's donation list
+- Donor (Tong) is added to CR9619's donor list
+
+## Phase 4: Task 3
+- There are several refactoring I can perform to improve the cohesion and reduce the coupling of my program
+- Firstly, In the Wildlife class and Donor class, there exist a 
+
 
 ## Main source of reference
 Tutoring source: https://youtu.be/Kmgo00avvEw 

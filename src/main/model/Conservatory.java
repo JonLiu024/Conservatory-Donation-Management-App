@@ -157,8 +157,8 @@ public class Conservatory implements Writable {
         wildlife.setDateFullyFunded(LocalDate.now());
         wildlife.setIsFullyFunded(true);
         wildlifeListFullyFunded.add(wildlife);
-        String description = "A wildlife (" + wildlife.getWildlifeID() + ") becomes fully funded, it is "
-                + "added to the list of fully funded wildlife";
+        String description = "A wildlife (" + wildlife.getWildlifeID() + ") becomes fully funded, it is removed from"
+                + "the list of Not fully funded wildlife, and added to the list of fully funded wildlife";
         Event fullyFulledEvent = new Event(description);
         EventLog.getInstance().logEvent(fullyFulledEvent);
     }
@@ -206,6 +206,9 @@ public class Conservatory implements Writable {
                 donorList.add(d);
             }
         }
+        String description = "The list of the conservatory's most generous donors is created and presented";
+        Event event = new Event(description);
+        EventLog.getInstance().logEvent(event);
         return donorList;
     }
 
