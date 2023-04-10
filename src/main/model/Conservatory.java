@@ -145,14 +145,24 @@ public class Conservatory implements Writable {
     //EFFECT: removes wildlife from wildlifeListNotFullyFunded and add wildlife to
     //wildlifeListFullyFunded; dateFullyFunded is set as current localDate
     public void moveWildlifeToFullyFundedList(Wildlife wildlife) {
-        wildlifeListNotFullyFunded.remove(wildlife);
         wildlife.setDateFullyFunded(LocalDate.now());
+
         wildlife.setIsFullyFunded(true);
+        String description2 = "A wildlife (" + wildlife.getWildlifeID() + ") becomes fully funded";
+        Event fullyFundedEvent = new Event(description2);
+        EventLog.getInstance().logEvent(fullyFundedEvent);
+
+        wildlifeListNotFullyFunded.remove(wildlife);
+        String description1 = "A wildlife (" + wildlife.getWildlifeID() + ") is removed from "
+                + "the list of wildlife for funding";
+        Event wildlifeRemovalEvent = new Event(description1);
+        EventLog.getInstance().logEvent(wildlifeRemovalEvent);
+
         wildlifeListFullyFunded.add(wildlife);
-        String description = "A wildlife (" + wildlife.getWildlifeID() + ") becomes fully funded, it is removed from"
-                + " the list of Not fully funded wildlife, and added to the list of fully funded wildlife";
-        Event fullyFulledEvent = new Event(description);
-        EventLog.getInstance().logEvent(fullyFulledEvent);
+        String description3 = "A wildlife (" + wildlife.getWildlifeID() + ") is added to the list of fully funded"
+                + " wildlife";
+        Event addingEvent = new Event(description3);
+        EventLog.getInstance().logEvent(addingEvent);
     }
 
     //EFFECT: calculates and returns the total funds that were raised from the donations; The total funding raised is
@@ -198,7 +208,7 @@ public class Conservatory implements Writable {
                 donorList.add(d);
             }
         }
-        String description = "The list of the conservatory's most generous donors is created and presented";
+        String description = "The list of the conservatory's most generous donors is created";
         Event event = new Event(description);
         EventLog.getInstance().logEvent(event);
         return donorList;

@@ -82,15 +82,33 @@ User stories:
 - Donor (Tong) is added to EN0642's donor list
 - A donation ($500.0, wildlife ID: EN0642) is added to Tong's donation list
 - A donation ($500.0, wildlife ID: EN0642) is added to EN0642's donation list
-- A wildlife (EN0642) becomes fully funded, it is removed from the list of not fully funded wildlife and added to the list of fully funded wildlife
-
-- A donation ($500.0, wildlife ID: CR9619) is added to Tong's donation list
-- A donation ($500.0, wildlife ID: CR9619) is added to CR9619's donation list
-- Donor (Tong) is added to CR9619's donor list
+- A wildlife (EN0642) becomes fully funded 
+- A wildlife (EN0642) is removed from the list of wildlife for funding
+- A wildlife (EN0642) is added to the list of fully funded wildlife 
 
 ## Phase 4: Task 3
-- There are several refactoring I can perform to improve the cohesion and reduce the coupling of my program
-- Firstly, In the Wildlife class and Donor class, there exist a 
+- There are several refactoring I can perform to improve the cohesion and reduce the coupling of my program:
+
+- Refactoring 1:
+- Application of singleton design:
+- In this design, there exists only a single instance of Conservatory,0 to multiple instances of Wildlife, Donor, and Donation. 
+- Therefore, to reduce the code duplication, the expense of instantiating conservatory class and 
+- to have an easier and more direct access to the Conservatory's methods and field, we can apply singleton design into the program
+- to make the constructor of Conservatory class private and implement a getInstance method
+
+
+- Refactoring 2:
+- To avoid tight coupling between model classes: 
+- The UML diagram reveals that Conservatory has association relationships with both Wildlife and Donor classes, while Wildlife has already been associated 
+- with Donor (Wildlife has a field List<Donor>). To reduce the coupling among the model classes, we can remove the association relationship between Donor and Conservatory (ie. remove the field List<Donor> in Conservatory) 
+- Instead, the conservatory can reference its donor objects by referencing Wildlife's List<Donor>; 
+- The similar situations happen among Donation, Wildlife and Donor classes. Wildlife has associated relationships with both Donor and Donation, while Donor has already had an associated relationship with Donation.
+- We can remove the relationship between Wildlife and Donation class (remove the field List<Donation> in Wildlife class). 
+- We can then reference an wildlife's objects by referencing its's donor's collection of donations (List<Donation>)
+
+
+-Refactoring 3:
+-To reduce semantic coupling:
 
 
 ## Main source of reference
