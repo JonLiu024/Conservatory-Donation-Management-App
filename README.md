@@ -87,28 +87,36 @@ User stories:
 - A wildlife (EN0642) is added to the list of fully funded wildlife 
 
 ## Phase 4: Task 3
-- There are several refactoring I can perform to improve the cohesion and reduce the coupling of my program:
-
-- Refactoring 1:
-- Application of singleton design:
-- In this design, there exists only a single instance of Conservatory,0 to multiple instances of Wildlife, Donor, and Donation. 
-- Therefore, to reduce the code duplication, the expense of instantiating conservatory class and 
-- to have an easier and more direct access to the Conservatory's methods and field, we can apply singleton design into the program
-- to make the constructor of Conservatory class private and implement a getInstance method
 
 
-- Refactoring 2:
-- To avoid tight coupling between model classes: 
+    
+
+    Refactoring 1: Application of singleton design
+- In my project, there exists only a single instance of Conservatory, and 0...* instances of Wildlife, Donor, and Donation. 
+- Therefore, to reduce the expense of instantiating conservatory class and 
+- to have an easier and more direct access to the Conservatory's methods and fields, we can apply singleton design pattern 
+- We can achieve this by simply making the constructor of Conservatory class private and implement a static getInstance method 
+
+
+
+    Refactoring 2: To avoid tight coupling between model classes
 - The UML diagram reveals that Conservatory has association relationships with both Wildlife and Donor classes, while Wildlife has already been associated 
 - with Donor (Wildlife has a field List<Donor>). To reduce the coupling among the model classes, we can remove the association relationship between Donor and Conservatory (ie. remove the field List<Donor> in Conservatory) 
 - Instead, the conservatory can reference its donor objects by referencing Wildlife's List<Donor>; 
-- The similar situations happen among Donation, Wildlife and Donor classes. Wildlife has associated relationships with both Donor and Donation, while Donor has already had an associated relationship with Donation.
+- Similarly, the relationship among Donation, Wildlife and Donor classes can be improved. Wildlife has associated relationships with both Donor and Donation, while Donor has already been associated with Donation.
 - We can remove the relationship between Wildlife and Donation class (remove the field List<Donation> in Wildlife class). 
-- We can then reference an wildlife's objects by referencing its's donor's collection of donations (List<Donation>)
+- We can then reference the wildlife's donations by referencing its donor's collection of donations (List<Donation>)
 
 
--Refactoring 3:
--To reduce semantic coupling:
+    Refactoring 3: Application of Observer Patterns
+- In my project, the GUI was designed using Java Swing library. The main JFrame (FundTrackerAppGUI) was created to subtype JFrame and multiple JComponents (JLabel, JButton, JComboBox) were created to display the visual components related to a specific function
+- In the original design, I created several classes subtyping JPanel, each represents a page of the app to complete one action (i.e. adding a wildlife to the conservatory, Making a donation to a wildlife, etc.).
+- When the status of the conservatory (newly added wildlife, donation making, wildlife becomes fully funded, etc.) changes, the relevant JComponents was not immediately updated with the new contents. These components are updated with new contents when their page was 
+- displayed 
+- To improve the efficiency of GUI updating, we can apply the Observer pattern design;
+- To achieve this, we can create a subject class and have Conservatory extending it, and create an Observer interface and have all the ui classes implementing it
+- We can add the ui class into Conservatory's list of observers and use notifyObserver to update each GUI class. Each GUI component class will have its own implemented update method
+- For example, the update() of TrackDonorInfo class will set the displaying message based on the current status of each donor in the conservatory. 
 
 
 ## Main source of reference
