@@ -9,7 +9,7 @@ import java.util.Iterator;
 
 //Representing a log of the important events occurring in the conservatory
 //A singleton design pattern is implemented to ensure that there is only one EventLog in the
-//system  and that the system has global access to the single instance of the EventLog
+//system and that the system has global access to the single instance of the EventLog
 public class EventLog implements Iterable<Event> {
 
     private static EventLog theLog; //the only single eventLog object in the system

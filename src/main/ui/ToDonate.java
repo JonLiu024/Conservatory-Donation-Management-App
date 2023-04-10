@@ -12,13 +12,13 @@ public class ToDonate extends JPanel implements ActionListener, Exitable {
     private JButton trackDonationsRecordsButton;
     private JButton trackWLInfoButton;
     private JButton goBackButton;
-    private final LaunchFundTrackerAppGUI mainFrame;
+    private final FundTrackerAppGUI mainFrame;
 
 
 
     //REQUIRES: mainFrame is not null
     //EFFECTS: creates a ToDonate object; sets the mainFrame and adds the associated JComponents
-    public ToDonate(LaunchFundTrackerAppGUI mainFrame) {
+    public ToDonate(FundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         this.setSize(700, 840);
         this.add(createMakeDonationButton());

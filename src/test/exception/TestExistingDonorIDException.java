@@ -1,11 +1,7 @@
 package exception;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ui.CreateDonorProfile;
-import ui.LaunchFundTrackerAppGUI;
 
-import javax.swing.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestExistingDonorIDException {

@@ -9,6 +9,7 @@ import persistence.Writable;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.*;
+import java.util.Objects;
 
 //Representing a donor profile that is associated with one donor,
 // it has a donor ID, an email address, a profile creation date, the
@@ -143,5 +144,21 @@ public class Donor implements Writable {
         return jsonArray;
     }
 
+    //EFFECTS: makes sure the donor profile with the same ID are treated as the same object
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Donor donor = (Donor) o;
+        return Objects.equals(getDonorID(), donor.getDonorID());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDonorID());
+    }
 }

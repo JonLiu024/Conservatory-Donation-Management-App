@@ -16,7 +16,7 @@ import java.util.Map;
 //Representing a TrackDonationRecords JPanel and the function to track the donation records fo the conservtory
 public class TrackDonationsRecords extends JPanel implements ActionListener, Exitable, Resetable {
 
-    private final LaunchFundTrackerAppGUI mainFrame;
+    private final FundTrackerAppGUI mainFrame;
     private JButton backToPreviousButton;
     private JTextField userEntry;
     private JLabel donationRecordsLabel;
@@ -24,7 +24,7 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
 
     //REQUIRES: mainFrame is not null
     //EFFECTS: creates an TrackDonationsRecords objects, sets the mainFrame, and adds the associated components
-    public TrackDonationsRecords(LaunchFundTrackerAppGUI mainFrame) {
+    public TrackDonationsRecords(FundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         this.setBounds(0, 141, 700, 700);
         this.add(createTrackDonationsButton());
@@ -103,7 +103,6 @@ public class TrackDonationsRecords extends JPanel implements ActionListener, Exi
                 double amt = donation.getAmount();
                 String date = DateFormatter.toStringLocalDate(donation.getDateDonationMade());
                 String msg = "<br>$" + amt + " was donated to " + wlID + " on " + date;
-                System.out.println(msg);
                 contents = contents + msg;
             }
             contents += "</html>";

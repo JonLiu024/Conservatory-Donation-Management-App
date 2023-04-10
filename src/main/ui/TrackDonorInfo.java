@@ -14,7 +14,7 @@ import java.util.Map;
 
 //Representing a JPanel and the function to track donor information
 public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, Updatable, Resetable {
-    private final LaunchFundTrackerAppGUI mainFrame;
+    private final FundTrackerAppGUI mainFrame;
     private JButton backToPreviousButton;
     private JButton trackButton;
     private JComboBox donorListOptions;
@@ -25,7 +25,7 @@ public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, 
 
     //REQUIRES: mainFrame is not null
     //EFFECTS: creates a TrackDonorInfo panel, sets mainFrame and add associated components
-    public TrackDonorInfo(LaunchFundTrackerAppGUI mainFrame) {
+    public TrackDonorInfo(FundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         this.setBounds(0, 141, 700, 700);
         this.setLayout(null);
@@ -108,7 +108,6 @@ public class TrackDonorInfo extends JPanel implements Exitable, ActionListener, 
             for (Donor d: mostGenerousDonorList) {
                 msg = msg + "<br>Donor ID: " + d.getDonorID();
             }
-            System.out.println(msg);
             mostGenerousDonorLabel.setText(msg);
         }
     }

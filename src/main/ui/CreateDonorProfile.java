@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 //Representing a JPanel components of the LauNchFundTrackerAppGUI for users to create a donor profile
 public class CreateDonorProfile extends JPanel implements ActionListener, FormatDetectable, Resetable {
-    private final LaunchFundTrackerAppGUI mainFrame;
+    private final FundTrackerAppGUI mainFrame;
     private JTextField textFieldDonorID;
     private JTextField textFieldEmail;
     private JButton submissionButton;
@@ -22,7 +22,7 @@ public class CreateDonorProfile extends JPanel implements ActionListener, Format
     //EFFECTS: creates a createDonorProfile with associated features (bounds, background colour, layout);
     //sets mainFrame and adds the associated Jcomponents
     //REFERENCE:
-    public CreateDonorProfile(LaunchFundTrackerAppGUI mainFrame) {
+    public CreateDonorProfile(FundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         this.setBounds(0, 141, 700, 700);
         this.setLayout(null);

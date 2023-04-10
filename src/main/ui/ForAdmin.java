@@ -12,14 +12,14 @@ public class ForAdmin extends JPanel implements ActionListener, Exitable {
     private JButton trackDonorInfoButton;
     private JButton trackWildlifeInfoButton;
     private JButton goBackButton;
-    private final LaunchFundTrackerAppGUI mainFrame;
+    private final FundTrackerAppGUI mainFrame;
 
 
 
     //REQUIRES: mainFrame is not null
     //EFFECT: constructs a ForAdmin components and sets its associated features (bounds, background colour, layout);
     //sets the mainFrame and adds the associated components
-    public ForAdmin(LaunchFundTrackerAppGUI mainFrame) {
+    public ForAdmin(FundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         this.setSize(700, 840);
         this.setBackground(new Color(204, 255, 255));

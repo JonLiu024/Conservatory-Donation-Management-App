@@ -23,13 +23,13 @@ public class AddWildlife extends JPanel implements ActionListener, Exitable, For
     private JTextArea textDescription;
     private JButton submissionButton;
     private JButton goBackButton;
-    private final LaunchFundTrackerAppGUI mainFrame;
+    private final FundTrackerAppGUI mainFrame;
     private String dialogMsg;
 
     //REQUIRES: mainFrame is not null
     //EFFECT: construct a AddWildlife object with associate features of the panels (bounds, background colour, layout),
     //sets mainFrame, and adds associated JComponents
-    public AddWildlife(LaunchFundTrackerAppGUI mainFrame) {
+    public AddWildlife(FundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         dialogMsg = "Wildlife added successfully";
         this.setBounds(0, 141, 700, 700);

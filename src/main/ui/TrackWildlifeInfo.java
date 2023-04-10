@@ -14,7 +14,7 @@ import java.util.List;
 //Representing the JPanel and the function to track wildlife information
 public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitable,
         Updatable, Resetable {
-    private final LaunchFundTrackerAppGUI mainFrame;
+    private final FundTrackerAppGUI mainFrame;
     private JButton backToPreviousButton;
     private JButton trackButton;
     private JButton trackFullyFundedWlButton;
@@ -24,7 +24,7 @@ public class TrackWildlifeInfo extends JPanel implements ActionListener, Exitabl
 
     //REQUIRES: mainFrame is not null
     //EFFECTS: creates a TrackWildlifeInfo object, sets the mainFrame, and adds the associated JComponents
-    public TrackWildlifeInfo(LaunchFundTrackerAppGUI mainFrame) {
+    public TrackWildlifeInfo(FundTrackerAppGUI mainFrame) {
         this.mainFrame = mainFrame;
         this.add(createGoBackButton());
         this.add(createTrackWlButton());

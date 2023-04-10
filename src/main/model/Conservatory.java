@@ -108,16 +108,8 @@ public class Conservatory implements Writable {
     //EFFECT: returns an array list containing all fully funded wildlife and all non-fully funded wildlife
     public List<Wildlife> getListOfAllWL() {
         List<Wildlife> listOfAllWL = new ArrayList<>();
-        for (Wildlife wildlife : wildlifeListNotFullyFunded) {
-            if (!listOfAllWL.contains(wildlife)) {
-                listOfAllWL.add(wildlife);
-            }
-        }
-        for (Wildlife wildlife : wildlifeListFullyFunded) {
-            if (!listOfAllWL.contains(wildlife)) {
-                listOfAllWL.add(wildlife);
-            }
-        }
+        listOfAllWL.addAll(wildlifeListNotFullyFunded);
+        listOfAllWL.addAll(wildlifeListFullyFunded);
         return listOfAllWL;
     }
 
@@ -158,7 +150,7 @@ public class Conservatory implements Writable {
         wildlife.setIsFullyFunded(true);
         wildlifeListFullyFunded.add(wildlife);
         String description = "A wildlife (" + wildlife.getWildlifeID() + ") becomes fully funded, it is removed from"
-                + "the list of Not fully funded wildlife, and added to the list of fully funded wildlife";
+                + " the list of Not fully funded wildlife, and added to the list of fully funded wildlife";
         Event fullyFulledEvent = new Event(description);
         EventLog.getInstance().logEvent(fullyFulledEvent);
     }

@@ -82,7 +82,7 @@ User stories:
 - Donor (Tong) is added to EN0642's donor list
 - A donation ($500.0, wildlife ID: EN0642) is added to Tong's donation list
 - A donation ($500.0, wildlife ID: EN0642) is added to EN0642's donation list
-- A wildlife (EN0642) becomes fully funded, it is added to the list of fully funded wildlife
+- A wildlife (EN0642) becomes fully funded, it is removed from the list of not fully funded wildlife and added to the list of fully funded wildlife
 
 - A donation ($500.0, wildlife ID: CR9619) is added to Tong's donation list
 - A donation ($500.0, wildlife ID: CR9619) is added to CR9619's donation list

@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 //Representing the main frame of the app
-public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
+public class FundTrackerAppGUI extends JFrame implements ActionListener {
 
     private JPanel titlePanel;  //title section of the app
     private ForAdmin forAdmin;  //the page for admins
@@ -108,9 +108,9 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
     }
 
 
-    //EFFECTS: create a LaunchFundTrackerAppGUI objects, instantiates and adds all the asscociated JComponents
+    //EFFECTS: create a LaunchFundTrackerAppGUI objects, instantiates and adds all the JComponents
     //, sets the features of the JFrame
-    public LaunchFundTrackerAppGUI() {
+    public FundTrackerAppGUI() {
         modelsInitiator();
         panelsInitiator();
         mainMenuPanelInitiator();
@@ -166,7 +166,7 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
 
 
     //MODIFIES: this
-    //EFFECTS: sets and returns the button to show the donate menu
+    //EFFECTS: sets and returns the button to show to donate menu
     public JButton createDonateButton() {
         donationButton = new JButton();
         ImageIcon icon = new ImageIcon("./data/media/donate logo.png");
@@ -303,11 +303,9 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
             jsonWriter.close();
             String msg = "You have successfully saved " + cs.getName() + " to " + JSON_STORE;
             JOptionPane.showMessageDialog(null, msg, "Save data", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println(msg);
         } catch (FileNotFoundException e) {
             String msg = "Unable to write to file: " + JSON_STORE;
             JOptionPane.showMessageDialog(null, msg, "File Not Found Error", JOptionPane.ERROR_MESSAGE);
-            System.out.println(msg);
         }
 
     }
@@ -322,11 +320,9 @@ public class LaunchFundTrackerAppGUI extends JFrame implements ActionListener {
             cs = jsonReader.read();
             String msg = "You have successfully loaded " + cs.getName() + " from " + JSON_STORE;
             JOptionPane.showMessageDialog(null, msg, "Load data", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println(msg);
         } catch (IOException e) {
             String msg = "Unable to read from file: " + JSON_STORE;
             JOptionPane.showMessageDialog(null, msg, "Load File Error", JOptionPane.ERROR_MESSAGE);
-            System.out.println(msg);
         }
     }
 

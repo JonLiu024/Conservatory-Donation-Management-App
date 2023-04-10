@@ -8,12 +8,6 @@ import java.time.format.DateTimeFormatter;
 public class DateFormatter {
 
 
-    //EFFECT: construct a dateFormatter object
-    public DateFormatter() {
-    }
-
-
-
 
     //MODIFIES: this
     //EFFECT: converts the localDate into a string in the format of "yyyy-MM-dd" and returns it
