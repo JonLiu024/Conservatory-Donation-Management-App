@@ -330,23 +330,18 @@ public class FundTrackerAppGUI extends JFrame implements ActionListener {
     //MODIFIES: this
     //EFFECTS: adds a WindowAdapter object into the list of observers of this, windowClosing methods of observer
     //windowAdaptor is overriden and implemented
-    //pops up a confirmation window when users attempt to close the app, prints out the key events during the usage if
-    //user selects YES;
+    //pops up a message window showing "Thanks for using our application", prints out the key events during the usage
     //REFERENCE: https://stackoverflow.com/questions/16295942/java-swing-adding-action-listener-for-exit-on-close
     private void windowEventHandler() {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                int reply = JOptionPane.showConfirmDialog(null,"Are you sure to close! "
-                                + "Please make sure that you have save the state of your conservatory !", null,
-                        JOptionPane.YES_NO_OPTION);
-                if (reply == JOptionPane.YES_OPTION) {
-                    for (Event event: EventLog.getInstance()) {
+                JOptionPane.showMessageDialog(null, "Thanks for using our application");
+                for (Event event: EventLog.getInstance()) {
                         System.out.println(event.getDescription());
                     }
                 }
-            }
         });
     }
 

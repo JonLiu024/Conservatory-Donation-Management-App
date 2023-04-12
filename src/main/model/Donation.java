@@ -10,7 +10,7 @@ import java.time.LocalDate;
 //Representing the donation a donor makes to a wildlife. a donation is associated with
 // a recipient wildlife, a donor, an amount, and the date the donation is made
 public class Donation implements Writable {
-    private String wildlifeID; //the wildlife receiving the donation
+    private final String wildlifeID; //the wildlife receiving the donation
     private double amount;     //the amount of funds being donated
     private LocalDate dateDonationMade;  //the local date the donation is made
 
@@ -55,7 +55,6 @@ public class Donation implements Writable {
         jsonObject.put("dateDonationMade", DateFormatter.toStringLocalDate(dateDonationMade));
         return jsonObject;
     }
-
 
 
 }

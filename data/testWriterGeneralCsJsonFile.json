@@ -3,12 +3,12 @@
     "wildlifeListNotFullyFunded": [
         {
             "conservationStatus": "CD",
-            "admissionDate": "2023-04-08",
+            "admissionDate": "2023-04-12",
             "listOfDonors": [],
             "speciesName": "orca",
             "dateFullyFunded": "null",
             "amountFunded": 0,
-            "wildlifeID": "CD5178",
+            "wildlifeID": "CD3467",
             "description": "none",
             "donationRecords": [],
             "isFullyFunded": false,
@@ -16,12 +16,12 @@
         },
         {
             "conservationStatus": "EN",
-            "admissionDate": "2023-04-08",
+            "admissionDate": "2023-04-12",
             "listOfDonors": [],
             "speciesName": "blue whale",
             "dateFullyFunded": "null",
             "amountFunded": 0,
-            "wildlifeID": "EN7893",
+            "wildlifeID": "EN1217",
             "description": "none",
             "donationRecords": [],
             "isFullyFunded": false,
@@ -32,7 +32,7 @@
     "name": "Wildlife Conservation Facility",
     "wildlifeListFullyFunded": [],
     "listOfDonor": [{
-        "profileCreationDate": "2023-04-08",
+        "profileCreationDate": "2023-04-12",
         "emailAddress": "jon@ubc.ca",
         "donorID": "Jon",
         "recordsOfDonations": [],

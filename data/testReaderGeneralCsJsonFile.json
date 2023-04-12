@@ -2,27 +2,27 @@
     "totalFundingRaised": 300,
     "wildlifeListNotFullyFunded": [{
         "conservationStatus": "CD",
-        "admissionDate": "2023-04-08",
+        "admissionDate": "2023-04-12",
         "listOfDonors": [{
-            "profileCreationDate": "2023-04-08",
+            "profileCreationDate": "2023-04-12",
             "emailAddress": "jon@ubc.ca",
             "donorID": "Jon",
             "recordsOfDonations": [{
                 "amount": 300,
-                "wildlifeID": "CD2213",
-                "dateDonationMade": "2023-04-08"
+                "wildlifeID": "CD5378",
+                "dateDonationMade": "2023-04-12"
             }],
             "totalFundingDonated": 0
         }],
         "speciesName": "orca",
         "dateFullyFunded": "null",
         "amountFunded": 300,
-        "wildlifeID": "CD2213",
+        "wildlifeID": "CD5378",
         "description": "none",
         "donationRecords": [{
             "amount": 300,
-            "wildlifeID": "CD2213",
-            "dateDonationMade": "2023-04-08"
+            "wildlifeID": "CD5378",
+            "dateDonationMade": "2023-04-12"
         }],
         "isFullyFunded": false,
         "targetFunding": 1000
@@ -31,25 +31,25 @@
     "name": "Wildlife Conservation Facility",
     "wildlifeListFullyFunded": [{
         "conservationStatus": "EN",
-        "admissionDate": "2023-04-08",
+        "admissionDate": "2023-04-12",
         "listOfDonors": [],
         "speciesName": "blue whale",
-        "dateFullyFunded": "2023-04-08",
+        "dateFullyFunded": "2023-04-12",
         "amountFunded": 400,
-        "wildlifeID": "EN3797",
+        "wildlifeID": "EN4918",
         "description": "none",
         "donationRecords": [],
         "isFullyFunded": true,
         "targetFunding": 400
     }],
     "listOfDonor": [{
-        "profileCreationDate": "2023-04-08",
+        "profileCreationDate": "2023-04-12",
         "emailAddress": "jon@ubc.ca",
         "donorID": "Jon",
         "recordsOfDonations": [{
             "amount": 300,
-            "wildlifeID": "CD2213",
-            "dateDonationMade": "2023-04-08"
+            "wildlifeID": "CD5378",
+            "dateDonationMade": "2023-04-12"
         }],
         "totalFundingDonated": 0
     }]

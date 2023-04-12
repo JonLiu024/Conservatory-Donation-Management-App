@@ -1,5 +1,5 @@
 # CPSC 210 Personal Project by Tong Liu
-## Fund Tracking and Donation making App for wildlife conservatories
+## Fund Tracking and Donation management App for wildlife conservatories
 ## Project Proposal:
 
 
@@ -15,7 +15,7 @@ and the total amount of donations (funds). This app will allow the donors to mak
 will be able to track his/her donation records by using his donor profile ID. 
 
 This project is particularly interesting to me as it can help the conservation facility to systematically track and manage the funding they collected from the public.
-The data (records) it collected can be later used to  create new strategy to attract public donations.
+The data (records) it collected can be later used to create new strategy to attract public donations.
 
 The app is designed to be used by two types of users:
 - Administration team at the conservation site:
@@ -107,7 +107,7 @@ User stories:
     Refactoring 3: To avoid tight coupling between model classes
 - The UML diagram reveals that Conservatory has association relationships with both Wildlife and Donor classes, while Wildlife has already been associated with Donor (Wildlife has a field List<Donor>). 
 - To reduce the coupling among the model classes, we can remove the association relationship between Donor and Conservatory (ie. remove the field List<Donor> in Conservatory class) 
-- Instead, the conservatory can reference its list of donors by referencing its Wildlife's List<Donor> ( conservaotory.getListOfWildlife().get(index).getListOfDonors()); 
+- Instead, the conservatory can reference its list of donors by referencing its Wildlife's List<Donor> ( conservatory.getListOfWildlife().get(index).getListOfDonors()); 
 - Similarly, the relationship among Donation, Wildlife and Donor classes can be improved. Wildlife class is associated with both Donor and Donation, while Donor is associated with Donation.
 - We can remove the relationship between Wildlife and Donation class (this can be achieved by removing the field List<Donation> in the Wildlife class). 
 - To reference the donations that are associated with a wildlife object, we can reference its donor's list of donations (wildlife.getListOfDonors().getListOfDonation().getDonationOf())
