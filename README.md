@@ -87,35 +87,41 @@ User stories:
 - A wildlife (EN0642) is added to the list of fully funded wildlife 
 
 ## Phase 4: Task 3
-
-
     
 
-    Refactoring 1: Application of singleton design
-- In my project, there exists only a single instance of Conservatory, and 0...* instances of Wildlife, Donor, and Donation. 
+    Refactoring 1: Application of singleton design pattern
+- In my project, there exists only one instance of Conservatory, and 0...* instances of Wildlife, Donor, and Donation. 
 - Therefore, to reduce the expense of instantiating conservatory class and 
 - to have an easier and more direct access to the Conservatory's methods and fields, we can apply singleton design pattern 
-- We can achieve this by simply making the constructor of Conservatory class private and implement a static getInstance method 
+- We can achieve this by simply making the constructor of Conservatory class private and implement a static getInstance method, With this implementation,
+- all the ui class can access the Conservatory class by using Conservatory.getInstance() to access its fields and perform functional actions (add wildlife, donor into conservatory).
 
 
-
-    Refactoring 2: To avoid tight coupling between model classes
-- The UML diagram reveals that Conservatory has association relationships with both Wildlife and Donor classes, while Wildlife has already been associated 
-- with Donor (Wildlife has a field List<Donor>). To reduce the coupling among the model classes, we can remove the association relationship between Donor and Conservatory (ie. remove the field List<Donor> in Conservatory) 
-- Instead, the conservatory can reference its donor objects by referencing Wildlife's List<Donor>; 
-- Similarly, the relationship among Donation, Wildlife and Donor classes can be improved. Wildlife has associated relationships with both Donor and Donation, while Donor has already been associated with Donation.
-- We can remove the relationship between Wildlife and Donation class (remove the field List<Donation> in Wildlife class). 
-- We can then reference the wildlife's donations by referencing its donor's collection of donations (List<Donation>)
+    Refactoring 2: Application of HashMap 
+- In my project, I used Array Lists to hold the collections of the model objects (wildlife, donor, donation).
+- Since elements in a list can only be accessed using indexes, searching for a specific element in the list with a certain characteristics is not efficient and requires much more codes.
+- Since these lists are not designed to hold duplicate objects (for example, every donor object in the List<Donor> of Conservatory object should be unique, with unique donor ID), we can use HashMap to hold these object
+- using string of ID as the keys (i.e. HashMap<IDString, wildlife>, HashMap<IDString, Donor>) Searching for a wildlife or donor will be much more efficient by simply using get(StringID) methods
 
 
-    Refactoring 3: Application of Observer Patterns
-- In my project, the GUI was designed using Java Swing library. The main JFrame (FundTrackerAppGUI) was created to subtype JFrame and multiple JComponents (JLabel, JButton, JComboBox) were created to display the visual components related to a specific function
+    Refactoring 3: To avoid tight coupling between model classes
+- The UML diagram reveals that Conservatory has association relationships with both Wildlife and Donor classes, while Wildlife has already been associated with Donor (Wildlife has a field List<Donor>). 
+- To reduce the coupling among the model classes, we can remove the association relationship between Donor and Conservatory (ie. remove the field List<Donor> in Conservatory class) 
+- Instead, the conservatory can reference its list of donors by referencing its Wildlife's List<Donor> ( conservaotory.getListOfWildlife().get(index).getListOfDonors()); 
+- Similarly, the relationship among Donation, Wildlife and Donor classes can be improved. Wildlife class is associated with both Donor and Donation, while Donor is associated with Donation.
+- We can remove the relationship between Wildlife and Donation class (this can be achieved by removing the field List<Donation> in the Wildlife class). 
+- To reference the donations that are associated with a wildlife object, we can reference its donor's list of donations (wildlife.getListOfDonors().getListOfDonation().getDonationOf())
+- This trade-off will reduce the coupling among the model classes, but increase the time complexity of the searching as we will need to search by iterating nested loops to find the object(O(n) vs. O(n^2))
+
+
+    Refactoring 4: Application of Observer Patterns
+- In my project, the GUI are composed of one JFrame object and multiple JComponents objects. The main JFrame (FundTrackerAppGUI) was created to subtype JFrame and multiple JComponents (JLabel, JButton, JComboBox) were created to display the visual components related to a specific function
 - In the original design, I created several classes subtyping JPanel, each represents a page of the app to complete one action (i.e. adding a wildlife to the conservatory, Making a donation to a wildlife, etc.).
-- When the status of the conservatory (newly added wildlife, donation making, wildlife becomes fully funded, etc.) changes, the relevant JComponents was not immediately updated with the new contents. These components are updated with new contents when their page was 
-- displayed 
+- When the status of the conservatory (newly added wildlife, donation making, wildlife becomes fully funded, etc.) changes, the relevant JComponents was not immediately updated with the new contents. These components are updated with new contents when their page was displayed 
+
 - To improve the efficiency of GUI updating, we can apply the Observer pattern design;
 - To achieve this, we can create a subject class and have Conservatory extending it, and create an Observer interface and have all the ui classes implementing it
-- We can add the ui class into Conservatory's list of observers and use notifyObserver to update each GUI class. Each GUI component class will have its own implemented update method
+- We can add the ui classes into Conservatory's list of observers and use notifyObservers() to update each GUI class. Each GUI component class will have its own implemented update method
 - For example, the update() of TrackDonorInfo class will set the displaying message based on the current status of each donor in the conservatory. 
 
 

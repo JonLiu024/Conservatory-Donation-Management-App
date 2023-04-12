@@ -16,10 +16,10 @@ public class Conservatory implements Writable {
     private List<Donor> listOfDonors;   //list of donors profiles
     private double totalTargetFunding;  //the total amount of funding to be raised
     private double totalFundingRaised;  //the total amount of funding that has been raised
-    private String name; //the conservatory's name
+    private final String name; //the conservatory's name
 
 
-    //EFFECT: create a Conservatory object; the totalTargetFunding and totalFundingRaised are set zero,
+    //EFFECT: create a Conservatory object; totalTargetFunding and totalFundingRaised are set zero,
     // listOfDonors is set as an empty donor arraylists;
     // wildlifeListNotFullyFunded is set as an empty wildlife arraylist
     // wildlifeListFullyFunded is set as an empty wildlife arraylist
@@ -104,7 +104,8 @@ public class Conservatory implements Writable {
     }
 
 
-    //REQUIRES: wildlifeListNotFullyFunded and wildlifeListFullyFunded do not contain same element (wildlife objects)
+    //REQUIRES: wildlifeListNotFullyFunded and wildlifeListFullyFunded do not contain duplicates element
+    // wildlifeListNotFullyFunded and wildlifeListFullyFunded do not contain same element (wildlife objects)
     //EFFECT: returns an array list containing all fully funded wildlife and all non-fully funded wildlife
     public List<Wildlife> getListOfAllWL() {
         List<Wildlife> listOfAllWL = new ArrayList<>();
