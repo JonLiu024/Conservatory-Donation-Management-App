@@ -339,7 +339,7 @@ public class FundTrackerAppGUI extends JFrame implements ActionListener {
                 super.windowClosing(e);
                 JOptionPane.showMessageDialog(null, "Thanks for using our application");
                 for (Event event: EventLog.getInstance()) {
-                        System.out.println(event.getDescription());
+                    System.out.println(event);
                     }
                 }
         });
