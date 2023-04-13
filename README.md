@@ -92,16 +92,16 @@ User stories:
     Refactoring 1: Application of singleton design pattern
 - In my project, there exists only one instance of Conservatory, and 0...* instances of Wildlife, Donor, and Donation. 
 - Therefore, to reduce the expense of instantiating conservatory class and 
-- to have an easier and more direct access to the Conservatory's methods and fields, we can apply singleton design pattern 
+- to have easier and more direct accesses to the Conservatory's methods and fields, we can apply singleton design pattern 
 - We can achieve this by simply making the constructor of Conservatory class private and implement a static getInstance method, With this implementation,
 - all the ui class can access the Conservatory class by using Conservatory.getInstance() to access its fields and perform functional actions (add wildlife, donor into conservatory).
 
 
     Refactoring 2: Application of HashMap 
 - In my project, I used Array Lists to hold the collections of the model objects (wildlife, donor, donation).
-- Since elements in a list can only be accessed using indexes, searching for a specific element in the list with a certain characteristics is not efficient and requires much more codes.
+- Since elements in a list can only be accessed using indexes, searching for a specific element in the list with a certain characteristics (i.e. fully funded wildlife) is not efficient and requires much more codes.
 - Since these lists are not designed to hold duplicate objects (for example, every donor object in the List<Donor> of Conservatory object should be unique, with unique donor ID), we can use HashMap to hold these object
-- using string of ID as the keys (i.e. HashMap<IDString, wildlife>, HashMap<IDString, Donor>) Searching for a wildlife or donor will be much more efficient by simply using get(StringID) methods
+- using string of ID as the keys (i.e. HashMap<IDString, wildlife>, HashMap<IDString, Donor>) to search for a wildlife or donor.
 
 
     Refactoring 3: To avoid tight coupling between model classes
@@ -115,14 +115,13 @@ User stories:
 
 
     Refactoring 4: Application of Observer Patterns
-- In my project, the GUI are composed of one JFrame object and multiple JComponents objects. The main JFrame (FundTrackerAppGUI) was created to subtype JFrame and multiple JComponents (JLabel, JButton, JComboBox) were created to display the visual components related to a specific function
-- In the original design, I created several classes subtyping JPanel, each represents a page of the app to complete one action (i.e. adding a wildlife to the conservatory, Making a donation to a wildlife, etc.).
-- When the status of the conservatory (newly added wildlife, donation making, wildlife becomes fully funded, etc.) changes, the relevant JComponents was not immediately updated with the new contents. These components are updated with new contents when their page was displayed 
-
-- To improve the efficiency of GUI updating, we can apply the Observer pattern design;
+- In my project, the GUI are composed of one JFrame object and multiple JPanel objects: The FundTrackerAppGUI (subtyping JFrame) object to represent the main menu and other components such as AddWildlife, CreateDonorProfile (subtyping JLabel) to represent the menu pages related to a specific function
+- In the original design, the contents of these GUI objects do not update immediately when the status of the conservatory (newly added wildlife, donation making, wildlife becomes fully funded, etc.) changes. For example, when the conservatory adds new wildlife, the list of the JCombobox options for selection
+- do not update immediately, the refreshComboBoxOptions() was used to update the combobox options. it is only called when the user selects to go to the Add wildlife page from ForAdmin page again.
+- Observer pattern design can be applied to improve the 
 - To achieve this, we can create a subject class and have Conservatory extending it, and create an Observer interface and have all the ui classes implementing it
-- We can add the ui classes into Conservatory's list of observers and use notifyObservers() to update each GUI class. Each GUI component class will have its own implemented update method
-- For example, the update() of TrackDonorInfo class will set the displaying message based on the current status of each donor in the conservatory. 
+- We can then use addObservers to add the ui classes into Conservatory's list of observers and call notifyObservers() to update each GUI class when the conservatory changes state. Each GUI component class will have its own implemented update method
+- For example, the refreshComboBoxOptions() of AddWildlife class will reset the list of wildlife available for donation immediately after a new wildlife is added to the conservatory.
 
 
 ## Main source of reference
