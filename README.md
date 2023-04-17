@@ -1,5 +1,5 @@
 # CPSC 210 Personal Project by Tong Liu
-## Fund Tracking and Donation management App for wildlife conservatories
+## Donation management App for wildlife conservatories
 ## Project Proposal:
 
 
