@@ -3,19 +3,17 @@
 ## Project Proposal:
 
 
-A wildlife conservatory provides rescue and rehabilitation services to injured wildlife. A large portion of the funds that supports the facility is raised from the public through donations from animal lovers
+A wildlife conservatory provides rescue and rehabilitation services to injured animals. A large portion of the funds that supports the facility is raised from the public through donations from animal lovers
+
 To encourage donations from the public, many non-profit organizations created websites that contains the profiles of 
-individual wildlife they attempt to rescue and encourage the public to make donations to their favorite animals through symbolic adoptions. one of the examples
-can be accessed here (https://support.worldwildlife.org/site/Donation2?df_id=17797&17797.donation=form1&s_src=AWE2308OQ18297A06836RX&s_subsrc=homepage)
+animals they attempt to rescue and encourage the public to make donations to their favorite animals through symbolic adoptions. 
+one of the examples can be accessed here (https://support.worldwildlife.org/site/Donation2?df_id=17797&17797.donation=form1&s_src=AWE2308OQ18297A06836RX&s_subsrc=homepage).
 
 
 In my personal project, I want to design a donation management app for a newly established wildlife conservation facility. 
-The app can be used to add and create profiles for wildlife that are rescued and sheltered at the facility and updates their donation records, list of donors
-and the total amount of donations (funds). This app will allow the donors to make donations to a certain wildlife they choose. The same donor
-will be able to track his/her donation records by using his donor profile ID. 
+The app can be used to add and create profiles for wildlife that are rescued and sheltered at the facility and updates their donation records, list of donors, and the total amount of donations (funds). This app will allow the donors to make donations to a certain wildlife they choose. Donors will be able to track his/her donation records using his donor profile ID. 
 
-This project is particularly interesting to me as it can help the conservation facility to systematically track and manage the funding they collected from the public.
-The data (records) it collected can be later used to create new strategy to attract public donations.
+This project is particularly interesting to me as it can help the conservation facility to systematically track and manage the funding they collected from the public.The data (records) it collected can be later used to for research and provides feedback to the conservation activists to enhance the donor user experience.
 
 The app is designed to be used by two types of users:
 - Administration team at the conservation site:
