@@ -1,4 +1,4 @@
-# CPSC 210 Personal Project by Tong Liu
+#Java Personal Project by Tong Liu
 ## Donation management App for wildlife conservatories
 ## Project Proposal:
 
