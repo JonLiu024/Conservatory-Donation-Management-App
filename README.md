@@ -1,5 +1,5 @@
 #Java Personal Project by Tong Liu
-## Donation management App for wildlife conservatories
+## Fundraising management App for wildlife conservatories
 ## Project Proposal:
 
 
